@@ -1,0 +1,15 @@
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\bin\Debug\net6.0\FinalProjectCSharp2.exe
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\bin\Debug\net6.0\FinalProjectCSharp2.deps.json
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\bin\Debug\net6.0\FinalProjectCSharp2.runtimeconfig.json
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\bin\Debug\net6.0\FinalProjectCSharp2.dll
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\bin\Debug\net6.0\FinalProjectCSharp2.pdb
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\FinalProjectCSharp2.csproj.AssemblyReference.cache
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\FinalProjectCSharp2.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\FinalProjectCSharp2.AssemblyInfoInputs.cache
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\FinalProjectCSharp2.AssemblyInfo.cs
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\FinalProjectCSharp2.csproj.CoreCompileInputs.cache
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\FinalProjectCSharp2.dll
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\refint\FinalProjectCSharp2.dll
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\FinalProjectCSharp2.pdb
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\FinalProjectCSharp2.genruntimeconfig.cache
+C:\GitReps\FinalProjectCSharp2\FinalProjectCSharp2\obj\Debug\net6.0\ref\FinalProjectCSharp2.dll
