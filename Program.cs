@@ -11,7 +11,8 @@ class Program
      
     public static void Main(string[] args)
     {
-           
+         
+            VectorTesting.Test();
      
         bool isDanielAPeasent = true;
 

@@ -17,11 +17,13 @@ namespace FinalProjectCSharp2
         public int y { get => _y; set => _y = value; }
 
 
-        private static Vector2 _down = new Vector2(0, -1);
+        public static Vector2 Down = new Vector2(0, -1);
         public static Vector2 Up = new Vector2(0, 1);
         public static Vector2 Right = new Vector2(1, 0);
         public static Vector2 Left = new Vector2(-1, 0);
-        public static Vector2 Down { get => _down; private set => _down = new Vector2(0, -1); }
+        public static Vector2 One = new Vector2(1, 1);
+        public static Vector2 Zero = new Vector2(0, 0);
+        //public static Vector2 Down { get => _down; private set => _down = new Vector2(0, -1); }
         //public static Vector Up { get => _up; private set => _up = new Vector(0, 1); }
         //static Vector _right;
         //public static Vector Right { get => _right; private set => _right = new Vector(1, 0); }
@@ -51,9 +53,6 @@ namespace FinalProjectCSharp2
             vector2 = new Vector2(x, y);
         }
 
-        //static Vector vector = new Vector();
-        //var pos = vector.CreateVector(3, 5);
-        //pos += Vector.Down;
-        //   Console.WriteLine(pos.ToString());
+     
     }
 }
