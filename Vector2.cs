@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.Intrinsics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,12 +45,15 @@ namespace FinalProjectCSharp2
         {
             return $"({x},{y})";
         }
-        public Vector (int x, int y)
+        public Vector ()
         {
-            this.x = x;
-            this.y = y;
-            vector2 = new Vector2(x, y);
             
+            vector2 = new Vector2(x, y);
         }
+
+        //static Vector vector = new Vector();
+        //var pos = vector.CreateVector(3, 5);
+        //pos += Vector.Down;
+        //   Console.WriteLine(pos.ToString());
     }
 }

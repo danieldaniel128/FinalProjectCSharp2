@@ -7,11 +7,11 @@ namespace FinalProjectCSharp2
 class Program 
 {
 
+
      
     public static void Main(string[] args)
     {
-            
-        
+           
      
         bool isDanielAPeasent = true;
 
