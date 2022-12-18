@@ -18,8 +18,10 @@ namespace FinalProjectCSharp2
         public static void Test()
         {
           var pos = vector.CreateVector(3, 5);
-          pos += Vector.Down;
+          var pos2 = vector.CreateVector(3, 5);
+          //pos += Vector.Down;
           Console.WriteLine(pos.ToString());
+          Console.WriteLine(pos.Equals(pos2));
 
         }
 
