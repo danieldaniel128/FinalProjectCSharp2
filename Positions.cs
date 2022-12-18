@@ -1,12 +1,14 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
-struct Positions : IPositioning
+readonly struct Positions : IPositioning
 {
-    private int _x;
-    private int _y;
-    int IPositioning.X { get => _x; set => _x = value; }
-    int IPositioning.Y { get => _y; set => _y = value; }
+    readonly int _x;
+    readonly int _y;
+
+    int IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
+    int IPositioning.Y { readonly get => _x; set => throw new NotImplementedException(); }
 
     public Positions(int x, int y)
     {
@@ -17,22 +19,14 @@ struct Positions : IPositioning
 
     public static Positions operator+(Positions pos1, Positions pos2)
     {
-        Positions pos3;
-
-        pos3._x = pos1._x + pos2._x;
-        pos3._y = pos1._y + pos2._y;
-
-        return pos3;
+       return new Positions(pos1._x + pos2._x, pos1._y + pos2._y);
     }
+    
+  
 
     public static Positions operator -(Positions pos1, Positions pos2)
     {
-        Positions pos3;
-
-        pos3._x = pos1._x - pos2._x;
-        pos3._y = pos1._y - pos2._y;
-
-        return pos3;
+        return new Positions(pos1._x - pos2._x, pos1._y - pos2._y);
     }
 
 
