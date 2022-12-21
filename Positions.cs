@@ -3,18 +3,17 @@
 readonly struct Positions : IPositioning
 {
 
-    readonly int _x;
-    readonly int _y;
+    readonly float _x;
+    readonly float _y;
 
-    int IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
-    int IPositioning.Y { readonly get => _y; set => throw new NotImplementedException(); }
+    float IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
+    float IPositioning.Y { readonly get => _y; set => throw new NotImplementedException(); }
 
     /// <summary>
     /// A tool to position the player
     /// </summary>
-    /// <param name="x"></param>
-    /// <param name="y"></param>
-    public Positions(int x, int y)
+
+    public Positions(float x, float y)
     {
         this._x = x;
         this._y = y;
@@ -57,7 +56,7 @@ readonly struct Positions : IPositioning
 
     public override int GetHashCode()
     {
-        return (_x * 100) + (_y * 50);
+        return ((int)_x * 100) + ((int)_y * 50);
     }
 }
 

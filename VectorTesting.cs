@@ -14,13 +14,14 @@ namespace FinalProjectCSharp2
     public  class VectorTesting
     {
 
-        static Vector2Extension vector = new Vector2Extension();
+      
         public static void Test()
         {
-          var pos = vector.CreateVector(7, 10);
-          var pos2 = vector.CreateVector(3, 5);
-          var pos3 = vector.CreateVector(3, 7);
-            pos3 += Vector2Extension.Left;
+          var pos = new Vector2(7, 10);
+          var pos2 = new Vector2 (3, 5);
+          var pos3 =  new Vector2(3, 7);
+          pos3 += Vector2.Left;
+          
           Vector2 pos4 = new Vector2(5,6);
 
             //pos += Vector.Down;          //  Console.WriteLine(vector.VectorValueAsVector(pos));
@@ -28,15 +29,10 @@ namespace FinalProjectCSharp2
           //Console.WriteLine(pos.Equals(pos2));
           //  Console.WriteLine(Vector2.Distance(pos, pos2));
           //  Console.WriteLine(Vector2.Normalize(pos));
-            while (pos != pos2)
-            {
-               
-             
-                pos =Vector2Extension.MoveTowards(pos, pos2, 0.001f);
+         
+                pos =Vector2.MoveTowards(pos, pos2, 0.001f);
                 Console.WriteLine("Current position: " + pos);
-
-
-            }
+            
 
         }
 
