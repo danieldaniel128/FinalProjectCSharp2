@@ -22,8 +22,9 @@ namespace FinalProjectCSharp2
 
         readonly float _x;
         readonly float _y;
-
-        public float Magnitude => MathF.Sqrt(_x * _x + _y * _y);
+        readonly float Magnitude => MathF.Sqrt(_x * _x + _y * _y);
+        readonly float Normalized => MathF.Sqrt(_x * _x + _y * _y); // W.I.P
+    
         float IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
         float IPositioning.Y { readonly get => _y; set => throw new NotImplementedException(); }
 
@@ -42,6 +43,10 @@ namespace FinalProjectCSharp2
         public static Vector2 operator -(Vector2 pos1, Vector2 pos2)
         {
             return new Vector2(pos1._x - pos2._x, pos1._y - pos2._y);
+        }
+        public static Vector2 operator / (Vector2 pos1, Vector2 pos2)
+        {
+            return new Vector2(pos1._x / pos2._x, pos1._y / pos2._y);
         }
         public static bool operator == (Vector2 pos1, Vector2 pos2)
         {
@@ -77,61 +82,38 @@ namespace FinalProjectCSharp2
         public static Vector2 One = new Vector2(1, 1);
         public static Vector2 Zero = new Vector2(0, 0);
 
-
+        public Vector2 Normalize() // W.I.P
+        {
+            Vector2 vecValue = new Vector2(MathF.Sqrt(_x*_x));            
+        }
         public float Distance(Vector2 firstVector, Vector2 secondVector)
         {
-            float distanceX = firstVector._x - secondVector._x;
-            float distanceY = firstVector._y - secondVector._y;
-            return MathF.Sqrt(distanceX * distanceX + distanceY * distanceY);
+            float distanceX = firstVector._x - secondVector._x; 
+            float distanceY = firstVector._y - secondVector._y;      
+            return MathF.Sqrt(distanceX * distanceX + distanceY * distanceY); 
         }
 
- 
+      
+            
 
         public static Vector2 MoveTowards(Vector2 current, Vector2 target, float speed)
         {
-            
-            float currentX = current._x;
-            float currentY = current._y;
-            float targetX = target._x;
-            float targetY = target._y;
+            while (!current.Equals(target))
+            { 
+              
+                float distance = current.Distance(current, target);
+                Console.WriteLine("Current position: " + current);
+                Console.WriteLine("Distance: " + distance);
+  
+                if (current._x < target._x) current = new Vector2(Math.Min(current._x + speed, target._x), current._y);
+                else current = new Vector2(Math.Max(current._x - speed, target._x), current._y);
+         
+                if (current._y < target._y) current = new Vector2(current._x, Math.Min(current._y + speed, target._y));
+                else current = new Vector2(current._x, Math.Max(current._y - speed, target._y));
 
-            Vector2 distance = target - current;
-
-            float distanceX = target._x - current._x;
-            float distanceY = target._y - current._y;
-
-            current = new Vector2(currentX, currentY);
-
-            target = new Vector2(targetX, targetY);
-
-            while (current != target)
-            {
-                if (currentX < targetX)
-                {
-                    currentX += speed;
-                }
-                else
-                {
-                    currentX -= speed;
-                }
-
-                if (currentY < targetY)
-                {
-                    currentY += speed;
-                }
-                else
-                {
-                    currentY -= speed;
-                }
-                Vector2 newVec = new Vector2(currentX, currentY);
-                Console.WriteLine(newVec);
+                Thread.Sleep(16);
             }
             return current;
-
-
-
-
-
         }
 
 
