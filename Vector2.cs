@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.Intrinsics;
 using System.Security.AccessControl;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
@@ -20,26 +21,34 @@ namespace FinalProjectCSharp2
         /// this class will be used as an extension of the default Vector2 Struct
         /// </summary>
 
-        readonly float _x;
-        readonly float _y;
-        readonly float Magnitude => MathF.Sqrt(_x * _x + _y * _y);
-        readonly float Normalized => MathF.Sqrt(_x * _x + _y * _y); // W.I.P
-    
+        // fields
+         private readonly float _x;
+         private readonly float _y;
         float IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
+   
         float IPositioning.Y { readonly get => _y; set => throw new NotImplementedException(); }
-
+    
+        // Vector2 Properties
+        public readonly float Magnitude => MathF.Sqrt(_x * _x + _y * _y); // return a Vector2's Magnitude aka the Length of the Vector2
+        public readonly Vector2 Normalized => new Vector2(_x / this.Magnitude, _y / this.Magnitude); // returns a Normalized Vector2 (which is vector with values between -1 and 1)
+        public static Vector2 Down = new Vector2(0, -1);
+        public static Vector2 Up = new Vector2(0, 1);
+        public static Vector2 Right = new Vector2(1, 0);
+        public static Vector2 Left = new Vector2(-1, 0);
+        public static Vector2 One = new Vector2(1, 1);
+        public static Vector2 Zero = new Vector2(0, 0);
+      
         public Vector2(float x, float y)
         {
             this._x = x;
             this._y = y;
         }
 
+        // Operators
         public static Vector2 operator +(Vector2 pos1, Vector2 pos2)
         {
             return new Vector2(pos1._x + pos2._x, pos1._y + pos2._y);
         }
-
-
         public static Vector2 operator -(Vector2 pos1, Vector2 pos2)
         {
             return new Vector2(pos1._x - pos2._x, pos1._y - pos2._y);
@@ -75,27 +84,20 @@ namespace FinalProjectCSharp2
             return new Vector2(pos1._x * pos2._x, pos1._y * pos2._y);
         }
 
-        public static Vector2 Down = new Vector2(0, -1);
-        public static Vector2 Up = new Vector2(0, 1);
-        public static Vector2 Right = new Vector2(1, 0);
-        public static Vector2 Left = new Vector2(-1, 0);
-        public static Vector2 One = new Vector2(1, 1);
-        public static Vector2 Zero = new Vector2(0, 0);
 
-        public Vector2 Normalize() // W.I.P
+
+
+        // Vector2 Methods
+        public static float Dot(Vector2 vec1, Vector2 vec2) // returns Dot product of 2 vectors
         {
-            Vector2 vecValue = new Vector2(MathF.Sqrt(_x*_x));            
+            return vec1._x * vec2._x + vec1._y * vec2._y; 
         }
         public float Distance(Vector2 firstVector, Vector2 secondVector)
         {
-            float distanceX = firstVector._x - secondVector._x; 
+            float distanceX = firstVector._x - secondVector._x;
             float distanceY = firstVector._y - secondVector._y;      
             return MathF.Sqrt(distanceX * distanceX + distanceY * distanceY); 
         }
-
-      
-            
-
         public static Vector2 MoveTowards(Vector2 current, Vector2 target, float speed)
         {
             while (!current.Equals(target))
@@ -115,12 +117,7 @@ namespace FinalProjectCSharp2
             }
             return current;
         }
-
-
-
         public override string ToString() => $"({_x},{_y})";
-
-
         public override bool Equals(object obj)
         {
             if (!(obj is Vector2))
@@ -140,7 +137,6 @@ namespace FinalProjectCSharp2
 
             return false;
         }
-
         public override int GetHashCode()
         {
             return ((int)_x * 100) + ((int)_y * 50);

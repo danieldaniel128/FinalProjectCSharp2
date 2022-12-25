@@ -3,10 +3,10 @@
 readonly struct Positions : IPositioning
 {
 
-    readonly float _x;
-    readonly float _y;
+    public readonly float _x;
+    public readonly float _y;
 
-    float IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
+     float IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
     float IPositioning.Y { readonly get => _y; set => throw new NotImplementedException(); }
 
     /// <summary>
