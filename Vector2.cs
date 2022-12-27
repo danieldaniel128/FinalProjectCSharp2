@@ -113,7 +113,7 @@ namespace FinalProjectCSharp2
                 if (current._y < target._y) current = new Vector2(current._x, Math.Min(current._y + speed, target._y));
                 else current = new Vector2(current._x, Math.Max(current._y - speed, target._y));
 
-                Thread.Sleep(16);
+                Thread.Sleep(16); // PlaceHolder For Now
             }
             return current;
         }
