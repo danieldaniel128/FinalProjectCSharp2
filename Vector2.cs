@@ -117,6 +117,15 @@ namespace FinalProjectCSharp2
             }
             return current;
         }
+
+        public static Vector2 Lerp(Vector2 current, Vector2 target, float percentage)
+        {
+         
+           return new Vector2(current._x + (target._x - current._x) * percentage,
+               current._y + (target._y - current._y) * percentage);
+
+        }
+
         public override string ToString() => $"({_x},{_y})";
         public override bool Equals(object obj)
         {
