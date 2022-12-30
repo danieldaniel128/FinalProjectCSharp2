@@ -25,7 +25,6 @@ namespace FinalProjectCSharp2
             var pos7 = pos3 + new Vector2(1, 0);
             
             pos3 = pos3.Normalized;
-            pos3.Set(ref pos3, 5,5);
                 Console.WriteLine($"Vector2Normal is: {pos3} ");
           pos3 += Vector2.Left;
           
