@@ -9,7 +9,7 @@ namespace FinalProjectCSharp2
     public interface IUpdate
     {
 
-        void Update();
+        void Update(float deltatime);
 
     }
 }

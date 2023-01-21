@@ -5,9 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Collider : Component
+class Collider : Component
 {
-    public Collider(TileObject to) : base(to)
+    public float Radius;
+
+    public Collider(Rigidbody rb, GameObject go, float radius = 3) : base(go)
     {
+        Radius = radius;
+        rb.AssignCollider(this);
+    }
+
+    public void OnCollision(Collider other)
+    {
+        Console.WriteLine("I'm walking here.");
     }
 }
+

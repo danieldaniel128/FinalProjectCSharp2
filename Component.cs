@@ -5,18 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    
-    public abstract class Component : IUpdate
+
+abstract class Component : IUpdate
 {
-    public TileObject tileObject;
-    public Component(TileObject to)
+    public GameObject gameobject;
+    public Component(GameObject go)
     {
-        tileObject = to;
+        gameobject = go;
     }
 
-
-    public virtual void Update()
+    public virtual void Update(float deltaTime)
     {
-        throw new NotImplementedException();
+
     }
 }

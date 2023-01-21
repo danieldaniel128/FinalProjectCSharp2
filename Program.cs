@@ -6,7 +6,9 @@ class Program
     public static void Main(string[] args)
     {
         
+        VectorTesting vectorTesting = new VectorTesting();
 
+        VectorTesting.Test();
      
     }
 
