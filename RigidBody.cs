@@ -29,6 +29,6 @@ class Rigidbody : Component
     {
         MyVector2 displacement = new MyVector2(positioning.X, positioning.Y + Gravity * deltaTime);
         gameobject.transform.Position = new MyVector2
-            (gameobject.transform.Position.x + displacement.x, gameobject.transform.Position.y + displacement.y);
+            (gameobject.transform.Position.X + displacement.X, gameobject.transform.Position.Y + displacement.Y);
     }
 }

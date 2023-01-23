@@ -24,9 +24,9 @@ namespace FinalProjectCSharp2
         // fields
          private readonly float _x;
          private readonly float _y;
-        float IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
+        public float X { readonly get => _x; set => throw new NotImplementedException(); }
    
-        float IPositioning.Y { readonly get => _y; set => throw new NotImplementedException(); }
+        public float Y { readonly get => _y; set => throw new NotImplementedException(); }
     
         // Vector2 Properties
         public readonly float Magnitude => MathF.Sqrt(_x * _x + _y * _y); // return a Vector2's Magnitude aka the Length of the Vector2
