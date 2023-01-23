@@ -16,6 +16,12 @@ public class Tile
         position.Y = y;
         gameObject = null;
     }
+    public Tile(int x, int y, GameObject gameObject)
+    {
+        position.X = x;
+        position.Y = y;
+        this.gameObject = gameObject;
+    }
 }
    
 

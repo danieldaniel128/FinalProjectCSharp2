@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-abstract class Component : IUpdate
+public abstract class Component : IUpdate
 {
     public GameObject gameobject;
     public Component(GameObject go)

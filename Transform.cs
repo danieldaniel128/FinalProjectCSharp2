@@ -6,7 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-class Transform : Component
+public class Transform : Component
 {
     public MyVector2 Position;
 

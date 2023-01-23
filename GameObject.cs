@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
 
-class GameObject : IUpdate
+public class GameObject : IUpdate
 {
     List<Component> _components;
     public Transform transform => _components[0] as Transform;
