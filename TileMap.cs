@@ -26,4 +26,18 @@ public class TileMap
         }
     }
 
+    public void DrawGrid(int width, int height)
+    {
+        for (int x = 0; x < tiles.GetLength(0); x++)
+        {
+            for (int y = 0; y < tiles.GetLength(1); y++)
+            {
+                Console.Write(tiles[x, y].tileContainer);
+            }
+            Console.WriteLine();
+        }
+
+
+    }
+
 }

@@ -5,10 +5,12 @@ class Program
 
     public static void Main(string[] args)
     {
-        
-        VectorTesting vectorTesting = new VectorTesting();
+        TileMapTesting tileMapTest = new TileMapTesting();
+        tileMapTest.TileMapTest(new TileMap(10,10));
+        //VectorTesting vectorTesting = new VectorTesting();
 
-        VectorTesting.Test();
+        //VectorTesting.Test();
+
      
     }
 

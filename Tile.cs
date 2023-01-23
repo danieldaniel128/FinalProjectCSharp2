@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Tile
+public class Tile 
 {
     Vector2 position;
     GameObject gameObject;
