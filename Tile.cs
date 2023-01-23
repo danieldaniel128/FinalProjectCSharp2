@@ -9,11 +9,21 @@ public class Tile
 {
     Vector2 position;
     GameObject gameObject;
+    public string tileContainer;
 
     public Tile(int x, int y)
     {
         position.X = x;
         position.Y = y;
+        tileContainer = "[ ]";
+        gameObject = null;
+    }
+    public Tile(int x, int y,char tileObject)
+    {
+        position.X = x;
+        position.Y = y;
+        tileContainer = "[ ]";
+        tileContainer=tileContainer.Replace(' ', tileObject);
         gameObject = null;
     }
     public Tile(int x, int y, GameObject gameObject)

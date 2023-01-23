@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-class TileMap
+public class TileMap
 {
     public int Width { get; private set; }
     public int Height { get; private set; }
-    public Tile[,] tiles;//propertie?
+    public Tile[,] tiles { get; set; }
 
     public TileMap(int width, int height)
     {
@@ -21,14 +21,9 @@ class TileMap
         {
             for (int y = 0; y < height; y++)
             {
-                tiles[x, y] = new Tile(x, y);
+                tiles[x, y] = new Tile(x, y,'i');
             }
         }
     }
 
-
-    public Tile GetTile(int x, int y)
-    {
-        return tiles[x, y];
-    }
 }
