@@ -8,19 +8,24 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\roee\\.nuget\\packages\\": {}
+    "C:\\Users\\kreme\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\roee\\source\\repos\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj",
+      "projectUniqueName": "C:\\Users\\kreme\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj",
       "projectName": "FinalProjectCSharp2",
-      "projectPath": "C:\\Users\\roee\\source\\repos\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj",
-      "packagesPath": "C:\\Users\\roee\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\roee\\source\\repos\\FinalProjectCSharp2\\obj\\",
+      "projectPath": "C:\\Users\\kreme\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj",
+      "packagesPath": "C:\\Users\\kreme\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kreme\\FinalProjectCSharp2\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\roee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kreme\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
