@@ -5,20 +5,31 @@ class Program
 
     public static void Main(string[] args)
     {
-        TileMapTesting tileMapTest = new TileMapTesting();
-        tileMapTest.TileMapTest(new TileMap(10,10, 'h'));
         //VectorTesting vectorTesting = new VectorTesting();
 
         //VectorTesting.Test();
 
-     
+        UpgradedTileMap tiles = new UpgradedTileMap(5,6);
+        EngineManager engineManager =new EngineManager(tiles);
+
+        engineManager.Pause();
+
+
+        tiles.FillSpiralMatrix();
+        engineManager.GameLoop();
+       
+
+
+
+       
     }
-
-
-
-
-
 }
+
+
+
+
+
+
 
 
 

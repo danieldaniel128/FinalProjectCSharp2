@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 public class Scene
 {
     List<GameObject> _gameObjects = new List<GameObject>();
-
     public void Play()
     {
         var deltatime = 0.016f;

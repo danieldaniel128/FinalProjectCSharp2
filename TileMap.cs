@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using FinalProjectCSharp2;
@@ -72,13 +73,9 @@ public class TileMap
         }
     }
 
-    public void DrawGrid( int row, int columns, char rowsTileObjectChar)
+    public void ChangeGridRow( int row, int columns, char rowsTileObjectChar)
     {
-        
- 
-
-        
-
+        //rowsTileObjectChar = 'g';
 
         for (int x = 0; x < Tiles.GetLength(0); x++)
         {
@@ -101,5 +98,24 @@ public class TileMap
     }
 
 
+
+}
+
+public static class GridExtention
+{
+    static public void ChangeGridRow(this TileMap tileMap, int row,char newChar) 
+    {
+        for (int x = 0; x < tileMap.Tiles.GetLength(0); x++)
+        {
+            for (int y = 0; y < tileMap.Tiles.GetLength(1); y++)
+            {
+
+                if (x == row)
+                {
+                    tileMap.Tiles[x, y] = new Tile(x, y, newChar);
+                }
+            }
+        }
+    }
 
 }

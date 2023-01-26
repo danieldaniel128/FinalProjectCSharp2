@@ -13,11 +13,22 @@ using System.Threading.Tasks;
                 tileMap.Tiles[7, 6].TileContainer = "[!]";
 
             List<int> rowsList = new List<int>();
+        }
+        public void TestMoveIndex(UpgradedTileMap tiles) 
+        {
+            TileEnumerator map = new TileEnumerator(tiles.Grid);
 
-           // rowsList[0] = 1; rowsList[1] = 2;
-        tileMap.DrawGrid(1, 0, '%');
+            while (map.MoveNext()) //testing to check if spiral index works
+            {
+            
+                if (map._currentRowIndex == 4 || map._currentCulomnIndex == 5)
+                    break;
+                Console.Write(tiles.Grid[map._currentRowIndex, map._currentCulomnIndex].TileContainer);
+                Console.WriteLine($"({map._currentRowIndex} , {map._currentCulomnIndex})");
+            }
+        }
 
-
-    }
 }
+
+
 
