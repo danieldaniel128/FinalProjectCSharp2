@@ -7,30 +7,31 @@ using System.Threading.Tasks;
 
 public class Tile 
 {
-    Vector2 position;
-    GameObject gameObject;
-    public string tileContainer;
+    Vector2 _position;
+    GameObject _gameObject;
+    public string TileContainer;
 
     public Tile(int x, int y)
     {
-        position.X = x;
-        position.Y = y;
-        tileContainer = "[ ]";
-        gameObject = null;
+        _position.X = x;
+        _position.Y = y;
+        TileContainer = "[ ]";
+        _gameObject = null;
     }
+
     public Tile(int x, int y,char tileObject)
     {
-        position.X = x;
-        position.Y = y;
-        tileContainer = "[ ]";
-        tileContainer=tileContainer.Replace(' ', tileObject);
-        gameObject = null;
+        _position.X = x;
+        _position.Y = y;
+        TileContainer = "[ ]";
+        TileContainer=TileContainer.Replace(' ', tileObject);
+        _gameObject = null;
     }
     public Tile(int x, int y, GameObject gameObject)
     {
-        position.X = x;
-        position.Y = y;
-        this.gameObject = gameObject;
+        _position.X = x;
+        _position.Y = y;
+        this._gameObject = gameObject;
     }
 }
    
