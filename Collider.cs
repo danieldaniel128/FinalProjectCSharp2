@@ -9,7 +9,7 @@ class Collider : Component
 {
     public float Radius;
 
-    public Collider(Rigidbody rb, GameObject go, float radius = 3) : base(go)
+    public Collider(Rigidbody rb, TileObject go, float radius = 3) : base(go)
     {
         Radius = radius;
         rb.AssignCollider(this);

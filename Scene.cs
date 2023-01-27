@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Scene
+public class Scene // we make a list of tilemaps that will add and remove as we like and we cane change tilemaps as we go to scene and mor. to be continued.
 {
-    List<GameObject> _gameObjects = new List<GameObject>();
+    List<TileObject> _gameObjects = new List<TileObject>();
     public void Play()
     {
         var deltatime = 0.016f;

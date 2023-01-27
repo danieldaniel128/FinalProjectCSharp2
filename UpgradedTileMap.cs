@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ using System.Threading.Tasks;
             {
                 for (int y = 0; y < height; y++)
                 {
-                    Grid[x, y] = new Tile(x, y, '#');
+                    Grid[x, y] = new Tile(x, y, '#',ConsoleColor.White);
                 }
             }
         }
@@ -45,11 +46,13 @@ using System.Threading.Tasks;
             {
                 for (int y = 0; y < Grid.GetLength(1); y++)
                 {
+                    Console.ForegroundColor = Grid[x, y].TileColor;
                     Console.Write(Grid[x, y].TileContainer);
-                }
+            }
                 Console.WriteLine();
             }
-        }
+    }
+      
     public void FillSpiralMatrix()
     {
         int maxSteps = 1;
@@ -107,6 +110,53 @@ using System.Threading.Tasks;
     }
 
 }
+public static class GridExtention
+{
+    static public void ChangeGridRowEven(this UpgradedTileMap tileMap, int row, char newChar, ConsoleColor color)
+    {
+        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
+        {
+            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
+            {
+                if (x == row)
+                {
+                    if(y%2==0)
+                    tileMap.Grid[x, y] = new Tile(x, y, newChar,color);
+                }
+            }
+        }
+    }
+    static public void ChangeGridRowOdd(this UpgradedTileMap tileMap, int row, char newChar, ConsoleColor color)
+    {
+        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
+        {
+            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
+            {
+                if (x == row)
+                {
+                    if (y % 2 ==1)
+                        tileMap.Grid[x, y] = new Tile(x, y, newChar, color);
+                }
+            }
+        }
+    }
+    static public void ChangeGridToChessGrid(this UpgradedTileMap tileMap, char newChar,ConsoleColor color, int moduluRow = 2, int moduluColumn = 2)
+    {
+        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
+        {
+            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
+            {
+                    if (y % moduluRow == 0 && x% moduluRow == 0)
+                        tileMap.Grid[x, y] = new Tile(x, y, newChar, color);
+                if (y % moduluColumn == 1 && x % moduluColumn == 1)
+                    tileMap.Grid[x, y] = new Tile(x, y, newChar, color);
+            }
+        }
+    }
+
+
+}
+
 
 struct TileEnumerator : IEnumerator<Tile>
 {

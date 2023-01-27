@@ -5,34 +5,33 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-public class Tile 
+public class Tile : BaseTile
 {
-    Vector2 _position;
-    GameObject _gameObject;
-    public string TileContainer;
+    public override Vector2 Position { get; protected set; }
+    public override TileObject _gameObject { get; protected set; }
 
     public Tile(int x, int y)
     {
-        _position.X = x;
-        _position.Y = y;
+        Position = new Vector2(x, y);
         TileContainer = "[ ]";
         _gameObject = null;
     }
 
-    public Tile(int x, int y,char tileObject)
+    public Tile(int x, int y,char tileObject,ConsoleColor tileColor=ConsoleColor.White) : base(tileObject)
     {
-        _position.X = x;
-        _position.Y = y;
-        TileContainer = "[ ]";
+        Position = new Vector2(x, y);
+        TileColor = tileColor;
+        TileContainer = "[0 ]";
         TileContainer=TileContainer.Replace(' ', tileObject);
         _gameObject = null;
     }
-    public Tile(int x, int y, GameObject gameObject)
+    public Tile(int x, int y, TileObject gameObject)
     {
-        _position.X = x;
-        _position.Y = y;
-        this._gameObject = gameObject;
+        Position = new Vector2(x, y);
+        _gameObject = gameObject;
     }
+
+
 }
    
 

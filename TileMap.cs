@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -29,7 +30,7 @@ public class TileMap
         {
             for (int y = 0; y < height; y++)
             {
-                Tiles[x, y] = new Tile(x, y,'#');
+                Tiles[x, y] = new Tile(x, y,'#',ConsoleColor.White);
             }
         }
     }
@@ -51,7 +52,7 @@ public class TileMap
         {
             for (int y = 0; y < height; y++)
             {
-                Tiles[x, y] = new Tile(x, y, tileObjectChar);
+                Tiles[x, y] = new Tile(x, y, tileObjectChar,ConsoleColor.White);
             }
         }
     }
@@ -84,7 +85,7 @@ public class TileMap
 
                 if (x == row)
                 {
-                    Tiles[x, y] = new Tile(x, y, rowsTileObjectChar);
+                    Tiles[x, y] = new Tile(x, y, rowsTileObjectChar,ConsoleColor.Red);
                     Console.Write(Tiles[x, y].TileContainer);
                 }
                 else
@@ -101,21 +102,3 @@ public class TileMap
 
 }
 
-public static class GridExtention
-{
-    static public void ChangeGridRow(this TileMap tileMap, int row,char newChar) 
-    {
-        for (int x = 0; x < tileMap.Tiles.GetLength(0); x++)
-        {
-            for (int y = 0; y < tileMap.Tiles.GetLength(1); y++)
-            {
-
-                if (x == row)
-                {
-                    tileMap.Tiles[x, y] = new Tile(x, y, newChar);
-                }
-            }
-        }
-    }
-
-}

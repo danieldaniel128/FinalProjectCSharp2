@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 public abstract class Component : IUpdate
 {
-    public GameObject gameobject;
-    public Component(GameObject go)
+    public TileObject gameobject;
+    public Component(TileObject go)
     {
         gameobject = go;
     }

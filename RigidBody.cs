@@ -15,7 +15,7 @@ class Rigidbody : Component
     Collider _collider;
     public Collider Collider => _collider;
 
-    public Rigidbody(GameObject go) : base(go)
+    public Rigidbody(TileObject go) : base(go)
     {
         Physics.Instance.Add(this);
     }

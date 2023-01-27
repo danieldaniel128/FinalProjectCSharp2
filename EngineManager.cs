@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,11 +29,12 @@ public class EngineManager// : Engine???
 
     public void GameLoop() 
     {
+        Grid.ChangeGridToChessGrid('7', ConsoleColor.Red);
         while (IsRunning) 
         {
             Console.Clear();
             Grid.DrawGrid();
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
         }
     }
 
