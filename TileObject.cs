@@ -2,16 +2,19 @@
 
 public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 {
-    public event Action OnTouch; 
-
+    public event Action OnTouch;
+    public char ObjectChar = 'o';
+    public ConsoleColor Color = ConsoleColor.Green;
     public abstract List<Component> Components { get; protected set; }
     public virtual Transform transform => Components[0] as Transform;
 
 
-    public TileObject()
+    public TileObject(char objectChar,ConsoleColor color)
     {
         Components = new List<Component>();
         Components.Add(new Transform(this));
+        ObjectChar = objectChar;
+        Color = color;
     }
 
     public void Update(float deltaTime)
@@ -59,7 +62,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 }
 public static class TileObjectExtensions
 {
-    public static void Teleport(this TileObject tileObject,UpgradedTileMap tileMap, MyVector2 newPosition)
+    public static void PutTileObjectOnBoard(this TileObject tileObject,UpgradedTileMap tileMap, MyVector2 newPosition)
     {
         if (newPosition.X <= tileMap.Width && newPosition.Y <= tileMap.Height)
         {

@@ -10,7 +10,7 @@ class Program
         //VectorTesting.Test();
         UpgradedTileMap tiles = new UpgradedTileMap(5,6);
         EngineManager engineManager =new EngineManager(tiles);
-        TileObjectExample tileObj = new TileObjectExample();
+      
 
 
         //engineManager.Pause();

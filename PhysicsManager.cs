@@ -4,9 +4,9 @@ class Physics : IUpdate
 {
     List<Rigidbody> _rigidbodies = new List<Rigidbody>();
 
-    public void Add(Rigidbody rb)
+    public void Add(Rigidbody rigidbody)
     {
-        _rigidbodies.Add(rb);
+        _rigidbodies.Add(rigidbody);
     }
 
     public void Update(float deltaTime)

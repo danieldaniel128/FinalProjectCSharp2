@@ -172,6 +172,11 @@ public static class GridExtention
         }
     }
 
+    static public void AddTileObjectToGrid(this UpgradedTileMap tileMap, TileObject tileObject,MyVector2 position)
+    {
+     //   tileMap.Grid[(int)position.X, (int)position.Y] = new TileObjectExample(tileObject.ObjectChar, tileObject.Color);
+
+    }
 
 }
 

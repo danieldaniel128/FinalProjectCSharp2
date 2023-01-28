@@ -14,12 +14,12 @@ public class Tile : BaseTile
         _gameObject = null;
     }
 
-    public Tile(int x, int y,char tileObject,ConsoleColor tileColor=ConsoleColor.White) : base(tileObject)
+    public Tile(int x, int y,char tileChar,ConsoleColor tileColor=ConsoleColor.White) : base(tileChar)
     {
         Position = new Vector2(x, y);
         TileColor = tileColor;
         TileContainer = "[0 ]";
-        TileContainer=TileContainer.Replace(' ', tileObject);
+        TileContainer=TileContainer.Replace(' ', tileChar);
         _gameObject = null;
     }
     public Tile(int x, int y, TileObject gameObject)

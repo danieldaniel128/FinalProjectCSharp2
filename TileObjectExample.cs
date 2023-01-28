@@ -14,5 +14,9 @@ namespace FinalProjectCSharp2
 
 
         public override List<Component> Components { get; protected set; }
+
+        public TileObjectExample(char objectChar, ConsoleColor color) : base(objectChar, color)
+        {
+        }
     }
 }

@@ -6,7 +6,7 @@ class Rigidbody : Component
     public float Gravity = -9.8f;
 
     //MyVector2 Velocity = new MyVector2();
-    IPositioning positioning = new MyVector2();
+    IPositioning position = new MyVector2();
     Collider _collider;
     public Collider Collider => _collider;
 
@@ -22,7 +22,12 @@ class Rigidbody : Component
 
     public override void Update(float deltaTime)
     {
-        MyVector2 displacement = new(positioning.X, positioning.Y + Gravity * deltaTime);
+       GravityHandler(deltaTime);
+    }
+
+    public void GravityHandler(float deltaTime)
+    {
+        MyVector2 displacement = new(position.X, position.Y + Gravity * deltaTime);
         gameobject.transform.Position = new MyVector2
             (gameobject.transform.Position.X + displacement.X, gameobject.transform.Position.Y + displacement.Y);
     }
