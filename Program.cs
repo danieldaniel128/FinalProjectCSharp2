@@ -8,15 +8,17 @@ class Program
         //VectorTesting vectorTesting = new VectorTesting();
 
         //VectorTesting.Test();
-
         UpgradedTileMap tiles = new UpgradedTileMap(5,6);
         EngineManager engineManager =new EngineManager(tiles);
+        TileObjectExample tileObj = new TileObjectExample();
+       tileObj.Something();
 
-        engineManager.Pause();
+     
+        //engineManager.Pause();
 
 
-        tiles.FillSpiralMatrix();
-        engineManager.GameLoop();
+        //tiles.FillSpiralMatrix();
+        //engineManager.GameLoop();
        
 
 
