@@ -33,10 +33,10 @@ namespace FinalProjectCSharp2
           
                 Console.WriteLine($"Lerp at 0.5 is {MyVector2.Lerp(pos, pos2, 0.9f)} ");
 
+         
 
 
-
-            MyVector2.MoveTowards(pos, pos2, 0.5f);
+            pos.MoveTowards( pos2, 0.5f);
             Console.WriteLine($"pos:{pos} arrived to pos2:{pos2} ");
 
 

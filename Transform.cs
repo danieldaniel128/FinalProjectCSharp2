@@ -10,7 +10,8 @@ public class Transform : Component
 {
     public MyVector2 Position;
 
-    public Transform(TileObject go) : base(go)
+    public Transform(TileObject gameObject) : base(gameObject)
     {
+
     }
 }

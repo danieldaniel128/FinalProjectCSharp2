@@ -112,6 +112,13 @@ using System.Threading.Tasks;
 }
 public static class GridExtention
 {
+    /// <summary>
+    /// to transform all Tiles in a specific <paramref name="row"/> to different char aka <paramref name="newChar"/> and <paramref name="color"/>
+    /// </summary>
+    /// <param name="tileMap"></param>
+    /// <param name="row"></param>
+    /// <param name="newChar"></param>
+    /// <param name="color"></param>
     static public void ChangeGridRowEven(this UpgradedTileMap tileMap, int row, char newChar, ConsoleColor color)
     {
         for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
@@ -126,6 +133,13 @@ public static class GridExtention
             }
         }
     }
+    /// <summary>
+    /// to transform all odd tiles in a specific <paramref name="row"/> to different char aka <paramref name="newChar"/> and <paramref name="color"/>
+    /// </summary>
+    /// <param name="tileMap"></param>
+    /// <param name="row"></param>
+    /// <param name="newChar"></param>
+    /// <param name="color"></param>
     static public void ChangeGridRowOdd(this UpgradedTileMap tileMap, int row, char newChar, ConsoleColor color)
     {
         for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
@@ -140,6 +154,14 @@ public static class GridExtention
             }
         }
     }
+/// <summary>
+/// converting Grid into a Chess Board
+/// </summary>
+/// <param name="tileMap"></param>
+/// <param name="newChar"></param>
+/// <param name="color"></param>
+/// <param name="moduluRow"></param>
+/// <param name="moduluColumn"></param>
     static public void ChangeGridToChessGrid(this UpgradedTileMap tileMap, char newChar,ConsoleColor color, int moduluRow = 2, int moduluColumn = 2)
     {
         for (int x = 0; x < tileMap.Grid.GetLength(0); x++)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalProjectCSharp2;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -15,10 +16,7 @@ namespace FinalProjectCSharp2
     public readonly struct MyVector2 : IPositioning
     {
         /// <summary>
-        /// this is a Class called Vector which adding Functionality to defualt Vector2 Struct
-        /// CreateVector() Method is used to create a new Vector2 without the need to call the Vector2 Struct (from outside)
         /// Direction (Up,Down,Right,Left) will be used as a shortcut for traversing a vector in 2D space
-        /// this class will be used as an extension of the default Vector2 Struct
         /// </summary>
 
         // fields
@@ -92,16 +90,37 @@ namespace FinalProjectCSharp2
 
 
         // Vector2 Methods
-        public static float Dot(MyVector2 vec1, MyVector2 vec2) // returns Dot product of 2 vectors
+
+        /// <summary>
+        /// returns Dot product of 2 vectors
+        /// </summary>
+        /// <param name="vec1"></param>
+        /// <param name="vec2"></param>
+        /// <returns></returns>
+        public static float Dot(MyVector2 vec1, MyVector2 vec2) 
         {
             return vec1._x * vec2._x + vec1._y * vec2._y; 
         }
+        /// <summary>
+        /// returns the Distance between 2 Vectors
+        /// </summary>
+        /// <param name="firstVector"></param>
+        /// <param name="secondVector"></param>
+        /// <returns></returns>
         public float Distance(MyVector2 firstVector, MyVector2 secondVector)
         {
             float distanceX = firstVector._x - secondVector._x;
             float distanceY = firstVector._y - secondVector._y;      
             return MathF.Sqrt(distanceX * distanceX + distanceY * distanceY); 
         }
+
+        /// <summary>
+        /// use to make a vector move to other vector in a certain speed
+        /// </summary>
+        /// <param name="current"></param>
+        /// <param name="target"></param>
+        /// <param name="speed"></param>
+        /// <returns></returns>
         public static MyVector2 MoveTowards(MyVector2 current, MyVector2 target, float speed)
         {
             while (!current.Equals(target))
@@ -155,4 +174,46 @@ namespace FinalProjectCSharp2
             return ((int)_x * 100) + ((int)_y * 50);
         }
     }
+}
+static class MyVector2ExtesnionClass
+{
+    public static float Dot(this MyVector2 vec1, MyVector2 vec2) // returns Dot product of 2 vectors
+    {
+        return vec1.X * vec2.X + vec1.Y * vec2.Y;
+    }
+    public static float Distance(this MyVector2 firstVector, MyVector2 secondVector)
+    {
+        float distanceX = firstVector.X - secondVector.X;
+        float distanceY = firstVector.Y - secondVector.Y;
+        return MathF.Sqrt(distanceX * distanceX + distanceY * distanceY);
+    }
+    public static MyVector2 MoveTowards(this MyVector2 current, MyVector2 target, float speed)
+    {
+        while (!current.Equals(target))
+        {
+
+            float distance = current.Distance(current, target);
+            Console.WriteLine("Current position: " + current);
+            Console.WriteLine("Distance: " + distance);
+
+            if (current.X < target.X) current = new MyVector2(Math.Min(current.X + speed, target.X), current.Y);
+            else current = new MyVector2(Math.Max(current.X - speed, target.X), current.Y);
+
+            if (current.Y < target.Y) current = new MyVector2(current.X, Math.Min(current.Y + speed, target.Y));
+            else current = new MyVector2(current.X, Math.Max(current.X - speed, target.Y));
+
+            Thread.Sleep(16); // PlaceHolder For Now
+        }
+        return current;
+    }
+
+    public static MyVector2 Lerp(this MyVector2 current, MyVector2 target, float percentage)
+    {
+
+        return new MyVector2(current.X + (target.X - current.X) * percentage,
+            current.Y + (target.Y - current.Y) * percentage);
+
+    }
+
+
 }

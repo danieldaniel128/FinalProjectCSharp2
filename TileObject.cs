@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public abstract class TileObject : IUpdate
+public abstract class TileObject : IUpdate, IComparer<TileObject>
 {
     public abstract List<Component> Components { get; protected set; }
     public virtual Transform transform => Components[0] as Transform;
@@ -25,13 +25,15 @@ public abstract class TileObject : IUpdate
         }
     }
 
-    public void AddComponent(Component c)
+    public void AddComponent(Component component)
     {
-        Components.Add(c);
+        Components.Add(component);
     }
 
-    public void Update()
+
+    public int Compare(TileObject? x, TileObject? y)
     {
+       // should compare postisions
         throw new NotImplementedException();
     }
 }

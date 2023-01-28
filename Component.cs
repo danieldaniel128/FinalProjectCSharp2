@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 public abstract class Component : IUpdate
 {
     public TileObject gameobject;
-    public Component(TileObject go)
+    public Component(TileObject gameObject)
     {
-        gameobject = go;
+        gameobject = gameObject;
     }
 
     public virtual void Update(float deltaTime)
