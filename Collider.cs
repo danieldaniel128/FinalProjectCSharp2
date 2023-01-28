@@ -1,18 +1,13 @@
-﻿using FinalProjectCSharp2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace FinalProjectCSharp2;
 
 class Collider : Component
 {
     public float Radius;
 
-    public Collider(Rigidbody rb, TileObject go, float radius = 3) : base(go)
+    public Collider(Rigidbody rigidbody, TileObject gameObject, float radius = 3) : base(gameObject)
     {
         Radius = radius;
-        rb.AssignCollider(this);
+        rigidbody.AssignCollider(this);
     }
 
     public void OnCollision(Collider other)
@@ -20,4 +15,3 @@ class Collider : Component
         Console.WriteLine("I'm walking here.");
     }
 }
-

@@ -1,12 +1,14 @@
 ﻿
 
+namespace FinalProjectCSharp2;
+
 readonly struct Positions : IPositioning
 {
 
     public readonly float _x;
     public readonly float _y;
 
-     float IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
+    float IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
     float IPositioning.Y { readonly get => _y; set => throw new NotImplementedException(); }
 
     /// <summary>
@@ -59,4 +61,3 @@ readonly struct Positions : IPositioning
         return ((int)_x * 100) + ((int)_y * 50);
     }
 }
-

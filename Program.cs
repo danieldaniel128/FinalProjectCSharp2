@@ -1,4 +1,4 @@
-﻿using FinalProjectCSharp2;
+﻿namespace FinalProjectCSharp2;
 
 class Program
 {
@@ -11,9 +11,8 @@ class Program
         UpgradedTileMap tiles = new UpgradedTileMap(5,6);
         EngineManager engineManager =new EngineManager(tiles);
         TileObjectExample tileObj = new TileObjectExample();
-       tileObj.Something();
 
-     
+
         //engineManager.Pause();
 
 
@@ -26,15 +25,3 @@ class Program
        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

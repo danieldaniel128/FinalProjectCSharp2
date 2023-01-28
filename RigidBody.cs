@@ -1,9 +1,4 @@
-﻿using FinalProjectCSharp2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace FinalProjectCSharp2;
 
 class Rigidbody : Component
 {
@@ -27,7 +22,7 @@ class Rigidbody : Component
 
     public override void Update(float deltaTime)
     {
-        MyVector2 displacement = new MyVector2(positioning.X, positioning.Y + Gravity * deltaTime);
+        MyVector2 displacement = new(positioning.X, positioning.Y + Gravity * deltaTime);
         gameobject.transform.Position = new MyVector2
             (gameobject.transform.Position.X + displacement.X, gameobject.transform.Position.Y + displacement.Y);
     }

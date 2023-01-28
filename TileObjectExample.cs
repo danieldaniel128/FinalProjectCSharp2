@@ -11,7 +11,7 @@ namespace FinalProjectCSharp2
        // public event Action OnTouch;
     
         
-        
+
 
         public override List<Component> Components { get; protected set; }
     }

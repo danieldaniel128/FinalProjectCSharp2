@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace FinalProjectCSharp2;
 
 public class Scene // we make a list of tilemaps that will add and remove as we like and we cane change tilemaps as we go to scene and mor. to be continued.
 {

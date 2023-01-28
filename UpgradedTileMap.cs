@@ -1,56 +1,52 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
-    public class UpgradedTileMap : IEnumerable<Tile>
+namespace FinalProjectCSharp2;
+
+public class UpgradedTileMap : IEnumerable<Tile>
+{
+
+    public Tile[,] Grid;
+    public int Width { get; private set; }
+    public int Height { get; private set; }
+    //private char _tileObjectChar;
+
+    public IEnumerator<Tile> GetEnumerator()//new IntegerEnumerator(_list.ToArray());
     {
-
-        public Tile[,] Grid;
-        public int Width { get; private set; }
-        public int Height { get; private set; }
-        //private char _tileObjectChar;
-
-        public IEnumerator<Tile> GetEnumerator()//new IntegerEnumerator(_list.ToArray());
-        {
-            return new TileEnumerator(Grid);
-        }
+        return new TileEnumerator(Grid);
+    }
 
     /// <summary>
     ///  Building a TileMap: enter Width,Height 
     /// </summary>
     /// <param name="width"></param>
     /// <param name="height"></param>
-        public UpgradedTileMap(int width,int height)
+    public UpgradedTileMap(int width,int height)
+    {
+        Width = width;
+        Height = height;
+        Grid=new Tile[Width,Height];
+        for (int x = 0; x < width; x++)
         {
-            Width = width;
-            Height = height;
-            Grid=new Tile[Width,Height];
-            for (int x = 0; x < width; x++)
+            for (int y = 0; y < height; y++)
             {
-                for (int y = 0; y < height; y++)
-                {
-                    Grid[x, y] = new Tile(x, y, '#',ConsoleColor.White);
-                }
+                Grid[x, y] = new Tile(x, y, '#',ConsoleColor.White);
             }
         }
+    }
 
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        public void DrawGrid()
+    public void DrawGrid()
+    {
+        for (int x = 0; x < Grid.GetLength(0); x++)
         {
-            for (int x = 0; x < Grid.GetLength(0); x++)
+            for (int y = 0; y < Grid.GetLength(1); y++)
             {
-                for (int y = 0; y < Grid.GetLength(1); y++)
-                {
-                    Console.ForegroundColor = Grid[x, y].TileColor;
-                    Console.Write(Grid[x, y].TileContainer);
+                Console.ForegroundColor = Grid[x, y].TileColor;
+                Console.Write(Grid[x, y].TileContainer);
             }
-                Console.WriteLine();
-            }
+            Console.WriteLine();
+        }
     }
       
     public void FillSpiralMatrix()
@@ -128,7 +124,7 @@ public static class GridExtention
                 if (x == row)
                 {
                     if(y%2==0)
-                    tileMap.Grid[x, y] = new Tile(x, y, newChar,color);
+                        tileMap.Grid[x, y] = new Tile(x, y, newChar,color);
                 }
             }
         }
@@ -154,22 +150,22 @@ public static class GridExtention
             }
         }
     }
-/// <summary>
-/// converting Grid into a Chess Board
-/// </summary>
-/// <param name="tileMap"></param>
-/// <param name="newChar"></param>
-/// <param name="color"></param>
-/// <param name="moduluRow"></param>
-/// <param name="moduluColumn"></param>
+    /// <summary>
+    /// converting Grid into a Chess Board
+    /// </summary>
+    /// <param name="tileMap"></param>
+    /// <param name="newChar"></param>
+    /// <param name="color"></param>
+    /// <param name="moduluRow"></param>
+    /// <param name="moduluColumn"></param>
     static public void ChangeGridToChessGrid(this UpgradedTileMap tileMap, char newChar,ConsoleColor color, int moduluRow = 2, int moduluColumn = 2)
     {
         for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
         {
             for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
             {
-                    if (y % moduluRow == 0 && x% moduluRow == 0)
-                        tileMap.Grid[x, y] = new Tile(x, y, newChar, color);
+                if (y % moduluRow == 0 && x% moduluRow == 0)
+                    tileMap.Grid[x, y] = new Tile(x, y, newChar, color);
                 if (y % moduluColumn == 1 && x % moduluColumn == 1)
                     tileMap.Grid[x, y] = new Tile(x, y, newChar, color);
             }

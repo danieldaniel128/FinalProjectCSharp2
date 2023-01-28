@@ -1,11 +1,6 @@
-﻿using FinalProjectCSharp2;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace FinalProjectCSharp2;
 
-public abstract class TileObject : IUpdate, IComparer<TileObject>
+public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 {
     public event Action OnTouch; 
 
@@ -18,15 +13,12 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>
         Components = new List<Component>();
         Components.Add(new Transform(this));
     }
-    public void Something()
-    {
-       OnTouch.Invoke();
-    }
+
     public void Update(float deltaTime)
     {
-        foreach (var comp in Components)
+        foreach (var component in Components)
         {
-            comp.Update(deltaTime);
+            component.Update(deltaTime);
         }
     }
 
@@ -38,26 +30,54 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>
 
     public int Compare(TileObject? a, TileObject? b)
     {
-       // should compare positions
-       if (a.transform.Position == b.transform.Position)
-       {
-           OnTouch.Invoke();
-           return 0;
-       }
-       if (a.transform.Position < b.transform.Position)
-       {
-           return -1;
-       }
-       if (a.transform.Position > b.transform.Position)
-       {
-           return 1;
-       }
-       else
-       {
-           return -4; // a placeHolder
-       }
+        // should compare positions
+        if (a.transform.Position == b.transform.Position)
+        {
+            OnTouch.Invoke();
+            return 0;
+        }
+        if (a.transform.Position < b.transform.Position)
+        {
+            return -1;
+        }
+        if (a.transform.Position > b.transform.Position)
+        {
+            return 1;
+        }
+        else
+        {
+            return -4; // a placeHolder
+        }
     }
-    
 
 
+    public object Clone()
+    {
+        var tileObject = (TileObject)MemberwiseClone();
+        return tileObject;
+    }
+}
+public static class TileObjectExtensions
+{
+    public static void Teleport(this TileObject tileObject,UpgradedTileMap tileMap, MyVector2 newPosition)
+    {
+        if (newPosition.X <= tileMap.Width && newPosition.Y <= tileMap.Height)
+        {
+            tileObject.transform.Position = newPosition;
+        }
+    }
+
+    /// <summary>
+    /// will move the position of the TileObject to a new chosen Position in a fixed speed
+    /// </summary>
+    /// <param name="tileObject"></param>
+    /// <param name="newPosition"></param>
+    /// <param name="speed"></param>
+    public static void MoveTowards(this TileObject tileObject,UpgradedTileMap tileMap, MyVector2 newPosition, int speed)
+    {
+        if (newPosition.X <= tileMap.Width && newPosition.Y < tileMap.Height)
+        {
+         tileObject.transform.Position.MoveTowards(newPosition, speed);
+        }
+    }
 }
