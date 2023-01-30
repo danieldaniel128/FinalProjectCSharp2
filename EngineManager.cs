@@ -1,6 +1,6 @@
 ﻿namespace FinalProjectCSharp2;
 
-public class EngineManager// : Engine???
+public class EngineManager // : Engine???
 {
 
     public UpgradedTileMap Grid { get; set; }//private set or method that will set differently, maybe only private and will get access only through Tilemap???
@@ -9,13 +9,19 @@ public class EngineManager// : Engine???
     public EngineManager(UpgradedTileMap tileMap)
     {
         Grid = tileMap;
+        IsRunning = true;
     }
 
     public bool IsRunning { get; private set; }//get is private too?
 
 
 
-
+    public void Start() 
+    {
+        GameObject gameObject1 = new GameObject('d');
+        Grid.ChangeGridToChessGrid(' ', ConsoleColor.Red);
+        Grid.Grid[0, 4].gameObject = gameObject1;
+    }
 
 
     public void Pause()
@@ -23,22 +29,19 @@ public class EngineManager// : Engine???
         IsRunning = !IsRunning;
     }
 
-    public void GameLoop() 
+    public void EngineLoop()
     {
-        Grid.ChangeGridToChessGrid('7', ConsoleColor.Red);
-        while (IsRunning) 
+        Start();
+        while (IsRunning) //gameloop
         {
-            Console.Clear();
-            Grid.DrawGrid();
-            Thread.Sleep(500);
+            Update();
         }
     }
 
-
-
-
-
-
-
-
+    public void Update()
+    {
+        Console.Clear();
+        Grid.DrawGrid();
+        Thread.Sleep(500);
+    }
 }

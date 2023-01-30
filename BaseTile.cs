@@ -6,28 +6,35 @@ public abstract class BaseTile
 {
 
     public abstract Vector2 Position { get; protected set; }
-    public abstract TileObject _gameObject { get; protected set; }
 
-    public virtual string TileContainer { get; set; }
+    public abstract TileObject gameObject { get; set; }
+
+    private string _tileContainer;
+    public virtual string TileContainer { get {return _tileContainer; } set=> _tileContainer=value; }
     public ConsoleColor TileColor { get; set; }
 
 
     public BaseTile()
     {
-        TileContainer = "[ ]";
-        _gameObject = null;
+        //TileContainer = "[ ]";
+        gameObject = null;
     }
 
     public BaseTile(char tileObject, ConsoleColor tileColor = ConsoleColor.White)
     {
         TileColor = tileColor;
-        TileContainer = "[ ]";
-        TileContainer = TileContainer.Replace(' ', tileObject);
-        _gameObject = null;
+        //TileContainer = "[ ]";
+        //TileContainer = TileContainer.Replace(' ', tileObject);
+        gameObject = null;
     }
-    public BaseTile(int x, int y, TileObject gameObject)
+    public BaseTile(TileObject gameObject)
     {
-        _gameObject = gameObject;
+
+        this.gameObject = gameObject;
+       // if (gameObject != null)
+        //    TileContainer = $"[{gameObject.ObjectChar}]";
+        //else
+        //    TileContainer = "[ ]";
     }
 
 

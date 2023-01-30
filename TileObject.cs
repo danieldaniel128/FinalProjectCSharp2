@@ -67,6 +67,7 @@ public static class TileObjectExtensions
         if (newPosition.X <= tileMap.Width && newPosition.Y <= tileMap.Height)
         {
             tileObject.transform.Position = newPosition;
+            
         }
     }
 

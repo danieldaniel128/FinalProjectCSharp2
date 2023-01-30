@@ -10,14 +10,11 @@ class Program
         //VectorTesting.Test();
         UpgradedTileMap tiles = new UpgradedTileMap(5,6);
         EngineManager engineManager =new EngineManager(tiles);
-      
 
-
-        //engineManager.Pause();
 
 
         //tiles.FillSpiralMatrix();
-        //engineManager.GameLoop();
+        engineManager.EngineLoop();
        
 
 

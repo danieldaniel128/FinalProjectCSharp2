@@ -120,7 +120,6 @@ public readonly struct MyVector2 : IPositioning
         while (!current.Equals(target))
         { 
             
-            float distance = current.Distance(current, target);
 
             if (current._x < target._x) current = new MyVector2(Math.Min(current._x + speed, target._x), current._y);
             else current = new MyVector2(Math.Max(current._x - speed, target._x), current._y);
@@ -128,7 +127,6 @@ public readonly struct MyVector2 : IPositioning
             if (current._y < target._y) current = new MyVector2(current._x, Math.Min(current._y + speed, target._y));
             else current = new MyVector2(current._x, Math.Max(current._y - speed, target._y));
 
-            Thread.Sleep(16); // PlaceHolder For Now
         }
         return current;
     }
@@ -192,7 +190,6 @@ static class MyVector2ExtesnionClass
             if (current.Y < target.Y) current = new MyVector2(current.X, Math.Min(current.Y + speed, target.Y));
             else current = new MyVector2(current.X, Math.Max(current.X - speed, target.Y));
 
-            Thread.Sleep(16); // PlaceHolder For Now
         }
         return current;
     }
