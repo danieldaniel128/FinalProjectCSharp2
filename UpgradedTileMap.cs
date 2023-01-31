@@ -158,7 +158,7 @@ public static class GridExtention
     /// <param name="color"></param>
     /// <param name="moduluRow"></param>
     /// <param name="moduluColumn"></param>
-    static public void ChangeGridToChessGrid(this UpgradedTileMap tileMap, char newChar,ConsoleColor color, int moduluRow = 2, int moduluColumn = 2)
+    static public void ChangeGridToChessGrid(this UpgradedTileMap tileMap, char newChar,ConsoleColor color= ConsoleColor.Red, int moduluRow = 2, int moduluColumn = 2)
     {
         for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
         {

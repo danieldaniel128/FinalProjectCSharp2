@@ -1,4 +1,6 @@
-﻿namespace FinalProjectCSharp2;
+﻿using System.Runtime.InteropServices;
+
+namespace FinalProjectCSharp2;
 
 public class EngineManager // : Engine???
 {
@@ -23,6 +25,13 @@ public class EngineManager // : Engine???
         Grid.Grid[0, 4].gameObject = gameObject1;
     }
 
+    public void Start(GameObject gameObject, UpgradedTileMap tilemap, char gameobject = ' ')
+    {
+        GameObject gameObject1 = new GameObject(gameobject);
+        tilemap.ChangeGridToChessGrid(' ', ConsoleColor.Red);
+        tilemap.Grid[0, 4].gameObject = gameObject1;
+    }
+
 
     public void Pause()
     {
@@ -35,6 +44,27 @@ public class EngineManager // : Engine???
         while (IsRunning) //gameloop
         {
             Update();
+        }
+    }
+
+    public void EngineLoop(GameObject gameObject, GameObject gameObject2, UpgradedTileMap tilemap)
+    {
+        Start(gameObject, tilemap);
+        while (IsRunning) //gameloop
+        {
+            tilemap.Grid[0, 0].gameObject = gameObject;
+            tilemap.Grid[0, 2].gameObject = gameObject;
+            tilemap.Grid[1, 0].gameObject = gameObject;
+            tilemap.Grid[1,2].gameObject = gameObject;
+
+            tilemap.Grid[3, 0].gameObject = gameObject2;
+            tilemap.Grid[3, 2].gameObject = gameObject2;
+            tilemap.Grid[4, 0].gameObject = gameObject2;
+            tilemap.Grid[4, 2].gameObject = gameObject2;
+
+     
+            Update();
+
         }
     }
 
