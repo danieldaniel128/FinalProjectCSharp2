@@ -16,7 +16,7 @@ class Program
        // tiles.FillSpiralMatrix();
         //engineManager.EngineLoop();
 
-        DemoImplmentation.Implment();
+        DemoImplmentation.Implement();
        
 
 

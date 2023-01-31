@@ -4,7 +4,7 @@
    
     class DemoImplmentation
     {
-        public static void Implment()
+        public static void Implement()
         {
           
             UpgradedTileMap tileMap = new UpgradedTileMap(8, 8);
@@ -13,7 +13,7 @@
             //EngineManager engineManager = new EngineManager(tileMap);
             tileMap.ChangeGridToChessGrid(' ', ConsoleColor.Red);
            // tileMap.AddGameObjectToGrid(gameObject2, new MyVector2(0,1));
-            tileMap.AddGameObjectToGrid(gameObject, new MyVector2(1,0), new MyVector2(7,0));
+            tileMap.AddGameObjectToGrid(gameObject, new MyVector2(0,0), new MyVector2(7,1));
 
             //tileMap.PlaceGameObjectsOnGrid(gameObject);
             //tileMap.Grid[1, 1].gameObject = gameObject;

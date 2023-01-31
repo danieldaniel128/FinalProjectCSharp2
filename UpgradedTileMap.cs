@@ -212,7 +212,7 @@ public static class GridExtention
             {
                 if (new MyVector2(x, y) >= startPosition && new MyVector2(x, y) <= endPosition)
                 {
-                    tileMap.Grid[x, y].gameObject = tileObject;
+                    tileMap.Grid[y, x].gameObject = tileObject;
                 }
 
             }
