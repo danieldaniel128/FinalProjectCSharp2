@@ -5,7 +5,7 @@ namespace FinalProjectCSharp2;
 public abstract class BaseTile
 {
 
-    public abstract Vector2 Position { get; protected set; }
+    public abstract MyVector2 Position { get; protected set; }
 
     public abstract TileObject gameObject { get; set; }
 

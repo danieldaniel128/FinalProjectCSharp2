@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Drawing;
 
 namespace FinalProjectCSharp2;
 
@@ -172,10 +173,52 @@ public static class GridExtention
         }
     }
 
-    static public void AddTileObjectToGrid(this UpgradedTileMap tileMap, TileObject tileObject,MyVector2 position)
+    static public void PlaceGameObjectsOnGrid(this UpgradedTileMap tileMap, GameObject gameObject, int moduluRow = 2, int moduluColumn = 2)
     {
-     //   tileMap.Grid[(int)position.X, (int)position.Y] = new TileObjectExample(tileObject.ObjectChar, tileObject.Color);
+        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
+        {
+            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
+            {
+                if (y % moduluRow == 0 && x % moduluRow == 0)
+                    tileMap.Grid[x, y].gameObject = gameObject;
+                if (y % moduluColumn == 1 && x % moduluColumn == 1)
+                    tileMap.Grid[x, y].gameObject = gameObject;
+            }
+        }
+    }
+    static public void PlaceObjectOnLine(this UpgradedTileMap tileMap, GameObject gameObject, int line)
+    {
+        //tileMap.Grid[(int)position.X, (int)position.Y] = new TileObjectExample(tileObject.ObjectChar, tileObject.Color);
 
+    }
+    static public void AddGameObjectToGrid(this UpgradedTileMap tileMap, TileObject tileObject,MyVector2 position)
+    {
+        tileMap.Grid[(int)position.X, (int)position.Y].gameObject = tileObject;
+    }
+    /// <summary>
+    /// Add GameObjects from StartPosition to EndPosition On The Grid
+    /// </summary>
+    /// <param name="tileMap"></param>
+    /// <param name="tileObject"></param>
+    /// <param name="startPosition"></param>
+    /// <param name="endPosition"></param>
+    static public void AddGameObjectToGrid(this UpgradedTileMap tileMap, TileObject tileObject, MyVector2 startPosition, MyVector2 endPosition)
+    {
+
+
+        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
+        {
+            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
+            {
+                if (new MyVector2(x, y) >= startPosition && new MyVector2(x, y) <= endPosition)
+                {
+                    tileMap.Grid[x, y].gameObject = tileObject;
+                }
+
+            }
+        }
+
+        
     }
 
 }

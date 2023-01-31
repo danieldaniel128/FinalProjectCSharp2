@@ -6,7 +6,8 @@ public class EngineManager // : Engine???
 {
 
     public UpgradedTileMap Grid { get; set; }//private set or method that will set differently, maybe only private and will get access only through Tilemap???
-    
+
+
 
     public EngineManager(UpgradedTileMap tileMap)
     {
@@ -25,12 +26,6 @@ public class EngineManager // : Engine???
         Grid.Grid[0, 4].gameObject = gameObject1;
     }
 
-    public void Start(GameObject gameObject, UpgradedTileMap tilemap, char gameobject = ' ')
-    {
-        GameObject gameObject1 = new GameObject(gameobject);
-        tilemap.ChangeGridToChessGrid(' ', ConsoleColor.Red);
-        tilemap.Grid[0, 4].gameObject = gameObject1;
-    }
 
 
     public void Pause()
@@ -47,20 +42,20 @@ public class EngineManager // : Engine???
         }
     }
 
-    public void EngineLoop(GameObject gameObject, GameObject gameObject2, UpgradedTileMap tilemap)
+    public void EngineLoop(GameObject gameObject, GameObject gameObject2)
     {
-        Start(gameObject, tilemap);
+        Start();
         while (IsRunning) //gameloop
         {
-            tilemap.Grid[0, 0].gameObject = gameObject;
-            tilemap.Grid[0, 2].gameObject = gameObject;
-            tilemap.Grid[1, 0].gameObject = gameObject;
-            tilemap.Grid[1,2].gameObject = gameObject;
+            Grid.Grid[0, 0].gameObject = gameObject;
+            Grid.Grid[0, 2].gameObject = gameObject;
+            //tilemap.Grid[1, 0].gameObject = gameObject;
+            //tilemap.Grid[1,2].gameObject = gameObject;
 
-            tilemap.Grid[3, 0].gameObject = gameObject2;
-            tilemap.Grid[3, 2].gameObject = gameObject2;
-            tilemap.Grid[4, 0].gameObject = gameObject2;
-            tilemap.Grid[4, 2].gameObject = gameObject2;
+            //tilemap.Grid[3, 0].gameObject = gameObject2;
+            //tilemap.Grid[3, 2].gameObject = gameObject2;
+            //tilemap.Grid[4, 0].gameObject = gameObject2;
+            //tilemap.Grid[4, 2].gameObject = gameObject2;
 
      
             Update();
