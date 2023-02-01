@@ -6,13 +6,17 @@ public class EngineManager // : Engine???
 {
 
     public UpgradedTileMap Grid { get; set; }//private set or method that will set differently, maybe only private and will get access only through Tilemap???
+    public RenderingManager renderingManager;
+    public Movemnt
 
 
 
-    public EngineManager(UpgradedTileMap tileMap)
+    public EngineManager(UpgradedTileMap tileMap, RenderingManager renderingManager)
     {
         Grid = tileMap;
         IsRunning = true;
+        this.renderingManager = renderingManager;
+
     }
 
     public bool IsRunning { get; private set; }//get is private too?
@@ -66,7 +70,7 @@ public class EngineManager // : Engine???
     public void Update()
     {
         Console.Clear();
-        Grid.DrawGrid();
+        renderingManager.DrawGrid();
         Thread.Sleep(500);
     }
 }

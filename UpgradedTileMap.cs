@@ -37,19 +37,19 @@ public class UpgradedTileMap : IEnumerable<Tile>
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-    public void DrawGrid()
-    {
-        for (int x = 0; x < Grid.GetLength(0); x++)
-        {
-            for (int y = 0; y < Grid.GetLength(1); y++)
-            {
-                Console.ForegroundColor = Grid[x, y].TileColor;
-                Console.Write(Grid[x, y].TileContainer);
-            }
-            Console.WriteLine();
-        }
-    }
-      
+    //public void DrawGrid()
+    //{
+    //    for (int y = 0; y < Grid.GetLength(1); y++)
+    //    {
+    //        for (int x = 0; x < Grid.GetLength(0); x++)
+    //        {
+    //            Console.ForegroundColor = Grid[x, y].TileColor;
+    //            Console.Write(Grid[x, y].TileContainer);
+    //        }
+    //        Console.WriteLine();
+    //    }
+    //}
+
     public void FillSpiralMatrix()
     {
         int maxSteps = 1;
@@ -212,7 +212,7 @@ public static class GridExtention
             {
                 if (new MyVector2(x, y) >= startPosition && new MyVector2(x, y) <= endPosition)
                 {
-                    tileMap.Grid[y, x].gameObject = tileObject;
+                    tileMap.Grid[x, y].gameObject = tileObject;
                 }
 
             }

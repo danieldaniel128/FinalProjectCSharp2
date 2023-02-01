@@ -64,15 +64,15 @@ public readonly struct MyVector2 : IPositioning
   
         return (pos1.X < pos2.X && pos1.Y < pos2.Y) || (pos1.X < pos2.X || pos1.Y < pos2.Y);
     }
-    public static bool operator <= (MyVector2 pos1, MyVector2 pos2) 
+    public static bool operator <=(MyVector2 pos1, MyVector2 pos2)
     {
         return (pos1.X <= pos2.X && pos1.Y <= pos2.Y);
 
     }
-    public static bool operator >= (MyVector2 pos1, MyVector2 pos2)
+    public static bool operator >=(MyVector2 pos1, MyVector2 pos2)
     {
-        return (pos1.X >= pos2.X && pos1.Y >= pos2.Y) ;
-  
+        return (pos1.X >= pos2.X && pos1.Y >= pos2.Y);
+
     }
 
     public MyVector2 Normalize() => new MyVector2(_x / this.Magnitude, _y / this.Magnitude);
