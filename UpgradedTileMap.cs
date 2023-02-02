@@ -9,7 +9,6 @@ public class UpgradedTileMap : IEnumerable<Tile>
     public Tile[,] Grid;
     public int Width { get; private set; }
     public int Height { get; private set; }
-    //private char _tileObjectChar;
 
     public IEnumerator<Tile> GetEnumerator()//new IntegerEnumerator(_list.ToArray());
     {
@@ -36,19 +35,6 @@ public class UpgradedTileMap : IEnumerable<Tile>
     }
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-    //public void DrawGrid()
-    //{
-    //    for (int y = 0; y < Grid.GetLength(1); y++)
-    //    {
-    //        for (int x = 0; x < Grid.GetLength(0); x++)
-    //        {
-    //            Console.ForegroundColor = Grid[x, y].TileColor;
-    //            Console.Write(Grid[x, y].TileContainer);
-    //        }
-    //        Console.WriteLine();
-    //    }
-    //}
 
     public void FillSpiralMatrix()
     {
@@ -107,121 +93,7 @@ public class UpgradedTileMap : IEnumerable<Tile>
     }
 
 }
-public static class GridExtention
-{
-    /// <summary>
-    /// to transform all Tiles in a specific <paramref name="row"/> to different char aka <paramref name="newChar"/> and <paramref name="color"/>
-    /// </summary>
-    /// <param name="tileMap"></param>
-    /// <param name="row"></param>
-    /// <param name="newChar"></param>
-    /// <param name="color"></param>
-    static public void ChangeGridRowEven(this UpgradedTileMap tileMap, int row, char newChar, ConsoleColor color)
-    {
-        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
-        {
-            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
-            {
-                if (x == row)
-                {
-                    if(y%2==0)
-                        tileMap.Grid[x, y] = new Tile(x, y, newChar,color);
-                }
-            }
-        }
-    }
-    /// <summary>
-    /// to transform all odd tiles in a specific <paramref name="row"/> to different char aka <paramref name="newChar"/> and <paramref name="color"/>
-    /// </summary>
-    /// <param name="tileMap"></param>
-    /// <param name="row"></param>
-    /// <param name="newChar"></param>
-    /// <param name="color"></param>
-    static public void ChangeGridRowOdd(this UpgradedTileMap tileMap, int row, char newChar, ConsoleColor color)
-    {
-        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
-        {
-            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
-            {
-                if (x == row)
-                {
-                    if (y % 2 ==1)
-                        tileMap.Grid[x, y] = new Tile(x, y, newChar, color);
-                }
-            }
-        }
-    }
-    /// <summary>
-    /// converting Grid into a Chess Board
-    /// </summary>
-    /// <param name="tileMap"></param>
-    /// <param name="newChar"></param>
-    /// <param name="color"></param>
-    /// <param name="moduluRow"></param>
-    /// <param name="moduluColumn"></param>
-    static public void ChangeGridToChessGrid(this UpgradedTileMap tileMap, char newChar,ConsoleColor color= ConsoleColor.Red, int moduluRow = 2, int moduluColumn = 2)
-    {
-        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
-        {
-            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
-            {
-                if (y % moduluRow == 0 && x% moduluRow == 0)
-                    tileMap.Grid[x, y] = new Tile(x, y, newChar, color);
-                if (y % moduluColumn == 1 && x % moduluColumn == 1)
-                    tileMap.Grid[x, y] = new Tile(x, y, newChar, color);
-            }
-        }
-    }
 
-    static public void PlaceGameObjectsOnGrid(this UpgradedTileMap tileMap, GameObject gameObject, int moduluRow = 2, int moduluColumn = 2)
-    {
-        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
-        {
-            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
-            {
-                if (y % moduluRow == 0 && x % moduluRow == 0)
-                    tileMap.Grid[x, y].gameObject = gameObject;
-                if (y % moduluColumn == 1 && x % moduluColumn == 1)
-                    tileMap.Grid[x, y].gameObject = gameObject;
-            }
-        }
-    }
-    static public void PlaceObjectOnLine(this UpgradedTileMap tileMap, GameObject gameObject, int line)
-    {
-        //tileMap.Grid[(int)position.X, (int)position.Y] = new TileObjectExample(tileObject.ObjectChar, tileObject.Color);
-
-    }
-    static public void AddGameObjectToGrid(this UpgradedTileMap tileMap, TileObject tileObject,MyVector2 position)
-    {
-        tileMap.Grid[(int)position.X, (int)position.Y].gameObject = tileObject;
-    }
-    /// <summary>
-    /// Add GameObjects from StartPosition to EndPosition On The Grid
-    /// </summary>
-    /// <param name="tileMap"></param>
-    /// <param name="tileObject"></param>
-    /// <param name="startPosition"></param>
-    /// <param name="endPosition"></param>
-    static public void AddGameObjectToGrid(this UpgradedTileMap tileMap, TileObject tileObject, MyVector2 startPosition, MyVector2 endPosition)
-    {
-
-
-        for (int x = 0; x < tileMap.Grid.GetLength(0); x++)
-        {
-            for (int y = 0; y < tileMap.Grid.GetLength(1); y++)
-            {
-                if (new MyVector2(x, y) >= startPosition && new MyVector2(x, y) <= endPosition)
-                {
-                    tileMap.Grid[x, y].gameObject = tileObject;
-                }
-
-            }
-        }
-
-        
-    }
-
-}
 
 
 struct TileEnumerator : IEnumerator<Tile>

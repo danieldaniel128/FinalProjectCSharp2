@@ -1,4 +1,6 @@
-﻿namespace FinalProjectCSharp2
+﻿using System.ComponentModel;
+
+namespace FinalProjectCSharp2
 {
 
    
@@ -8,27 +10,20 @@
         {
           
             // engine components
-            UpgradedTileMap tileMap = new UpgradedTileMap(8, 8);
-            RenderingManager render = new RenderingManager(tileMap);
+            EngineManager engine = new EngineManager();
+            engine.renderingManager.TileMap = new UpgradedTileMap(8,8);
 
 
 
             // engine components
 
+            
             GameObject gameObject = new GameObject('f', ConsoleColor.DarkYellow);
             GameObject gameObject2 = new GameObject('T', ConsoleColor.DarkGreen);
-            //EngineManager engineManager = new EngineManager(tileMap);
-            tileMap.ChangeGridToChessGrid(' ', ConsoleColor.Red);
-           // tileMap.AddGameObjectToGrid(gameObject2, new MyVector2(0,1));
-            tileMap.AddGameObjectToGrid(gameObject, new MyVector2(0,0), new MyVector2(7,1));
-            render.DrawGrid();
+            engine.renderingManager.ChangeGridToChessGrid(' ', ConsoleColor.DarkRed); 
+            engine.renderingManager.PlaceGameObjectOnGrid(gameObject, new MyVector2(0, 0), new MyVector2(7, 1));
+            engine.renderingManager.DrawGrid();
 
-
-            //tileMap.PlaceGameObjectsOnGrid(gameObject);
-            //tileMap.Grid[1, 1].gameObject = gameObject;
-            //tileMap.Grid[2, 2].gameObject = gameObject2;
-           // tileMap.DrawGrid();
-           // engineManager.EngineLoop();
 
 
         }

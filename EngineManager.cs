@@ -6,16 +6,15 @@ public class EngineManager // : Engine???
 {
 
     public UpgradedTileMap Grid { get; set; }//private set or method that will set differently, maybe only private and will get access only through Tilemap???
-    public RenderingManager renderingManager;
-    public Movemnt
+    public RenderingManager renderingManager = new RenderingManager();
+   
 
+    
 
-
-    public EngineManager(UpgradedTileMap tileMap, RenderingManager renderingManager)
+    public EngineManager()
     {
-        Grid = tileMap;
+        Grid = renderingManager.TileMap;
         IsRunning = true;
-        this.renderingManager = renderingManager;
 
     }
 
@@ -26,7 +25,7 @@ public class EngineManager // : Engine???
     public void Start() 
     {
         GameObject gameObject1 = new GameObject('d');
-        Grid.ChangeGridToChessGrid(' ', ConsoleColor.Red);
+        renderingManager.ChangeGridToChessGrid(' ', ConsoleColor.Red);
         Grid.Grid[0, 4].gameObject = gameObject1;
     }
 
