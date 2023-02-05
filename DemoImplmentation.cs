@@ -1,31 +1,31 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using FinalProjectCSharp2;
 
-namespace FinalProjectCSharp2
-{
 
    
-    class DemoImplmentation
+    class Engine : EngineManager
     {
-        public static void Implement()
-        {
-          
-            // engine components
-            EngineManager engine = new EngineManager();
-            engine.renderingManager.TileMap = new UpgradedTileMap(8,8);
+ 
+
+      private void Start()
+    {
+      
 
 
-
-            // engine components
-
-            
-            GameObject gameObject = new GameObject('f', ConsoleColor.DarkYellow);
-            GameObject gameObject2 = new GameObject('T', ConsoleColor.DarkGreen);
-            engine.renderingManager.ChangeGridToChessGrid(' ', ConsoleColor.DarkRed); 
-            engine.renderingManager.PlaceGameObjectOnGrid(gameObject, new MyVector2(0, 0), new MyVector2(7, 1));
-            engine.renderingManager.DrawGrid();
-
-
-
-        }
     }
-}
+     private void Update()
+    {
+        renderingManager.TileMap = new UpgradedTileMap(8, 8);
+        GameObject gameObject = new GameObject('f', ConsoleColor.DarkYellow);
+        GameObject gameObject2 = new GameObject('T', ConsoleColor.DarkGreen);
+        renderingManager.ChangeGridToChessGrid(' ', ConsoleColor.DarkRed);
+        renderingManager.PlaceGameObjectOnGrid(gameObject, new MyVector2(0, 0), new MyVector2(7, 1));
+        Console.Clear();
+        renderingManager.DrawGrid();
+        Thread.Sleep(500);
+    }
+
+    
+    }
+
