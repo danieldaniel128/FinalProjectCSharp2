@@ -66,9 +66,14 @@ class EngineManager : IBehaviorMethods
             {
                 item.Update();
             }
+
+
+            // menu (grid buttons, point an object)
+            Console.ReadLine();
+
             Console.Clear();
             renderingManager.DrawGrid();
-            Thread.Sleep(500);
+       
         }
     }
 

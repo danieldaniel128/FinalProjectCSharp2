@@ -32,6 +32,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 
     public void Update()
     {
+
         foreach (var component in Components)
         {
             component.Update();
@@ -70,7 +71,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
     public object Clone()
     {
         var tileObject = (TileObject)MemberwiseClone();
-        return tileObject;
+        return (TileObject)tileObject;
     }
 
   

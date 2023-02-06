@@ -105,7 +105,8 @@ namespace FinalProjectCSharp2
               for (int y = 0; y < UpgradedTileMap.Instance.Grid.GetLength(1); y++)
               {
                   if (new MyVector2(x, y) >= startPosition && new MyVector2(x, y) <= endPosition)
-                  {
+                  { 
+                      TileObject cloneGameObjet = (TileObject)tileObject.Clone();
                         UpgradedTileMap.Instance.Grid[x, y].gameObject = tileObject;
                   }
 
