@@ -6,9 +6,11 @@ public abstract class Component : IUpdate
     public Component(TileObject gameObject)
     {
         gameobject = gameObject;
+        EngineManager.Instance.AddUpdateable(this);
+        gameobject.Components.Add(this);
     }
 
-    public virtual void Update(float deltaTime)
+    public virtual void Update()
     {
 
     }

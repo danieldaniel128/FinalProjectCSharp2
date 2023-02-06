@@ -6,6 +6,21 @@ namespace FinalProjectCSharp2;
 public class UpgradedTileMap : IEnumerable<Tile>
 {
 
+    private static UpgradedTileMap instance;
+    public static UpgradedTileMap Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new UpgradedTileMap();
+            }
+
+            return instance;
+        }
+    }
+
+
     public Tile[,] Grid;
     public int Width { get; private set; }
     public int Height { get; private set; }
@@ -20,19 +35,22 @@ public class UpgradedTileMap : IEnumerable<Tile>
     /// </summary>
     /// <param name="width"></param>
     /// <param name="height"></param>
-    public UpgradedTileMap(int width,int height)
+
+    public void Inititialize(int width, int height)
     {
         Width = width;
         Height = height;
-        Grid=new Tile[Width,Height];
+        Grid = new Tile[Width, Height];
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                Grid[x, y] = new Tile(x, y, '#',ConsoleColor.White);
+                Grid[x, y] = new Tile(x, y, '#', ConsoleColor.White);
             }
         }
     }
+
+
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 

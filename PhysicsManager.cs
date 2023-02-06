@@ -36,6 +36,11 @@ class Physics : IUpdate
         }
     }
 
+    public void Update()
+    {
+        throw new NotImplementedException();
+    }
+
     private static Physics _instance;
     public static Physics Instance
     {

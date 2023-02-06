@@ -5,6 +5,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
     public event Action OnTouch;
     public char ObjectChar = 'o';
     public ConsoleColor Color = ConsoleColor.Green;
+    
     public abstract List<Component> Components { get; protected set; }
     public virtual Transform transform => Components[0] as Transform;
 
@@ -17,11 +18,23 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
         Color = color;
     }
 
-    public void Update(float deltaTime)
+    public bool Step(MyVector2 direction)
+    {
+        
+        MyVector2 normlizedDirection = direction.Normalized;
+
+        transform.Position += normlizedDirection;
+
+        return true;
+    }
+
+   
+
+    public void Update()
     {
         foreach (var component in Components)
         {
-            component.Update(deltaTime);
+            component.Update();
         }
     }
 
@@ -59,6 +72,8 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
         var tileObject = (TileObject)MemberwiseClone();
         return tileObject;
     }
+
+  
 }
 public static class TileObjectExtensions
 {

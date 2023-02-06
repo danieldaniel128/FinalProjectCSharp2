@@ -10,7 +10,7 @@ public class Scene // we make a list of tilemaps that will add and remove as we 
         {
             foreach (var go in _gameObjects)
             {
-                go.Update(deltatime);
+                go.Update();
                 Physics.Instance.Update(deltatime);
             }
 

@@ -20,14 +20,14 @@ class Rigidbody : Component
         _collider = collider;
     }
 
-    public override void Update(float deltaTime)
+    public override void Update()
     {
-       GravityHandler(deltaTime);
+       GravityHandler();
     }
 
-    public void GravityHandler(float deltaTime)
+    public void GravityHandler()
     {
-        MyVector2 displacement = new(position.X, position.Y + Gravity * deltaTime);
+        MyVector2 displacement = new(position.X, position.Y + Gravity * 5f);
         gameobject.transform.Position = new MyVector2
             (gameobject.transform.Position.X + displacement.X, gameobject.transform.Position.Y + displacement.Y);
     }

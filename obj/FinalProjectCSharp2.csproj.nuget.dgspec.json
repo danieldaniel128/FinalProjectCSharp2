@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\roeet\\OneDrive\\Desktop\\לימודים\\יוניטי\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj": {}
+    "C:\\Users\\kreme\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\roeet\\OneDrive\\Desktop\\לימודים\\יוניטי\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj": {
+    "C:\\Users\\kreme\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\roeet\\OneDrive\\Desktop\\לימודים\\יוניטי\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj",
+        "projectUniqueName": "C:\\Users\\kreme\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj",
         "projectName": "FinalProjectCSharp2",
-        "projectPath": "C:\\Users\\roeet\\OneDrive\\Desktop\\לימודים\\יוניטי\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj",
-        "packagesPath": "C:\\Users\\roeet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\roeet\\OneDrive\\Desktop\\לימודים\\יוניטי\\FinalProjectCSharp2\\obj\\",
+        "projectPath": "C:\\Users\\kreme\\FinalProjectCSharp2\\FinalProjectCSharp2.csproj",
+        "packagesPath": "C:\\Users\\kreme\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kreme\\FinalProjectCSharp2\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\roeet\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kreme\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

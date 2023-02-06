@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace FinalProjectCSharp2
 {
-    public interface IUpdate
+    public class SingeltonTest : Singelton<SingeltonTest>
     {
-
-        void Update();
-
+        public int x;
     }
 }
