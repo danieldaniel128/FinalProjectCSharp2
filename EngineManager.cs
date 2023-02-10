@@ -62,6 +62,8 @@ class EngineManager : IBehaviorMethods
         Start();
         while (IsRunning) //gameloop
         {
+            renderingManager.DrawGrid();
+          
             foreach (IUpdate item in Updateables)
             {
                 item.Update();
@@ -69,10 +71,9 @@ class EngineManager : IBehaviorMethods
 
 
             // menu (grid buttons, point an object)
+            Menu.TileSelect();
             Console.ReadLine();
-
             Console.Clear();
-            renderingManager.DrawGrid();
        
         }
     }
