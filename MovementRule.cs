@@ -20,10 +20,12 @@ class MovementRule : IMovementRule
         throw new NotImplementedException();
     }
 
-    public bool MoveDown(TileObject tileObject)
+    public bool MoveDown(TileObject tileObject)//
     {
         MyVector2 toPos= tileObject.transform.Position;
-        //UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].;
+        TileObject gameObject= UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
+        gameObject.Step(MyVector2.Down);
+        
         return true;
     }
 
