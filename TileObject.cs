@@ -2,7 +2,7 @@
 
 public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 {
-    public event Action OnTouch;
+    public event Action OnMoved;
     public char ObjectChar = 'o';
     public ConsoleColor Color = ConsoleColor.Green;
     
@@ -50,7 +50,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
         // should compare positions
         if (a.transform.Position == b.transform.Position)
         {
-            OnTouch.Invoke();
+            OnMoved.Invoke();
             return 0;
         }
         if (a.transform.Position < b.transform.Position)
@@ -71,7 +71,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
     public object Clone()
     {
         var tileObject = (TileObject)MemberwiseClone();
-        return (TileObject)tileObject;
+        return tileObject;
     }
 
   
