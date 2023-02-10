@@ -5,17 +5,17 @@ namespace FinalProjectCSharp2;
 readonly struct Positions : IPositioning
 {
 
-    public readonly float _x;
-    public readonly float _y;
+    public readonly int _x;
+    public readonly int _y;
 
-    float IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
-    float IPositioning.Y { readonly get => _y; set => throw new NotImplementedException(); }
+    int IPositioning.X { readonly get => _x; set => throw new NotImplementedException(); }
+    int IPositioning.Y { readonly get => _y; set => throw new NotImplementedException(); }
 
     /// <summary>
     /// A tool to position the player
     /// </summary>
 
-    public Positions(float x, float y)
+    public Positions(int x, int y)
     {
         this._x = x;
         this._y = y;

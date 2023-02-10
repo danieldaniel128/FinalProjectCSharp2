@@ -3,6 +3,6 @@ namespace FinalProjectCSharp2;
 
 interface IPositioning
 {
-    public float X { get; set; }
-    public float Y { get; set; }
+    public int X { get; set; }
+    public int Y { get; set; }
 }

@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+
 
 class MovementRule : IMovementRule
 {
@@ -16,6 +18,13 @@ class MovementRule : IMovementRule
     public bool CanMoveTo(MyVector2 MoveToPos)
     {
         throw new NotImplementedException();
+    }
+
+    public bool MoveDown(TileObject tileObject)
+    {
+        MyVector2 toPos= tileObject.transform.Position;
+        //UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].;
+        return true;
     }
 
     public bool MoveDown()
@@ -58,3 +67,5 @@ class MovementRule : IMovementRule
         throw new NotImplementedException();
     }
 }
+
+

@@ -7,15 +7,15 @@ public readonly struct MyVector2 : IPositioning
     /// </summary>
 
     // fields
-    private readonly float _x;
-    private readonly float _y;
-    public float X { readonly get => _x; set => throw new NotImplementedException(); }
+    private readonly int _x;
+    private readonly int _y;
+    public int X { readonly get => _x; set => throw new NotImplementedException(); }
    
-    public float Y { readonly get => _y; set => throw new NotImplementedException(); }
+    public int Y { readonly get => _y; set => throw new NotImplementedException(); }
     
     // Vector2 Properties
     public readonly float Magnitude => MathF.Sqrt(_x * _x + _y * _y); // return a Vector2's Magnitude aka the Length of the Vector2
-    public readonly MyVector2 Normalized => new MyVector2(_x / this.Magnitude, _y / this.Magnitude); // returns a Normalized Vector2 (which is vector with values between -1 and 1)
+    public readonly MyVector2 Normalized => new MyVector2(_x / (int)this.Magnitude, _y / (int)this.Magnitude); // returns a Normalized Vector2 (which is vector with values between -1 and 1)
     public static MyVector2 Down = new MyVector2(0, -1);
     public static MyVector2 Up = new MyVector2(0, 1);
     public static MyVector2 Right = new MyVector2(1, 0);
@@ -25,7 +25,7 @@ public readonly struct MyVector2 : IPositioning
 
 
       
-    public MyVector2(float x, float y)
+    public MyVector2(int x, int y)
     {
         this._x = x;
         this._y = y;
@@ -75,7 +75,7 @@ public readonly struct MyVector2 : IPositioning
 
     }
 
-    public MyVector2 Normalize() => new MyVector2(_x / this.Magnitude, _y / this.Magnitude);
+    public MyVector2 Normalize() => new MyVector2(_x / (int)this.Magnitude, _y / (int)this.Magnitude);
     public static bool operator !=(MyVector2 pos1, MyVector2 pos2)
     {
         if (pos1._x != pos2._x && pos1._y != pos2._y)
@@ -133,23 +133,17 @@ public readonly struct MyVector2 : IPositioning
         { 
             
 
-            if (current._x < target._x) current = new MyVector2(Math.Min(current._x + speed, target._x), current._y);
-            else current = new MyVector2(Math.Max(current._x - speed, target._x), current._y);
+            if (current._x < target._x) current = new MyVector2((int)Math.Min(current._x + speed, target._x), current._y);
+            else current = new MyVector2((int)Math.Max(current._x - speed, target._x), current._y);
          
-            if (current._y < target._y) current = new MyVector2(current._x, Math.Min(current._y + speed, target._y));
-            else current = new MyVector2(current._x, Math.Max(current._y - speed, target._y));
+            if (current._y < target._y) current = new MyVector2(current._x, (int)Math.Min(current._y + speed, target._y));
+            else current = new MyVector2(current._x, (int)Math.Max(current._y - speed, target._y));
 
         }
         return current;
     }
 
-    public static MyVector2 Lerp(MyVector2 current, MyVector2 target, float percentage)
-    {
-         
-        return new MyVector2(current._x + (target._x - current._x) * percentage,
-            current._y + (target._y - current._y) * percentage);
-
-    }
+   
 
     public override string ToString() => $"({_x},{_y})";
     public override bool Equals(object obj)
@@ -196,23 +190,23 @@ static class MyVector2ExtesnionClass
 
             float distance = current.Distance(current, target);
 
-            if (current.X < target.X) current = new MyVector2(Math.Min(current.X + speed, target.X), current.Y);
-            else current = new MyVector2(Math.Max(current.X - speed, target.X), current.Y);
+            if (current.X < target.X) current = new MyVector2((int)Math.Min(current.X + speed, target.X), current.Y);
+            else current = new MyVector2((int)Math.Max(current.X - speed, target.X), current.Y);
 
-            if (current.Y < target.Y) current = new MyVector2(current.X, Math.Min(current.Y + speed, target.Y));
-            else current = new MyVector2(current.X, Math.Max(current.X - speed, target.Y));
+            if (current.Y < target.Y) current = new MyVector2(current.X, (int)Math.Min(current.Y + speed, target.Y));
+            else current = new MyVector2(current.X, (int)Math.Max(current.X - speed, target.Y));
 
         }
         return current;
     }
 
-    public static MyVector2 Lerp(this MyVector2 current, MyVector2 target, float percentage)
-    {
+    //public static MyVector2 Lerp(this MyVector2 current, MyVector2 target, float percentage)
+    //{
 
-        return new MyVector2(current.X + (target.X - current.X) * percentage,
-            current.Y + (target.Y - current.Y) * percentage);
+    //    return new MyVector2(current.X + (target.X - current.X) * percentage,
+    //        current.Y + (target.Y - current.Y) * percentage);
 
-    }
+    //}
 
 
 }
