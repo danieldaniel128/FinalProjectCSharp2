@@ -71,7 +71,7 @@ class EngineManager : IBehaviorMethods
 
 
             // menu (grid buttons, point an object)
-            Menu.TileHovering();
+            Menu.TileSelect();
             Console.ReadLine();
             Console.Clear();
        

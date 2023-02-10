@@ -3,13 +3,6 @@
     public static class Menu
     {
 
-        //Console.WriteLine("Move the tile to the desired direction through the keyboard keys");
-        //Console.WriteLine("1. The player can move to :" + (grid[x++, y].Position));
-        //Console.WriteLine("2. The player can move to :" + (grid[x--, y].Position));
-        //Console.WriteLine("3. The player can move to :" + (grid[x, y++].Position));
-        //Console.WriteLine("4. The player can move to :" + (grid[x, y--].Position));
-        //Console.ReadKey();
-
 
 
 
@@ -34,13 +27,13 @@
         }
 
 
-        public static void TileHovering()
+        public static void TileSelect()
         {
             Tile[,] grid = UpgradedTileMap.Instance.Grid;
             int x = 0; int y = 0;
             ConsoleColor previousColor = grid[x, y].TileColor;
             bool isTilePlaced = false;
-            Tile? MovingObject = null;
+            TileObject? MovingObject = null;
 
             int new_x = x;
             int new_y = y;
@@ -57,21 +50,31 @@
                     case ConsoleKey.Enter:
                         if (!isTilePlaced)
                         {
-                            MovingObject = grid[x, y];
+                            Console.WriteLine("Move the tile to the desired direction through the keyboard keys");
+                            Console.WriteLine("1. The player can move to :" + (grid[x++, y].Position));
+                            Console.WriteLine("2. The player can move to :" + (grid[x--, y].Position));
+                            Console.WriteLine("3. The player can move to :" + (grid[x, y++].Position));
+                            Console.WriteLine("4. The player can move to :" + (grid[x, y--].Position));
+                            Console.ReadKey();
+                            MovingObject = (TileObject?)grid[x, y].gameObject.Clone();
                             grid[x, y].gameObject = null;
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = true;
 
+
                         }
-                        else if (isTilePlaced)
+                        else
                         {
-
-                            grid[x, y].gameObject = MovingObject.gameObject;
-                            grid[x, y].TileColor = ConsoleColor.Magenta;
-                            MovingObject = null;
-                            isTilePlaced = false;
+                            if (MovingObject != null)
+                            {
+                                grid[new_x, new_y].gameObject = MovingObject;
+                                grid[new_x, new_y].TileColor = ConsoleColor.Magenta;
+                                MovingObject = null;
+                                isTilePlaced = false;
+                            }
 
                         }
+
                         break;
                     case ConsoleKey.RightArrow:
 
@@ -79,6 +82,7 @@
                         grid[x, y].TileColor = previousColor;
                         previousColor = grid[new_x, y].TileColor;
                         grid[new_x, y].TileColor = ConsoleColor.Magenta;
+
                         x = new_x;
                         break;
 
