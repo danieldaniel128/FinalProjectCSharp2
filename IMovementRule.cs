@@ -11,14 +11,14 @@ public interface IMovementRule
     List<MyVector2> CalculateRoute(MyVector2 StartPos, MyVector2 EndPos, Tile[,] map, List<Tile> blockingTiles);
 
     bool CanMoveTo(MyVector2 MoveToPos);
-    bool MoveUp();
-    bool MoveDown();
-    bool MoveLeft();
-    bool MoveRight();
-    bool MoveUpRight();
-    bool MoveDownRight();
-    bool MoveUpLeft();
-    bool MoveDownLeft();
+    bool MoveUp(TileObject tileObject);
+    bool MoveDown(TileObject tileObject);
+    bool MoveLeft(TileObject tileObject);
+    bool MoveRight(TileObject tileObject);
+    bool MoveUpRight(TileObject tileObject);
+    bool MoveDownRight(TileObject tileObject);
+    bool MoveUpLeft(TileObject tileObject);
+    bool MoveDownLeft(TileObject tileObject);
 
 }
 

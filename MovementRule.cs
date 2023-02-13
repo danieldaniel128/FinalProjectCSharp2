@@ -15,59 +15,94 @@ class MovementRule : IMovementRule
         throw new NotImplementedException();
     }
 
-    public bool CanMoveTo(MyVector2 MoveToPos)
+    public bool CanMoveTo(MyVector2 MoveToPos)//down up downleft downright left right
     {
-        throw new NotImplementedException();
-    }
-
-    public bool MoveDown(TileObject tileObject)//
-    {
-        MyVector2 toPos= tileObject.transform.Position;
-        TileObject gameObject= UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
-        gameObject.Step(MyVector2.Down);
-        
+        //if (UpgradedTileMap.Instance.Grid[MoveToPos.X, MoveToPos.Y] is not ) //checks if hole or not
         return true;
     }
 
-    public bool MoveDown()
+    public bool MoveDown(TileObject tileObject)
     {
-        throw new NotImplementedException();
+        if(!CanMoveTo(MyVector2.Down))
+            return false;
+        MyVector2 toPos= tileObject.transform.Position;
+        TileObject gameObject= UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
+        gameObject.Step(MyVector2.Down);
+        return true;
     }
 
-    public bool MoveDownLeft()
+    public bool MoveUp(TileObject tileObject)
     {
-        throw new NotImplementedException();
+        if (!CanMoveTo(MyVector2.Up))
+            return false;
+        MyVector2 toPos = tileObject.transform.Position;
+        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
+        gameObject.Step(MyVector2.Up);
+        return true;
     }
 
-    public bool MoveDownRight()
+    public bool MoveDownLeft(TileObject tileObject)
     {
-        throw new NotImplementedException();
+        if (!CanMoveTo(MyVector2.Down+MyVector2.Left))
+            return false;
+        MyVector2 toPos = tileObject.transform.Position;
+        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
+        gameObject.Step(MyVector2.Down + MyVector2.Left);
+        return true;
     }
 
-    public bool MoveLeft()
+    public bool MoveDownRight(TileObject tileObject)
     {
-        throw new NotImplementedException();
+        if (!CanMoveTo(MyVector2.Down + MyVector2.Right))
+            return false;
+        MyVector2 toPos = tileObject.transform.Position;
+        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
+        gameObject.Step(MyVector2.Down + MyVector2.Right);
+        return true;
     }
 
-    public bool MoveRight()
+    public bool MoveLeft(TileObject tileObject)
     {
-        throw new NotImplementedException();
+        if (!CanMoveTo(MyVector2.Left))
+            return false;
+        MyVector2 toPos = tileObject.transform.Position;
+        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
+        gameObject.Step(MyVector2.Left);
+        return true;
     }
 
-    public bool MoveUp()
+    public bool MoveRight(TileObject tileObject)
     {
-        throw new NotImplementedException();
+        if (!CanMoveTo(MyVector2.Right))
+            return false;
+        MyVector2 toPos = tileObject.transform.Position;
+        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
+        gameObject.Step(MyVector2.Right);
+        return true;
     }
 
-    public bool MoveUpLeft()
+
+    public bool MoveUpLeft(TileObject tileObject)
     {
-        throw new NotImplementedException();
+        if (!CanMoveTo(MyVector2.Up + MyVector2.Left))
+            return false;
+        MyVector2 toPos = tileObject.transform.Position;
+        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
+        gameObject.Step(MyVector2.Up + MyVector2.Left);
+        return true;
     }
 
-    public bool MoveUpRight()
+    public bool MoveUpRight(TileObject tileObject)
     {
-        throw new NotImplementedException();
+        if (!CanMoveTo(MyVector2.Up + MyVector2.Right))
+            return false;
+        MyVector2 toPos = tileObject.transform.Position;
+        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
+        gameObject.Step(MyVector2.Up + MyVector2.Right);
+        return true;
     }
+
+
 }
 
 
