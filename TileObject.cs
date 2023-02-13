@@ -5,9 +5,11 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
     public event Action OnMoved;
     public char ObjectChar = 'o';
     public ConsoleColor Color = ConsoleColor.Green;
-    
+
     public abstract List<Component> Components { get; protected set; }
-    public virtual Transform transform => Components[0] as Transform;
+    public Transform transform { get; set; }
+    //Components[0] as Transform;
+
 
 
     public TileObject(char objectChar,ConsoleColor color)
@@ -16,6 +18,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
         Components.Add(new Transform(this));
         ObjectChar = objectChar;
         Color = color;
+        transform = Components[0] as Transform;
     }
 
     public bool Step(MyVector2 direction)
@@ -71,6 +74,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
     public object Clone()
     {
         var tileObject = (TileObject)MemberwiseClone();
+        tileObject.transform = new Transform(tileObject);
         return tileObject;
     }
 

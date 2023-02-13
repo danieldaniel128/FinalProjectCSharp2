@@ -6,8 +6,9 @@ public class Transform : Component
     // update with grid
     public Transform(TileObject gameObject) : base(gameObject)
     {
+        gameObject.Components[0] = this;
 
     }
 
-   
+
 }

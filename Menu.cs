@@ -77,6 +77,8 @@
 
                         break;
                     case ConsoleKey.RightArrow:
+                        if (MovingObject != null)
+                            MovementRule.Instance.MoveRight(MovingObject);
 
                         new_x = Math.Min(grid.GetLength(1) - 1, x + 1);
                         grid[x, y].TileColor = previousColor;
