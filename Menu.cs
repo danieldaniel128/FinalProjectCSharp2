@@ -57,6 +57,7 @@
                             Console.WriteLine("4. The player can move to :" + (grid[x, y--].Position));
                             Console.ReadKey();
                             MovingObject = (TileObject?)grid[x, y].gameObject.Clone();
+                            MovingObject.transform.Position = new MyVector2(x,y);
                             grid[x, y].gameObject = null;
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = true;

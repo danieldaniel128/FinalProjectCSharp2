@@ -20,7 +20,6 @@ class Program
         // Kremer - Menu! (inputs , left arrow, right , up , down. on the Grid[])
         // Daniel - Movement! (also, please connect Transform.Position to Grid[position].gameObject)
         // Roee - is now sleeping , do not disturb, having nightmares of gameDesign
-        if(TileMap.Instance.Grid[4, 0].gameObject!=null);
         EngineManager.Instance.EngineLoop();
 
     }
