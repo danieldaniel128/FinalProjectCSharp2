@@ -25,9 +25,7 @@ class MovementRule : IMovementRule
     {
         if(!CanMoveTo(MyVector2.Down))
             return false;
-        MyVector2 toPos= tileObject.transform.Position;
-        TileObject gameObject= UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
-        gameObject.Step(MyVector2.Down);
+        tileObject.Step(MyVector2.Down);
         return true;
     }
 
@@ -35,9 +33,7 @@ class MovementRule : IMovementRule
     {
         if (!CanMoveTo(MyVector2.Up))
             return false;
-        MyVector2 toPos = tileObject.transform.Position;
-        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
-        gameObject.Step(MyVector2.Up);
+        tileObject.Step(MyVector2.Up);
         return true;
     }
 
@@ -45,9 +41,7 @@ class MovementRule : IMovementRule
     {
         if (!CanMoveTo(MyVector2.Down+MyVector2.Left))
             return false;
-        MyVector2 toPos = tileObject.transform.Position;
-        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
-        gameObject.Step(MyVector2.Down + MyVector2.Left);
+        tileObject.Step(MyVector2.Down + MyVector2.Left);
         return true;
     }
 
@@ -55,9 +49,7 @@ class MovementRule : IMovementRule
     {
         if (!CanMoveTo(MyVector2.Down + MyVector2.Right))
             return false;
-        MyVector2 toPos = tileObject.transform.Position;
-        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
-        gameObject.Step(MyVector2.Down + MyVector2.Right);
+        tileObject.Step(MyVector2.Down + MyVector2.Right);
         return true;
     }
 
@@ -65,9 +57,7 @@ class MovementRule : IMovementRule
     {
         if (!CanMoveTo(MyVector2.Left))
             return false;
-        MyVector2 toPos = tileObject.transform.Position;
-        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
-        gameObject.Step(MyVector2.Left);
+        tileObject.Step(MyVector2.Left);
         return true;
     }
 
@@ -75,9 +65,7 @@ class MovementRule : IMovementRule
     {
         if (!CanMoveTo(MyVector2.Right))
             return false;
-        MyVector2 toPos = tileObject.transform.Position;
-        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
-        gameObject.Step(MyVector2.Right);
+        tileObject.Step(MyVector2.Right);
         return true;
     }
 
@@ -86,9 +74,7 @@ class MovementRule : IMovementRule
     {
         if (!CanMoveTo(MyVector2.Up + MyVector2.Left))
             return false;
-        MyVector2 toPos = tileObject.transform.Position;
-        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
-        gameObject.Step(MyVector2.Up + MyVector2.Left);
+        tileObject.Step(MyVector2.Up + MyVector2.Left);
         return true;
     }
 
@@ -96,9 +82,7 @@ class MovementRule : IMovementRule
     {
         if (!CanMoveTo(MyVector2.Up + MyVector2.Right))
             return false;
-        MyVector2 toPos = tileObject.transform.Position;
-        TileObject gameObject = UpgradedTileMap.Instance.Grid[toPos.X, toPos.Y].gameObject;
-        gameObject.Step(MyVector2.Up + MyVector2.Right);
+        tileObject.Step(MyVector2.Up + MyVector2.Right);
         return true;
     }
 
