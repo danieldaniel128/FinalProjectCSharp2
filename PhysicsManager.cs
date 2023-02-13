@@ -1,6 +1,6 @@
 ﻿namespace FinalProjectCSharp2;
 
-class Physics : IUpdate
+class Physics : Singelton<Physics>, IUpdate
 {
     List<Rigidbody> _rigidbodies = new List<Rigidbody>();
 
@@ -41,17 +41,4 @@ class Physics : IUpdate
         throw new NotImplementedException();
     }
 
-    private static Physics _instance;
-    public static Physics Instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = new Physics();
-
-            return _instance;
-        }
-    }
-
-    private Physics() { }
 }

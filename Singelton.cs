@@ -2,26 +2,21 @@
 
 namespace FinalProjectCSharp2
 {
-    public class Singelton<T> 
+    public abstract class Singelton<T> where T : new()
     {
-        private static Singelton<T> instance;
+        private static T instance;
 
-        public static Singelton<T> Instance
+        public static T Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new Singelton<T>();
+                    instance = new T();
                 }
 
                 return instance;
             }
-        }
-
-        public Singelton()
-        {
-
         }
     }
 }

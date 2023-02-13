@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-class MovementRule : IMovementRule
+class MovementRule : Singelton<MovementRule>, IMovementRule
 {
     public List<MyVector2> CalculateRoute(MyVector2 StartPos, MyVector2 EndPos, Tile[,] map, List<Tile> blockingTiles)
     {

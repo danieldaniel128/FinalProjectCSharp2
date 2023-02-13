@@ -10,7 +10,7 @@
         {
             Console.Clear();
 
-            Tile[,] grid = UpgradedTileMap.Instance.Grid;
+            Tile[,] grid = TileMap.Instance.Grid;
 
 
             for (int y = 0; y < grid.GetLength(1); y++)
@@ -29,7 +29,7 @@
 
         public static void TileSelect()
         {
-            Tile[,] grid = UpgradedTileMap.Instance.Grid;
+            Tile[,] grid = TileMap.Instance.Grid;
             int x = 0; int y = 0;
             ConsoleColor previousColor = grid[x, y].TileColor;
             bool isTilePlaced = false;

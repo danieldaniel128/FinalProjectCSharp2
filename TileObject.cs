@@ -78,7 +78,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 }
 public static class TileObjectExtensions
 {
-    public static void PutTileObjectOnBoard(this TileObject tileObject,UpgradedTileMap tileMap, MyVector2 newPosition)
+    public static void PutTileObjectOnBoard(this TileObject tileObject,TileMap tileMap, MyVector2 newPosition)
     {
         if (newPosition.X <= tileMap.Width && newPosition.Y <= tileMap.Height)
         {
@@ -95,7 +95,7 @@ public static class TileObjectExtensions
     /// <param name="tileObject"></param>
     /// <param name="newPosition"></param>
     /// <param name="speed"></param>
-    public static void MoveTowards(this TileObject tileObject,UpgradedTileMap tileMap, MyVector2 newPosition, int speed)
+    public static void MoveTowards(this TileObject tileObject,TileMap tileMap, MyVector2 newPosition, int speed)
     {
         if (newPosition.X <= tileMap.Width && newPosition.Y < tileMap.Height)
         {

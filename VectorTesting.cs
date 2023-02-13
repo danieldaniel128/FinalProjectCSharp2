@@ -19,8 +19,8 @@ namespace FinalProjectCSharp2
         {
           var pos = new MyVector2(0, 0);
           var pos2 = new MyVector2 (20,-20);
-          var pos3 =  new MyVector2(0, -0.6f);
-            var pos6 = new MyVector2(0.80f, -0.36f);
+          var pos3 =  new MyVector2(0, 8);
+            var pos6 = new MyVector2(8, 8);
             var pos5 = pos3 * pos6;
             var pos7 = pos3 + new MyVector2(1, 0);
             
@@ -31,7 +31,7 @@ namespace FinalProjectCSharp2
 //=======
 //>>>>>>> Stashed changes
           
-                Console.WriteLine($"Lerp at 0.5 is {MyVector2.Lerp(pos, pos2, 0.9f)} ");
+
 
          
 

@@ -20,12 +20,12 @@ namespace FinalProjectCSharp2
 
         public void DrawGrid()
         {
-            for (int y = 0; y < UpgradedTileMap.Instance.Grid.GetLength(1); y++)
+            for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
             {
-                for (int x = 0; x < UpgradedTileMap.Instance.Grid.GetLength(0); x++)
+                for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
                 {
-                    Console.ForegroundColor = UpgradedTileMap.Instance.Grid[x, y].TileColor;
-                    Console.Write(UpgradedTileMap.Instance.Grid[x, y].TileContainer);
+                    Console.ForegroundColor = TileMap.Instance.Grid[x, y].TileColor;
+                    Console.Write(TileMap.Instance.Grid[x, y].TileContainer);
                 }
                 Console.WriteLine();
             }
@@ -39,14 +39,14 @@ namespace FinalProjectCSharp2
         /// <param name="moduluColumn"></param>
      public void ChangeGridToChessGrid(  char newChar, ConsoleColor color = ConsoleColor.Red, int moduluRow = 2, int moduluColumn = 2)
     {
-        for (int x = 0; x < UpgradedTileMap.Instance.Grid.GetLength(0); x++)
+        for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
         {
-            for (int y = 0; y < UpgradedTileMap.Instance.Grid.GetLength(1); y++)
+            for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
             {
                 if (y % moduluRow == 0 && x % moduluRow == 0)
-                        UpgradedTileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
+                        TileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
                 if (y % moduluColumn == 1 && x % moduluColumn == 1)
-                        UpgradedTileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
+                        TileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
             }
         }
     }
@@ -59,35 +59,35 @@ namespace FinalProjectCSharp2
         /// <param name="color"></param>
         public void ChangeGridRowEven( int row, char newChar, ConsoleColor color)
         {
-            for (int x = 0; x < UpgradedTileMap.Instance.Grid.GetLength(0); x++)
+            for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
             {
-                for (int y = 0; y < UpgradedTileMap.Instance.Grid.GetLength(1); y++)
+                for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
                 {
                     if (x == row)
                     {
                         if (y % 2 == 0)
-                            UpgradedTileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
+                            TileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
                     }
                 }
             }
         }
         public void PlaceGameObjectOnGrid( GameObject gameObject, int moduluRow = 2, int moduluColumn = 2)
      {
-         for (int x = 0; x < UpgradedTileMap.Instance.Grid.GetLength(0); x++)
+         for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
          {
-             for (int y = 0; y < UpgradedTileMap.Instance.Grid.GetLength(1); y++)
+             for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
              {
                  if (y % moduluRow == 0 && x % moduluRow == 0)
-                        UpgradedTileMap.Instance.Grid[x, y].gameObject = gameObject;
+                        TileMap.Instance.Grid[x, y].gameObject = gameObject;
                  if (y % moduluColumn == 1 && x % moduluColumn == 1)
-                        UpgradedTileMap.Instance.Grid[x, y].gameObject = gameObject;
+                        TileMap.Instance.Grid[x, y].gameObject = gameObject;
              }
          }
      }
 
        public void PlaceGameObjectOnGrid( TileObject tileObject, MyVector2 position)
       {
-            UpgradedTileMap.Instance.Grid[(int)position.X, (int)position.Y].gameObject = tileObject;
+            TileMap.Instance.Grid[(int)position.X, (int)position.Y].gameObject = tileObject;
       }
       /// <summary>
       /// Add GameObjects from StartPosition to EndPosition On The Grid
@@ -100,14 +100,14 @@ namespace FinalProjectCSharp2
       {
 
 
-          for (int x = 0; x < UpgradedTileMap.Instance.Grid.GetLength(0); x++)
+          for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
           {
-              for (int y = 0; y < UpgradedTileMap.Instance.Grid.GetLength(1); y++)
+              for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
               {
                   if (new MyVector2(x, y) >= startPosition && new MyVector2(x, y) <= endPosition)
                   { 
                       TileObject cloneGameObjet = (TileObject)tileObject.Clone();
-                        UpgradedTileMap.Instance.Grid[x, y].gameObject = tileObject;
+                        TileMap.Instance.Grid[x, y].gameObject = tileObject;
                   }
 
               }
@@ -124,14 +124,14 @@ namespace FinalProjectCSharp2
     /// <param name="color"></param>
      public void ChangeGridRowOdd( int row, char newChar, ConsoleColor color)
     {
-        for (int x = 0; x < UpgradedTileMap.Instance.Grid.GetLength(0); x++)
+        for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
         {
-            for (int y = 0; y < UpgradedTileMap.Instance.Grid.GetLength(1); y++)
+            for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
             {
                 if (x == row)
                 {
                     if (y % 2 == 1)
-                            UpgradedTileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
+                            TileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
                 }
             }
         }

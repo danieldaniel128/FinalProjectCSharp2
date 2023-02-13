@@ -7,8 +7,8 @@ class Program
     
     public static void Main(string[] args)
     {
-        UpgradedTileMap.Instance.Inititialize(8, 8);
-        Tile[,] grid = UpgradedTileMap.Instance.Grid;
+        TileMap.Instance.Inititialize(8, 8);
+        Tile[,] grid = TileMap.Instance.Grid;
         GameObject gameObject = new GameObject('f', ConsoleColor.DarkYellow);
         GameObject gameObject2 = new GameObject('T', ConsoleColor.DarkGreen);
         EngineManager.Instance.renderingManager.ChangeGridToChessGrid(' ', ConsoleColor.DarkRed);
