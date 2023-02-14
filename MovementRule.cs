@@ -21,6 +21,15 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
         return true;
     }
 
+    public void PositionsToMove(TileObject tileObject) 
+    {
+        //switch (switch_on)
+        //{
+        //    default:
+        //}
+        EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[tileObject.transform.Position.x, tileObject.transform.Position.y],ConsoleColor.Blue))
+    }
+
     public bool MoveDown(TileObject tileObject)
     {
         if(tileObject == null || !CanMoveTo(MyVector2.Down))

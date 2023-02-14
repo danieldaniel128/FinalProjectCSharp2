@@ -58,11 +58,15 @@
                             Console.WriteLine("3. The player can move to :" + (grid[x, y++].Position));
                             Console.WriteLine("4. The player can move to :" + (grid[x, y--].Position));
                             Console.ReadKey();
-                            MovingObject = (TileObject?)grid[x, y].gameObject.Clone();
-                            MovingObject.transform.Position = new MyVector2(x, y);
+                            
+                            MovingObject = (TileObject?)grid[x, y].gameObject?.Clone();
+                            if(MovingObject!=null)
+                            { 
+                                MovingObject.transform.Position = new MyVector2(x, y);
+                                startPosition = MovingObject.transform.Position;
+                            }
                             grid[x, y].gameObject = null;
                             grid[x, y].TileColor = previousColor;
-                            startPosition = MovingObject.transform.Position;
                             isTilePlaced = true;
 
                         }
@@ -73,8 +77,8 @@
                                 grid[new_x, new_y].gameObject = MovingObject;
                                 grid[new_x, new_y].TileColor = ConsoleColor.Magenta;
                                 MovingObject = null;
-                                isTilePlaced = false;
                             }
+                                isTilePlaced = false;
 
                         }
 

@@ -136,6 +136,13 @@ namespace FinalProjectCSharp2
             }
         }
     }
+
+        public void ColorTile(Tile tile,ConsoleColor tileColor) 
+        {
+            tile.TileColor = tileColor;
+        }
+
+
     }
 
 
