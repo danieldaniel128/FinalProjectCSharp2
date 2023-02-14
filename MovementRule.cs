@@ -23,7 +23,7 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
 
     public bool MoveDown(TileObject tileObject)
     {
-        if(!CanMoveTo(MyVector2.Down))
+        if(tileObject == null || !CanMoveTo(MyVector2.Down))
             return false;
         tileObject.Step(MyVector2.Down);
         return true;
@@ -31,7 +31,7 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
 
     public bool MoveUp(TileObject tileObject)
     {
-        if (!CanMoveTo(MyVector2.Up))
+        if (tileObject == null || !CanMoveTo(MyVector2.Up))
             return false;
         tileObject.Step(MyVector2.Up);
         return true;
@@ -39,7 +39,7 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
 
     public bool MoveDownLeft(TileObject tileObject)
     {
-        if (!CanMoveTo(MyVector2.Down+MyVector2.Left))
+        if (tileObject == null || !CanMoveTo(MyVector2.Down+MyVector2.Left))
             return false;
         tileObject.Step(MyVector2.Down + MyVector2.Left);
         return true;
@@ -47,7 +47,7 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
 
     public bool MoveDownRight(TileObject tileObject)
     {
-        if (!CanMoveTo(MyVector2.Down + MyVector2.Right))
+        if (tileObject == null || !CanMoveTo(MyVector2.Down + MyVector2.Right))
             return false;
         tileObject.Step(MyVector2.Down + MyVector2.Right);
         return true;
@@ -55,7 +55,7 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
 
     public bool MoveLeft(TileObject tileObject)
     {
-        if (!CanMoveTo(MyVector2.Left))
+        if (tileObject == null || !CanMoveTo(MyVector2.Left))
             return false;
         tileObject.Step(MyVector2.Left);
         return true;
@@ -63,7 +63,7 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
 
     public bool MoveRight(TileObject tileObject)
     {
-        if (!CanMoveTo(MyVector2.Right))
+        if (tileObject==null || !CanMoveTo(MyVector2.Right))
             return false;
         tileObject.Step(MyVector2.Right);
         return true;
@@ -72,7 +72,7 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
 
     public bool MoveUpLeft(TileObject tileObject)
     {
-        if (!CanMoveTo(MyVector2.Up + MyVector2.Left))
+        if (tileObject == null || !CanMoveTo(MyVector2.Up + MyVector2.Left))
             return false;
         tileObject.Step(MyVector2.Up + MyVector2.Left);
         return true;
@@ -80,7 +80,7 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
 
     public bool MoveUpRight(TileObject tileObject)
     {
-        if (!CanMoveTo(MyVector2.Up + MyVector2.Right))
+        if (tileObject == null || !CanMoveTo(MyVector2.Up + MyVector2.Right))
             return false;
         tileObject.Step(MyVector2.Up + MyVector2.Right);
         return true;
