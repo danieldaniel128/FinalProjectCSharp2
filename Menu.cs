@@ -80,6 +80,7 @@
                     case ConsoleKey.RightArrow:
                         if (MovingObject != null)
                             MovementRule.Instance.MoveRight(MovingObject);
+                        
 
                         new_x = Math.Min(grid.GetLength(1) - 1, x + 1);
                         grid[x, y].TileColor = previousColor;
@@ -90,6 +91,8 @@
                         break;
 
                     case ConsoleKey.LeftArrow:
+                        if (MovingObject != null)
+                            MovementRule.Instance.MoveLeft(MovingObject);
 
                         new_x = Math.Max(0, x - 1);
                         grid[x, y].TileColor = previousColor;
@@ -99,6 +102,8 @@
                         break;
 
                     case ConsoleKey.UpArrow:
+                        if (MovingObject != null)
+                            MovementRule.Instance.MoveUp(MovingObject);
 
                         new_y = Math.Max(0, y - 1);
                         grid[x, y].TileColor = previousColor;
@@ -108,6 +113,9 @@
                         break;
 
                     case ConsoleKey.DownArrow:
+                        if (MovingObject != null)
+                            MovementRule.Instance.MoveDown(MovingObject);
+
                         new_y = Math.Min(grid.GetLength(0) - 1, y + 1);
                         grid[x, y].TileColor = previousColor;
                         previousColor = grid[x, new_y].TileColor;
