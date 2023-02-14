@@ -14,26 +14,15 @@ public class GameObject : TileObject
     {
         List<MyVector2> movements = new List<MyVector2>();
         if (MovementRule.Instance.CanMoveTo(MyVector2.Right))
-        { 
             movements.Add(MyVector2.Right);
-            EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[transform.Position.X+ MyVector2.Right.X, transform.Position.Y+ MyVector2.Right.Y], ConsoleColor.Blue);
-        } 
-        
         if (MovementRule.Instance.CanMoveTo(MyVector2.Up)) 
-        { 
             movements.Add(MyVector2.Up);
-            EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[transform.Position.X + MyVector2.Up.X, transform.Position.Y + MyVector2.Up.Y], ConsoleColor.Blue);
-        }
         if (MovementRule.Instance.CanMoveTo(MyVector2.Down))
-        {
             movements.Add(MyVector2.Down);
-            EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[transform.Position.X + MyVector2.Down.X, transform.Position.Y + MyVector2.Down.Y], ConsoleColor.Blue);
-        }
         if (MovementRule.Instance.CanMoveTo(MyVector2.Left))
-        {
             movements.Add(MyVector2.Left);
-            EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[transform.Position.X + MyVector2.Left.X, transform.Position.Y + MyVector2.Left.Y], ConsoleColor.Blue);
-        }
+        foreach(MyVector2 movement in movements)
+            EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[transform.Position.X + movement.X, transform.Position.Y + movement.Y], ConsoleColor.Blue);
         return movements;
 
     }
