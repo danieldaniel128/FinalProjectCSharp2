@@ -17,17 +17,16 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
 
     public bool CanMoveTo(MyVector2 MoveToPos)//down up downleft downright left right
     {
-        //if (UpgradedTileMap.Instance.Grid[MoveToPos.X, MoveToPos.Y] is not ) //checks if hole or not
+       if(!(MoveToPos.X < TileMap.Instance.Grid.GetLength(1)&& MoveToPos.X >-1 && MoveToPos.Y < TileMap.Instance.Grid.GetLength(0) && MoveToPos.Y > -1))
+        return false;
         return true;
     }
 
-    public void PositionsToMove(TileObject tileObject) 
+    public void PositionsToMoveObject(GameObject tileObject) 
     {
-        //switch (switch_on)
-        //{
-        //    default:
-        //}
-        EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[tileObject.transform.Position.x, tileObject.transform.Position.y],ConsoleColor.Blue))
+        if (tileObject == null)
+            return;
+        tileObject.MovementLogic();
     }
 
     public bool MoveDown(TileObject tileObject)

@@ -51,7 +51,6 @@ class EngineManager : Singelton<EngineManager>, IBehaviorMethods
                 item.Update();
             }
 
-
             // menu (grid buttons, point an object)
             Menu.TileSelect();
             Console.ReadLine();
