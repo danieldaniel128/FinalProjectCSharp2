@@ -47,13 +47,12 @@
                     case ConsoleKey.Enter:
                         if (!isTilePlaced)
                         {
-
                             Console.WriteLine("Move the tile to the desired direction through the keyboard keys");
-                            Console.WriteLine("1. The player can move to :" + (grid[x++, y].Position));
-                            Console.WriteLine("2. The player can move to :" + (grid[x--, y].Position));
-                            Console.WriteLine("3. The player can move to :" + (grid[x, y++].Position));
-                            Console.WriteLine("4. The player can move to :" + (grid[x, y--].Position));
-                            Console.ReadKey();
+                            for (int i = 0; i < 4; i++)
+                            {
+                                if(grid.GetLength(1)<x+2&&x-1>-1&& grid.GetLength(0) < y+1 && y-1 > -1)
+                                Console.WriteLine($"{i+1}. The player can move to :" + (grid[x++, y].Position));
+                            }
 
                             MovingObject = (TileObject?)grid[x, y].gameObject?.Clone();
                             if (MovingObject != null)
