@@ -37,18 +37,19 @@ namespace FinalProjectCSharp2
         /// <param name="color"></param>
         /// <param name="moduluRow"></param>
         /// <param name="moduluColumn"></param>
-     public void ChangeGridToChessGrid(  char newChar, ConsoleColor color = ConsoleColor.Red, int moduluRow = 2, int moduluColumn = 2)
+     public void ChangeGridToChessGrid(ConsoleColor color = ConsoleColor.Red, int moduluRow = 2, int moduluColumn = 2)
     {
         for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
         {
             for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
             {
-                if (y % moduluRow == 0 && x % moduluRow == 0)
-                        TileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
-                if (y % moduluColumn == 1 && x % moduluColumn == 1)
-                        TileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
+                if ((y % moduluRow == 0 && x % moduluRow == 0) || (y % moduluColumn == 1 && x % moduluColumn == 1))
+                    EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[x, y], color);
+                else
+                    EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[x, y], ConsoleColor.White);
+
+                }
             }
-        }
     }
 
         /// <summary>

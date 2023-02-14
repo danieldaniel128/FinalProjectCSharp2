@@ -11,7 +11,7 @@ class Program
         Tile[,] grid = TileMap.Instance.Grid;
         GameObject gameObject = new GameObject('f', ConsoleColor.DarkYellow);
         GameObject gameObject2 = new GameObject('T', ConsoleColor.DarkGreen);
-        EngineManager.Instance.renderingManager.ChangeGridToChessGrid(' ', ConsoleColor.DarkRed);
+        EngineManager.Instance.renderingManager.ChangeGridToChessGrid(ConsoleColor.DarkRed);
         EngineManager.Instance.renderingManager.PlaceGameObjectOnGrid(gameObject, new MyVector2(0, 0), new MyVector2(7, 1)); //Create gameObjects and place them on the grid in a forLoop
         //UpdateTest ut = new UpdateTest(gameObject);
         // grid[0, 0].gameObject = gameObject2;

@@ -2,6 +2,7 @@
 
 public class GameObject : TileObject
 {
+    int actor;
     public GameObject(char objectChar, ConsoleColor color=ConsoleColor.White) : base(objectChar, color)
     {
 

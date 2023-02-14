@@ -67,6 +67,7 @@
                         }
                         else
                         {
+                            EngineManager.Instance.renderingManager.ChangeGridToChessGrid(ConsoleColor.DarkRed);
                             if (MovingObject != null)
                             {
                                 grid[new_x, new_y].gameObject = MovingObject;
