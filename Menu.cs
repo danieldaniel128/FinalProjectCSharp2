@@ -58,12 +58,28 @@
                             Console.WriteLine("3. The player can move to :" + (grid[x, y++].Position));
                             Console.WriteLine("4. The player can move to :" + (grid[x, y--].Position));
                             Console.ReadKey();
-                            MovingObject = (TileObject?)grid[x, y].gameObject.Clone();
-                            MovingObject.transform.Position = new MyVector2(x, y);
+                            if (grid[x, y].gameObject != null)
+                            {
+                                MovingObject = (TileObject?)grid[x, y].gameObject.Clone();
+                                MovingObject.transform.Position = new MyVector2(x, y);
+                                startPosition = MovingObject.transform.Position;
+                            }
+                            else
+                            {
+                                if (MovingObject != null)
+                                {
+                                    grid[startPosition.X, startPosition.Y].gameObject = (TileObject)MovingObject.Clone();
+                                    MovingObject = null;
+                                    grid[x, y].TileColor = previousColor;
+                                    isTilePlaced = false;
+                                }
+                            }
+
                             grid[x, y].gameObject = null;
                             grid[x, y].TileColor = previousColor;
-                            startPosition = MovingObject.transform.Position;
                             isTilePlaced = true;
+
+
 
                         }
                         else
@@ -80,8 +96,7 @@
 
                         break;
                     case ConsoleKey.RightArrow:
-                        if (MovingObject != null)
-                            MovementRule.Instance.MoveRight(MovingObject);
+                        MovementRule.Instance.MoveRight(MovingObject);
 
 
                         new_x = Math.Min(grid.GetLength(1) - 1, x + 1);
@@ -93,8 +108,7 @@
                         break;
 
                     case ConsoleKey.LeftArrow:
-                        if (MovingObject != null)
-                            MovementRule.Instance.MoveLeft(MovingObject);
+                        MovementRule.Instance.MoveLeft(MovingObject);
 
                         new_x = Math.Max(0, x - 1);
                         grid[x, y].TileColor = previousColor;
@@ -104,8 +118,7 @@
                         break;
 
                     case ConsoleKey.UpArrow:
-                        if (MovingObject != null)
-                            MovementRule.Instance.MoveUp(MovingObject);
+                        MovementRule.Instance.MoveUp(MovingObject);
 
                         new_y = Math.Max(0, y - 1);
                         grid[x, y].TileColor = previousColor;
@@ -115,8 +128,7 @@
                         break;
 
                     case ConsoleKey.DownArrow:
-                        if (MovingObject != null)
-                            MovementRule.Instance.MoveDown(MovingObject);
+                        MovementRule.Instance.MoveDown(MovingObject);
 
                         new_y = Math.Min(grid.GetLength(0) - 1, y + 1);
                         grid[x, y].TileColor = previousColor;
@@ -127,7 +139,7 @@
                     case ConsoleKey.R:
                         if (MovingObject != null)
                         {
-                            grid[startPosition.X,startPosition.Y].gameObject = (TileObject)MovingObject.Clone();
+                            grid[startPosition.X, startPosition.Y].gameObject = (TileObject)MovingObject.Clone();
                             MovingObject = null;
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = false;
