@@ -35,6 +35,7 @@
             bool isTilePlaced = false;
             TileObject? MovingObject = null;
             MyVector2 startPosition = new MyVector2();
+            List<MyVector2> canMoveToPositions=new();
 
             int new_x = x;
             int new_y = y;
@@ -63,18 +64,32 @@
                             grid[x, y].gameObject = null;
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = true;
-                            MovementRule.Instance.PositionsToMoveObject((GameObject)MovingObject);
+                            canMoveToPositions = MovementRule.Instance.PositionsToMoveObject((GameObject)MovingObject);
                         }
                         else
                         {
-                            EngineManager.Instance.renderingManager.ChangeGridToChessGrid(ConsoleColor.DarkRed);
                             if (MovingObject != null)
                             {
-                                grid[new_x, new_y].gameObject = MovingObject;
-                                grid[new_x, new_y].TileColor = ConsoleColor.Magenta;
-                                MovingObject = null;
+                                bool placedRight=false;
+                                foreach (MyVector2 canMoveToPose in canMoveToPositions)
+                                    if (canMoveToPose == new MyVector2(new_x, new_y))
+                                    {
+                                        grid[new_x, new_y].gameObject = MovingObject;
+                                        grid[new_x, new_y].TileColor = ConsoleColor.Magenta;
+                                        MovingObject = null;
+                                        isTilePlaced = false;
+                                        placedRight=true;
+                                        break;
+                                    }
+                                if (!placedRight) 
+                                {
+                                        grid[startPosition.X, startPosition.Y].gameObject = (TileObject)MovingObject.Clone();
+                                        MovingObject = null;
+                                }
                             }
+                                        grid[x, y].TileColor = previousColor;
                             isTilePlaced = false;
+                            EngineManager.Instance.renderingManager.ChangeGridToChessGrid(ConsoleColor.DarkRed);
 
                         }
 

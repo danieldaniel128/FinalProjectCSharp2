@@ -22,11 +22,11 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
         return true;
     }
 
-    public void PositionsToMoveObject(GameObject tileObject) 
+    public List<MyVector2> PositionsToMoveObject(GameObject tileObject) 
     {
         if (tileObject == null)
-            return;
-        tileObject.MovementLogic();
+            return null;
+        return tileObject.MovementLogic();
     }
 
     public bool MoveDown(TileObject tileObject)

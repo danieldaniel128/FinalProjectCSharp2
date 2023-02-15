@@ -8,7 +8,6 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 
     public abstract List<Component> Components { get; protected set; }
     public Transform transform { get; set; }
-    //Components[0] as Transform;
 
 
 
