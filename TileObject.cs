@@ -2,6 +2,7 @@
 
 public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 {
+    public int Actor { get; set; }
     public event Action OnMoved;
     public char ObjectChar = 'o';
     public ConsoleColor Color = ConsoleColor.Green;
@@ -11,8 +12,9 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 
 
 
-    public TileObject(char objectChar,ConsoleColor color)
+    public TileObject(int actor,char objectChar,ConsoleColor color)
     {
+        Actor = actor;
         Components = new List<Component>();
         Components.Add(new Transform(this));
         ObjectChar = objectChar;
@@ -70,7 +72,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
     }
 
 
-    public object Clone()
+    public virtual object Clone()
     {
         var tileObject = (TileObject)MemberwiseClone();
         tileObject.transform = new Transform(tileObject);

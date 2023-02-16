@@ -8,7 +8,7 @@ using FinalProjectCSharp2;
     internal class TestObject : GameObject
 
     {
-        public TestObject(char objectChar, ConsoleColor color = ConsoleColor.White) : base(objectChar, color)
+        public TestObject(int actor,char objectChar, ConsoleColor color = ConsoleColor.White) : base(actor,objectChar, color)
         {
 
         }

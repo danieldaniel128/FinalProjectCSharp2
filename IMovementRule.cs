@@ -10,7 +10,7 @@ public interface IMovementRule
 {
     List<MyVector2> CalculateRoute(MyVector2 StartPos, MyVector2 EndPos, Tile[,] map, List<Tile> blockingTiles);
 
-    bool CanMoveTo(MyVector2 MoveToPos);
+    bool CanMoveTo(TileObject tileObject, MyVector2 MoveToPos);
     bool MoveUp(TileObject tileObject);
     bool MoveDown(TileObject tileObject);
     bool MoveLeft(TileObject tileObject);
