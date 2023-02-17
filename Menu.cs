@@ -35,35 +35,35 @@
             bool isTilePlaced = false;
             TileObject? MovingObject = null;
             MyVector2 startPosition = new MyVector2();
-            List<MyVector2> canMoveToPositions=new();
+            List<MyVector2> canMoveToPositions = new();
 
             int new_x = x;
             int new_y = y;
 
-            while (true) 
+            while (true)
             {
-                ConsoleKey key=Console.ReadKey().Key;
+                ConsoleKey key = Console.ReadKey().Key;
                 switch (key)
                 {
                     case ConsoleKey.Enter:
                         if (!isTilePlaced)
                         {
-                            Console.WriteLine("The Turn: "+Turn);
+                            Console.WriteLine("The Turn: " + Turn);
                             Console.WriteLine("Move the tile to the desired direction through the keyboard keys");
                             for (int i = 0; i < 4; i++)
                             {
-                               // if(grid.GetLength(1)<x+2&&x-1>-1&& grid.GetLength(0) < y+1 && y-1 > -1)
-                                Console.WriteLine($"{i+1}. The player can move to :" + (grid[x+1, y].Position));
+ 
+                                Console.WriteLine($"{i + 1}. The player can move to :" + (grid[x + 1, y].Position));
                             }
                             MovingObject = (TileObject?)grid[x, y].gameObject?.Clone();
-                            if(Turn%2 == MovingObject?.Actor)
-                            if (MovingObject != null)
-                            {
-                                MovingObject.transform.Position = new MyVector2(x, y);
-                                startPosition = MovingObject.transform.Position;
-                                canMoveToPositions = MovementRule.Instance.PositionsToMoveObject((GameObject)MovingObject);
-                                grid[x, y].gameObject = null;
-                            }
+                            if (Turn % 2 == MovingObject?.Actor)
+                                if (MovingObject != null)
+                                {
+                                    MovingObject.transform.Position = new MyVector2(x, y);
+                                    startPosition = MovingObject.transform.Position;
+                                    canMoveToPositions = MovementRule.Instance.PositionsToMoveObject((GameObject)MovingObject);
+                                    grid[x, y].gameObject = null;
+                                }
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = true;
                         }
@@ -71,7 +71,7 @@
                         {
                             if (MovingObject != null)
                             {
-                                bool placedRight=false;
+                                bool placedRight = false;
                                 foreach (MyVector2 canMoveToPose in canMoveToPositions)
                                     if (canMoveToPose == new MyVector2(new_x, new_y))
                                     {
@@ -79,19 +79,19 @@
                                         grid[new_x, new_y].TileColor = ConsoleColor.Magenta;
                                         MovingObject = null;
                                         isTilePlaced = false;
-                                        placedRight=true;
+                                        placedRight = true;
                                         Turn++;
                                         break;
                                     }
-                                if (!placedRight) 
+                                if (!placedRight)
                                 {
-                                        grid[startPosition.X, startPosition.Y].gameObject = (TileObject)MovingObject.Clone();
-                                        MovingObject = null;
+                                    grid[startPosition.X, startPosition.Y].gameObject = (TileObject)MovingObject.Clone();
+                                    MovingObject = null;
                                 }
                             }
-                                        grid[x, y].TileColor = previousColor;
-                                        isTilePlaced = false;
-                                        EngineManager.Instance.renderingManager.ChangeGridToChessGrid(ConsoleColor.DarkRed);
+                            grid[x, y].TileColor = previousColor;
+                            isTilePlaced = false;
+                            EngineManager.Instance.renderingManager.ChangeGridToChessGrid(ConsoleColor.DarkRed);
 
                         }
 
@@ -155,7 +155,7 @@
                 x = new_x;
                 y = new_y;
 
-                                        ReDrawGrid();
+                ReDrawGrid();
 
 
 
@@ -166,7 +166,7 @@
 
 
 
-            
+
     }
 }
 

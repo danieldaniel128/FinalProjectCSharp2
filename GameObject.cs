@@ -1,11 +1,18 @@
-﻿namespace FinalProjectCSharp2;
+﻿using System.Collections;
+
+namespace FinalProjectCSharp2;
 
 public class GameObject : TileObject
 {
-    public GameObject(int actor,char objectChar, ConsoleColor color=ConsoleColor.White) : base(actor,objectChar, color)
+
+
+    public GameObject(int actor, char objectChar, ConsoleColor color) : base(actor, objectChar, color)
     {
-        Actor=actor;
+        Actor =actor;
     }
+
+
+  
 
     public override List<Component> Components { get; protected set; }
 

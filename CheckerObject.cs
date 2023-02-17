@@ -12,7 +12,7 @@ public class CheckerObject : GameObject
 
     }
 
-    public override List<Component> Components { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
+    public override List<Component> Components { get; protected set; }
 
     public override object Clone()
     {

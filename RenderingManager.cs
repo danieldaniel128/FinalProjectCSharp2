@@ -8,15 +8,6 @@ namespace FinalProjectCSharp2
 {
     public class RenderingManager
     {
-        //public UpgradedTileMap TileMap { get; set; }//private set or method that will set differently, maybe only private and will get access only through Tilemap???
-
-
-
-        public RenderingManager()
-        {
-           
-
-        }
 
         public void DrawGrid()
         {
@@ -86,7 +77,7 @@ namespace FinalProjectCSharp2
          }
      }
 
-       public void PlaceGameObjectOnGrid( TileObject tileObject, MyVector2 position)
+       public void PlaceGameObjectOnGrid(GameObject gameObject, TileObject tileObject, MyVector2 position)
       {
             TileMap.Instance.Grid[(int)position.X, (int)position.Y].gameObject = tileObject;
       }
