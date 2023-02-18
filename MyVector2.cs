@@ -92,6 +92,11 @@ public readonly struct MyVector2 : IPositioning
         return new MyVector2(pos1._x * pos2._x, pos1._y * pos2._y);
     }
 
+    public static MyVector2 operator *(MyVector2 pos1, int multiplier)
+    {
+        return new MyVector2(pos1._x * multiplier, pos1._y * multiplier);
+    }
+
 
 
 

@@ -10,9 +10,26 @@ using System.Threading.Tasks;
 
 class MovementRule : Singelton<MovementRule>, IMovementRule
 {
-    public List<MyVector2> CalculateRoute(MyVector2 StartPos, MyVector2 EndPos, Tile[,] map, List<Tile> blockingTiles)
+    public List<MyVector2> CalculateRoute(TileObject gameObject, MyVector2 StartPos, MyVector2 EndPos, List<Tile> blockingTiles)
     {
-        throw new NotImplementedException();
+        List<MyVector2> movements = new List<MyVector2>();
+
+        for (int x = 0; x < TileMap.Instance.Width; x++)
+            for (int y = 0; y < TileMap.Instance.Height; y++)
+            {
+                if (StartPos.X == EndPos.X )
+                    if ( StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y || CanMoveTo(gameObject, gameObject.transform.Position))
+                    movements.Add(new MyVector2(x, y));
+                if (StartPos.Y == EndPos.Y)
+                    if ( StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y || CanMoveTo(gameObject, gameObject.transform.Position))
+                     movements.Add(new MyVector2(x, y));
+                if (EndPos.Y - StartPos.Y == EndPos.X - StartPos.X)
+                    if ( StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y || CanMoveTo(gameObject, gameObject.transform.Position))
+                        movements.Add(new MyVector2(x,y));
+            }
+        foreach (MyVector2 movement in movements)
+            EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
+        return movements;
     }
 
     public bool CanMoveTo(TileObject gameObject,MyVector2 MoveToPos)//down up downleft downright left right

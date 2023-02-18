@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 public interface IMovementRule
 {
-    List<MyVector2> CalculateRoute(MyVector2 StartPos, MyVector2 EndPos, Tile[,] map, List<Tile> blockingTiles);
+    List<MyVector2> CalculateRoute(TileObject tileObject, MyVector2 StartPos, MyVector2 EndPos, List<Tile> blockingTiles);
 
     bool CanMoveTo(TileObject tileObject, MyVector2 MoveToPos);
     bool MoveUp(TileObject tileObject);
