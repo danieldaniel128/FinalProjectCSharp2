@@ -7,6 +7,7 @@ public class ChessObject : GameObject
     public ChessObject(int actor, char objectChar, ConsoleColor color) : base(actor, objectChar, color)
     {
         Actor = actor;
+       
     }
 
 

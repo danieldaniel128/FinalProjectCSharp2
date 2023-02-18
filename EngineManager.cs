@@ -1,6 +1,6 @@
 ﻿namespace FinalProjectCSharp2;
 
-class EngineManager : Singelton<EngineManager>, IBehaviorMethods
+public class EngineManager : Singelton<EngineManager>, IBehaviorMethods
 {
 
     ////public UpgradedTileMap Grid { get; set; }//private set or method that will set differently, maybe only private and will get access only through Tilemap???
