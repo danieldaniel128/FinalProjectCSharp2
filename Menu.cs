@@ -35,7 +35,9 @@
             bool isTilePlaced = false;
             TileObject? MovingObject = null;
             MyVector2 startPosition = new MyVector2();
-            List<MyVector2> canMoveToPositions = new();
+            List<MyVector2> canMoveToPositions = new List<MyVector2>();
+            List<GameObject> gameObjects = new List<GameObject>();
+            bool HasWon = false;
 
             int new_x = x;
             int new_y = y;
@@ -43,6 +45,8 @@
             while (true)
             {
                 ConsoleKey key = Console.ReadKey().Key;
+
+
                 switch (key)
                 {
                     case ConsoleKey.Enter:
@@ -52,7 +56,7 @@
                             Console.WriteLine("Move the tile to the desired direction through the keyboard keys");
                             for (int i = 0; i < 4; i++)
                             {
- 
+
                                 Console.WriteLine($"{i + 1}. The player can move to :" + (grid[x + 1, y].Position));
                             }
                             MovingObject = (TileObject?)grid[x, y].gameObject?.Clone();
@@ -63,6 +67,7 @@
                                     startPosition = MovingObject.transform.Position;
                                     canMoveToPositions = MovementRule.Instance.PositionsToMoveObject((GameObject)MovingObject);
                                     grid[x, y].gameObject = null;
+
                                 }
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = true;
@@ -75,13 +80,19 @@
                                 foreach (MyVector2 canMoveToPose in canMoveToPositions)
                                     if (canMoveToPose == new MyVector2(new_x, new_y))
                                     {
+
                                         grid[new_x, new_y].gameObject = MovingObject;
                                         grid[new_x, new_y].TileColor = ConsoleColor.Magenta;
-                                        MovingObject = null;
+
+
+
+                                        if (MovingObject.Actor == 0 && canMoveToPositions.Count == 0)
+                                            MovingObject = null;
                                         isTilePlaced = false;
                                         placedRight = true;
                                         Turn++;
                                         break;
+
                                     }
                                 if (!placedRight)
                                 {
@@ -151,6 +162,8 @@
                         }
                         break;
                 }
+
+
 
                 x = new_x;
                 y = new_y;
