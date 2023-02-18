@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-class MovementRule : Singelton<MovementRule>, IMovementRule
+public class MovementRule : Singelton<MovementRule>, IMovementRule
 {
     public List<MyVector2> CalculateRoute(TileObject gameObject, MyVector2 StartPos, MyVector2 EndPos, List<Tile> blockingTiles)
     {
@@ -18,13 +18,13 @@ class MovementRule : Singelton<MovementRule>, IMovementRule
             for (int y = 0; y < TileMap.Instance.Height; y++)
             {
                 if (StartPos.X == EndPos.X )
-                    if ( StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y || CanMoveTo(gameObject, gameObject.transform.Position))
+                    if (( StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y) || CanMoveTo(gameObject, gameObject.transform.Position))
                     movements.Add(new MyVector2(x, y));
                 if (StartPos.Y == EndPos.Y)
-                    if ( StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y || CanMoveTo(gameObject, gameObject.transform.Position))
+                    if ( (StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y) || CanMoveTo(gameObject, gameObject.transform.Position))
                      movements.Add(new MyVector2(x, y));
                 if (EndPos.Y - StartPos.Y == EndPos.X - StartPos.X)
-                    if ( StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y || CanMoveTo(gameObject, gameObject.transform.Position))
+                    if ( (StartPos.X <= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y) || CanMoveTo(gameObject, gameObject.transform.Position))
                         movements.Add(new MyVector2(x,y));
             }
         foreach (MyVector2 movement in movements)
