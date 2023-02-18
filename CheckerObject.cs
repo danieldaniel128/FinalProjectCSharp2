@@ -26,8 +26,10 @@ public class CheckerObject : GameObject
     {
         List<MyVector2> Positons;
         //Quween Test
-        if (Actor%2==0)
-            Positons= MovementRule.Instance.CalculateRoute(this,transform.Position, transform.Position + MyVector2.Up * (TileMap.Instance.Height - transform.Position.Y),null);
+        if (Actor % 2 == 0)
+            Positons = MovementRule.Instance.CalculateRoute(this, transform.Position, transform.Position + MyVector2.Up * (TileMap.Instance.Height - transform.Position.Y), null);
+        else
+            Positons = new List<MyVector2>();
 
 
         return Positons;
