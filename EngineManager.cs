@@ -7,6 +7,7 @@ public class EngineManager : Singelton<EngineManager>, IBehaviorMethods
     public RenderingManager renderingManager = new RenderingManager();
     private List<IUpdate> updateables = new List<IUpdate>();
     public List<IUpdate> Updateables { get => updateables; set => updateables = value; }
+    public bool IsRunning { get; private set; }//get is private too?
 
     public EngineManager()
     {
@@ -15,7 +16,6 @@ public class EngineManager : Singelton<EngineManager>, IBehaviorMethods
 
     }
 
-    public bool IsRunning { get; private set; }//get is private too?
 
     public virtual void Start()
     {
