@@ -1,6 +1,6 @@
 ﻿namespace FinalProjectCSharp2
 {
-    public static class Menu
+    public static class Commands
     {
 
 

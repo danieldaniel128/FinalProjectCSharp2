@@ -13,21 +13,36 @@ public class MovementRule : Singelton<MovementRule>, IMovementRule
     public List<MyVector2> CalculateRoute(TileObject gameObject, MyVector2 StartPos, MyVector2 EndPos, List<Tile> blockingTiles)
     {
         List<MyVector2> movements = new List<MyVector2>();
-
+        //if(EndPos.Y >StartPos.Y)//forword object
         for (int x = 0; x < TileMap.Instance.Width; x++)
             for (int y = 0; y < TileMap.Instance.Height; y++)
             {
-                if (StartPos.X == EndPos.X )
-                    if (( StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y) || CanMoveTo(gameObject, gameObject.transform.Position))
+                if (StartPos.X == EndPos.X )//COLUMN PATHS
+                    if (( x==StartPos.X && StartPos.Y <= y && y <= EndPos.Y) && CanMoveTo(gameObject, new MyVector2(x, y)))
                     movements.Add(new MyVector2(x, y));
-                if (StartPos.Y == EndPos.Y)
-                    if ( (StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y) || CanMoveTo(gameObject, gameObject.transform.Position))
+                if (StartPos.Y == EndPos.Y)//ROWS PATH
+                    if ( (StartPos.X<= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y) && CanMoveTo(gameObject, new MyVector2(x, y)))
                      movements.Add(new MyVector2(x, y));
-                if (EndPos.Y - StartPos.Y == EndPos.X - StartPos.X)
-                    if ( (StartPos.X <= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y) || CanMoveTo(gameObject, gameObject.transform.Position))
+                if (MathF.Abs(EndPos.Y - StartPos.Y) == MathF.Abs(EndPos.X - StartPos.X))//ALACHSON PATH
+                    if ( (MathF.Abs(y - StartPos.Y) == MathF.Abs(x - StartPos.X)) && CanMoveTo(gameObject, new MyVector2(x, y)))
                         movements.Add(new MyVector2(x,y));
             }
-        foreach (MyVector2 movement in movements)
+        //else
+        //    for (int x = 0; x < TileMap.Instance.Width; x++)
+        //        for (int y = 0; y < TileMap.Instance.Height; y++)
+        //        {
+        //            if (StartPos.X == EndPos.X)//COLUMN PATHS
+        //                if ((x == StartPos.X && StartPos.Y <= y && y <= EndPos.Y) && CanMoveTo(gameObject, new MyVector2(x, y)))
+        //                    movements.Add(new MyVector2(x, y));
+        //            if (StartPos.Y == EndPos.Y)//ROWS PATH
+        //                if ((StartPos.X <= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y) && CanMoveTo(gameObject, new MyVector2(x, y)))
+        //                    movements.Add(new MyVector2(x, y));
+        //            if (StartPos.Y - EndPos.Y == EndPos.X- StartPos.X)//ALACHSON PATH
+        //            //if (EndPos.Y - StartPos.Y == EndPos.X - StartPos.X)//ALACHSON PATH
+        //                if ((StartPos.Y - y == StartPos.X - x) && CanMoveTo(gameObject, new MyVector2(x, y)))
+        //                    movements.Add(new MyVector2(x, y));
+        //        }
+        foreach (MyVector2 movement in movements)//color path
             EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
         return movements;
     }
