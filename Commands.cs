@@ -2,8 +2,10 @@
 {
     public static class Commands
     {
+        public static event Action<GameObject> OnWin;
 
-       static IRenderingMediator rendering = new RenderingManager();
+
+        static IRenderingMediator rendering = new RenderingManager();
 
         static int Turn { get; set; }
 
@@ -27,6 +29,15 @@
             Console.ResetColor();
         }
 
+        public static void FinishGame(GameObject gameObject)
+        {
+            OnWin?.Invoke(gameObject);
+        }
+
+        public static void WinCondition(Action<GameObject> action)
+        {
+            OnWin += action;
+        }
 
         public static void TileSelect()
         {
@@ -41,6 +52,7 @@
 
             int new_x = x;
             int new_y = y;
+            rendering.ChangeGridToChessGrid(ConsoleColor.Red);
 
             while (true)
             {
@@ -102,7 +114,7 @@
                             }
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = false;
-                            rendering.ChangeGridToChessGrid();
+                            rendering.ChangeGridToChessGrid(ConsoleColor.Red);
 
                         }
 
