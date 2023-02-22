@@ -4,8 +4,7 @@ namespace FinalProjectCSharp2;
 
 public class GameObject : TileObject
 {
-
-
+    IRenderingMediator rendering = new RenderingManager();
     public GameObject(int actor, char objectChar, ConsoleColor color) : base(actor, objectChar, color)
     {
         Actor =actor;
@@ -37,7 +36,7 @@ public class GameObject : TileObject
       //  if (MovementRule.Instance.CanMoveTo(transform.Position + MyVector2.Down + MyVector2.Left))
       //      movements.Add(transform.Position + MyVector2.Down + MyVector2.Left);
         foreach (MyVector2 movement in movements)
-            EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
+            rendering.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
         return movements;
 
     }

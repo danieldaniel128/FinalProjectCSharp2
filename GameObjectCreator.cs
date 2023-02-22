@@ -12,6 +12,8 @@
 
         public static Transform transform;
 
+        static IRenderingMediator rendering = new RenderingManager();
+
         /// <summary>
         /// This Factory Method Allows you to place your chosen Gameobject type on the Grid
         /// </summary>
@@ -24,18 +26,18 @@
         {
             T gameObject = (T)Activator.CreateInstance(typeof(T), actor, objectChar, color);
             GameObjects.Add(gameObject);
-            PlaceGameObjectOnGrid(startPos, EndPos);
+            PlaceGameObject(startPos, EndPos);
 
         }
 
-        private static void PlaceGameObjectOnGrid(MyVector2 startPos, MyVector2 EndPos)
+        private static void PlaceGameObject(MyVector2 startPos, MyVector2 EndPos)
         {
             foreach (T gameObject in GameObjects)
             {
-                EngineManager.Instance.renderingManager.PlaceGameObjectOnGrid(gameObject, startPos, EndPos);
+                rendering.PlaceGameObjectOnGrid(gameObject, startPos, EndPos);
             }
         }
 
-      
+
     }
 }

@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 
 public class MovementRule : Singelton<MovementRule>, IMovementRule
 {
+
+    IRenderingMediator rendering = new RenderingManager();
     public List<MyVector2> CalculateRoute(TileObject gameObject, MyVector2 StartPos, MyVector2 EndPos, List<Tile> blockingTiles)
     {
         List<MyVector2> movements = new List<MyVector2>();
@@ -27,7 +29,7 @@ public class MovementRule : Singelton<MovementRule>, IMovementRule
                         movements.Add(new MyVector2(x,y));
             }
         foreach (MyVector2 movement in movements)//color path
-            EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
+            rendering.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
         return movements;
     }
 

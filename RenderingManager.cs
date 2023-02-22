@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProjectCSharp2
 {
-    public class RenderingManager
+    public class RenderingManager : IRenderingMediator
     {
 
         public void DrawGrid()
@@ -35,9 +35,9 @@ namespace FinalProjectCSharp2
             for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
             {
                 if ((y % moduluRow == 0 && x % moduluRow == 0) || (y % moduluColumn == 1 && x % moduluColumn == 1))
-                    EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[x, y], color);
+                    ColorTile(TileMap.Instance.Grid[x, y], color);
                 else
-                    EngineManager.Instance.renderingManager.ColorTile(TileMap.Instance.Grid[x, y], ConsoleColor.White);
+                    ColorTile(TileMap.Instance.Grid[x, y], ConsoleColor.White);
 
                 }
             }

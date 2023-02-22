@@ -3,6 +3,7 @@
     public static class Commands
     {
 
+       static IRenderingMediator rendering = new RenderingManager();
 
         static int Turn { get; set; }
 
@@ -101,7 +102,7 @@
                             }
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = false;
-                            EngineManager.Instance.renderingManager.ChangeGridToChessGrid(ConsoleColor.DarkRed);
+                            rendering.ChangeGridToChessGrid();
 
                         }
 
