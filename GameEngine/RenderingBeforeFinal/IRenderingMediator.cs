@@ -15,7 +15,9 @@ namespace FinalProjectCSharp2
         public void ChangeGridRowOdd(int row, char newChar, ConsoleColor color);
 
         public void DrawGrid();
-
+        public void AddToPrint(string message);
+        public void PrintToUser();
+        public void ClearPrint();
         public void ColorTile(Tile Tile, ConsoleColor TileColor);
    
     }

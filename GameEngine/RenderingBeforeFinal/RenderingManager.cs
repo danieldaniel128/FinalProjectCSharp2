@@ -9,8 +9,11 @@ namespace FinalProjectCSharp2
     public class RenderingManager : IRenderingMediator
     {
 
+        public event Action OnPrint;
+
         public void DrawGrid()
         {
+            Console.Clear();
             for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
             {
                 for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
@@ -20,7 +23,25 @@ namespace FinalProjectCSharp2
                 }
                 Console.WriteLine();
             }
+            PrintToUser();
         }
+
+        public void AddToPrint(string message) 
+        {
+            OnPrint += () => Console.WriteLine(message);
+        }
+
+        public void PrintToUser()
+        {
+            OnPrint?.Invoke();
+        }
+        public void ClearPrint()
+        {
+            OnPrint=null;
+        }
+
+
+
         /// <summary>
         /// converting Grid into a Chess Board
         /// </summary>
@@ -28,7 +49,7 @@ namespace FinalProjectCSharp2
         /// <param name="color"></param>
         /// <param name="moduluRow"></param>
         /// <param name="moduluColumn"></param>
-     public void ChangeGridToChessGrid(ConsoleColor color = ConsoleColor.Red, int moduluRow = 2, int moduluColumn = 2)
+        public void ChangeGridToChessGrid(ConsoleColor color = ConsoleColor.Red, int moduluRow = 2, int moduluColumn = 2)
     {
         for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
         {

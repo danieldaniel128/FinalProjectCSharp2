@@ -2,7 +2,7 @@
 {
     public static class Commands
     {
-        public static event Action<GameObject> OnWin;
+        public static event Action<TileObject> OnWin;
 
 
         static IRenderingMediator rendering = new RenderingManager();
@@ -29,14 +29,18 @@
             Console.ResetColor();
         }
 
-        public static void FinishGame(GameObject gameObject)
+        public static void FinishGame(TileObject gameObject)
         {
             OnWin?.Invoke(gameObject);
         }
 
-        public static void WinCondition(Action<GameObject> action)
+        public static void AddOnWin(Action<TileObject> action)
         {
             OnWin += action;
+        }
+        public static void RemoveOnWin(Action<TileObject> action)
+        {
+            OnWin -= action;
         }
 
         public static void TileSelect()
@@ -53,7 +57,9 @@
             int new_x = x;
             int new_y = y;
             rendering.ChangeGridToChessGrid(ConsoleColor.Red);
-
+            rendering.AddToPrint($"Turn Player: {Turn%2+1}");
+            rendering.PrintToUser();
+            //rendering.ClearPrint();
             while (true)
             {
                 ConsoleKey key = Console.ReadKey().Key;
@@ -64,13 +70,6 @@
                     case ConsoleKey.Enter:
                         if (!isTilePlaced)
                         {
-                            Console.WriteLine("The Turn: " + Turn);
-                            Console.WriteLine("Move the tile to the desired direction through the keyboard keys");
-                            for (int i = 0; i < 4; i++)
-                            {
-
-                                Console.WriteLine($"{i + 1}. The player can move to :" + (grid[x + 1, y].Position));
-                            }
                             MovingObject = (TileObject?)grid[x, y].gameObject?.Clone();
                             if (Turn % 2 == MovingObject?.Actor)
                                 if (MovingObject != null)
@@ -92,7 +91,9 @@
                                 foreach (MyVector2 canMoveToPose in canMoveToPositions)
                                     if (canMoveToPose == new MyVector2(new_x, new_y))
                                     {
-
+                                        TileObject KilledObject=null;
+                                        if (grid[new_x, new_y].gameObject!=null)
+                                        KilledObject = (TileObject)grid[new_x, new_y].gameObject.Clone();
                                         grid[new_x, new_y].gameObject = MovingObject;
                                         grid[new_x, new_y].TileColor = ConsoleColor.Magenta;
 
@@ -103,6 +104,10 @@
                                         isTilePlaced = false;
                                         placedRight = true;
                                         Turn++;
+                                        rendering.ClearPrint();
+                                        rendering.AddToPrint($"Turn Player: {Turn%2+1}");
+                                        if(KilledObject!=null)
+                                        FinishGame(KilledObject);
                                         break;
 
                                     }
@@ -165,12 +170,13 @@
                         y = new_y;
                         break;
                     case ConsoleKey.R:
-                        if (MovingObject != null)
+                        if (MovingObject != null && MovingObject.Actor==Turn%2)
                         {
                             grid[startPosition.X, startPosition.Y].gameObject = (TileObject)MovingObject.Clone();
                             MovingObject = null;
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = false;
+                            rendering.ChangeGridToChessGrid(ConsoleColor.Red);
                         }
                         break;
                 }
@@ -180,8 +186,8 @@
                 x = new_x;
                 y = new_y;
 
-                ReDrawGrid();
-
+                rendering.DrawGrid();
+                
 
 
             }
