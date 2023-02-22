@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <Reference Include="FinalProjectCSharp2">
-      <HintPath>..\..\..\..\FinalProjectCSharp2\bin\Debug\net6.0\FinalProjectCSharp2.dll</HintPath>
+      <HintPath>..\..\GameEngine\bin\Debug\net6.0\FinalProjectCSharp2.dll</HintPath>
     </Reference>
   </ItemGroup>
 
