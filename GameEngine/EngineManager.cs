@@ -44,6 +44,7 @@ public class EngineManager : Singelton<EngineManager>, IBehaviorMethods
         Start();
         while (IsRunning) //gameloop
         {
+            rendering.ChangeGridToChessGrid();
             rendering.DrawGrid();
           
             foreach (IUpdate item in Updateables)

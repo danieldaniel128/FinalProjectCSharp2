@@ -7,7 +7,7 @@
 
         static IRenderingMediator rendering = new RenderingManager();
 
-        static int Turn { get; set; }
+        public static int Turn { get; private set; }
 
         public static void ReDrawGrid()
         {
@@ -56,10 +56,9 @@
 
             int new_x = x;
             int new_y = y;
-            rendering.ChangeGridToChessGrid(ConsoleColor.Red);
             rendering.AddToPrint($"Turn Player: {Turn%2+1}");
             rendering.PrintToUser();
-            //rendering.ClearPrint();
+
             while (true)
             {
                 ConsoleKey key = Console.ReadKey().Key;

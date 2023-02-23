@@ -18,8 +18,22 @@ namespace FinalProjectCSharp2
             {
                 for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
                 {
-                    Console.ForegroundColor = TileMap.Instance.Grid[x, y].TileColor;
-                    Console.Write(TileMap.Instance.Grid[x, y].TileContainer);
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (i==1)
+                        {
+                            Console.ForegroundColor = TileMap.Instance.Grid[x, y].gameObject == null ? Console.ForegroundColor = TileMap.Instance.Grid[x, y].TileColor : TileMap.Instance.Grid[x, y].gameObject.Color;
+                            Console.Write(TileMap.Instance.Grid[x, y].TileContainer[i]);
+                            continue;
+                        }
+                        Console.ForegroundColor = TileMap.Instance.Grid[x, y].TileColor;
+                        Console.Write(TileMap.Instance.Grid[x, y].TileContainer[i]);
+                    }
+                    int countChars=0;
+                    foreach (char c in TileMap.Instance.Grid[x, y].TileContainer)
+                    {
+                       
+                    }
                 }
                 Console.WriteLine();
             }
