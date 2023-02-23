@@ -37,8 +37,8 @@ public class MovementRule : Singelton<MovementRule>, IMovementRule
                     }
                 if (StartPos.Y == EndPos.Y)//ROWS PATH
                 {
-                    int tmpX = TileMap.Instance.Width - x;
-                    if (StartPos.X > EndPos.X)
+                    int tmpX = TileMap.Instance.Width-1 - x;
+                    if (StartPos.X > EndPos.X)//jump to left side
                     {
                         if ((StartPos.X >= tmpX && tmpX >= EndPos.X) && StartPos.Y == y && CanMoveTo(gameObject, new MyVector2(tmpX, y)))
                             if (TileMap.Instance.Grid[tmpX, y].gameObject != null)
@@ -49,15 +49,18 @@ public class MovementRule : Singelton<MovementRule>, IMovementRule
                             else
                                 movements.Add(new MyVector2(tmpX, y));
                     }
-                    else
+                    else//jump to right side
+                    {
+                        tmpX = TileMap.Instance.Width - x;
                         if ((StartPos.X <= tmpX && tmpX <= EndPos.X) && StartPos.Y == y && CanMoveTo(gameObject, new MyVector2(tmpX, y)))
-                        if (TileMap.Instance.Grid[tmpX, y].gameObject != null)
-                        {
-                            movements.Add(new MyVector2(tmpX, y));
-                            goto End;
-                        }
-                        else
-                            movements.Add(new MyVector2(x, y));
+                            if (TileMap.Instance.Grid[tmpX, y].gameObject != null)
+                            {
+                                movements.Add(new MyVector2(tmpX, y));
+                                goto End;
+                            }
+                            else
+                                movements.Add(new MyVector2(tmpX, y));
+                    }
                 }
                 if (MathF.Abs(EndPos.Y - StartPos.Y) == MathF.Abs(EndPos.X - StartPos.X))//ALACHSON PATH
                     if ((MathF.Abs(y - StartPos.Y) == MathF.Abs(x - StartPos.X)) && CanMoveTo(gameObject, new MyVector2(x, y)))
