@@ -14,14 +14,15 @@ public class MovementRule : Singelton<MovementRule>, IMovementRule
                 if (StartPos.X == EndPos.X)//COLUMN PATHS
                     if (StartPos.Y > EndPos.Y)
                     {
-                        if ((x == StartPos.X && (StartPos.Y >= y && y >= EndPos.Y)) && CanMoveTo(gameObject, new MyVector2(x, y)))
-                            if (TileMap.Instance.Grid[x, y].gameObject != null)
+                        int tmpY = TileMap.Instance.Width - 1 - y;
+                        if ((x == StartPos.X && (StartPos.Y >= tmpY && tmpY >= EndPos.Y)) && CanMoveTo(gameObject, new MyVector2(x, tmpY)))
+                            if (TileMap.Instance.Grid[x, tmpY].gameObject != null)
                             {
-                                movements.Add(new MyVector2(x, y));
+                                movements.Add(new MyVector2(x, tmpY));
                                 goto End;
                             }
                             else
-                                movements.Add(new MyVector2(x, y));
+                                movements.Add(new MyVector2(x, tmpY));
 
                     }
                     else
