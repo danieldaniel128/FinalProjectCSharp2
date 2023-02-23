@@ -3,7 +3,7 @@
 public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 {
     public int Actor { get; set; }
-    public event Action OnMoved;
+    public event Action OnStep;
     public char ObjectChar = 'o';
     public ConsoleColor Color = ConsoleColor.Green;
 
@@ -24,14 +24,26 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
 
     public bool Step(MyVector2 direction)
     {
-        
         MyVector2 normlizedDirection = direction.Normalized;
 
         transform.Position += normlizedDirection;
-
         return true;
     }
 
+    public void MakeStep() 
+    {
+        OnStep?.Invoke();
+    }
+
+    public void AddToStep(Action action) 
+    {
+        OnStep += action;
+    }
+
+    public void RemoveSteps()
+    { 
+        OnStep = null;
+    }
    
 
     public void Update()
@@ -54,7 +66,7 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
         // should compare positions
         if (a.transform.Position == b.transform.Position)
         {
-            OnMoved.Invoke();
+            OnStep.Invoke();
             return 0;
         }
         if (a.transform.Position < b.transform.Position)

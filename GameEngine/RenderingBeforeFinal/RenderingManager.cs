@@ -30,10 +30,6 @@ namespace FinalProjectCSharp2
                         Console.Write(TileMap.Instance.Grid[x, y].TileContainer[i]);
                     }
                     int countChars=0;
-                    foreach (char c in TileMap.Instance.Grid[x, y].TileContainer)
-                    {
-                       
-                    }
                 }
                 Console.WriteLine();
             }

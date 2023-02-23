@@ -27,14 +27,7 @@ public class GameObject : TileObject
             movements.Add(transform.Position + MyVector2.Down);
         if (MovementRule.Instance.CanMoveTo(this, transform.Position + MyVector2.Left))
             movements.Add(transform.Position + MyVector2.Left);
-      //  if (MovementRule.Instance.CanMoveTo(transform.Position + MyVector2.Up + MyVector2.Right))
-      //      movements.Add(transform.Position + MyVector2.Up + MyVector2.Right);
-      //  if (MovementRule.Instance.CanMoveTo(transform.Position + MyVector2.Down + MyVector2.Right))
-      //      movements.Add(transform.Position + MyVector2.Down + MyVector2.Right);
-      //  if (MovementRule.Instance.CanMoveTo(transform.Position + MyVector2.Up + MyVector2.Left))
-      //      movements.Add(transform.Position + MyVector2.Up + MyVector2.Left);
-      //  if (MovementRule.Instance.CanMoveTo(transform.Position + MyVector2.Down + MyVector2.Left))
-      //      movements.Add(transform.Position + MyVector2.Down + MyVector2.Left);
+     
         foreach (MyVector2 movement in movements)
             rendering.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
         return movements;

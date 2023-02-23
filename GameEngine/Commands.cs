@@ -102,10 +102,12 @@
                                             MovingObject = null;
                                         isTilePlaced = false;
                                         placedRight = true;
+                                        grid[new_x, new_y].gameObject?.MakeStep();
                                         Turn++;
                                         rendering.ClearPrint();
                                         rendering.AddToPrint($"Turn Player: {Turn%2+1}");
-                                        if(KilledObject!=null)
+                                        MovingObject?.RemoveSteps();
+                                        if (KilledObject!=null)
                                         FinishGame(KilledObject);
                                         break;
 
