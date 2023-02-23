@@ -24,7 +24,7 @@ namespace EngineTesting
                 if(Actor == 1)
                     PawnMovments = MovementRule.Instance.CalculateRoute(this, transform.Position, transform.Position + MyVector2.Down, null);
                 else
-                PawnMovments = MovementRule.Instance.CalculateRoute(this, transform.Position, transform.Position + MyVector2.Up, null);
+                    PawnMovments = MovementRule.Instance.CalculateRoute(this, transform.Position, transform.Position + MyVector2.Up, null);
             return PawnMovments;
         }
 
