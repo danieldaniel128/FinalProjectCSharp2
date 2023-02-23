@@ -131,12 +131,12 @@ namespace FinalProjectCSharp2
           {
               for (int y = 0; y < TileMap.Instance.Grid.GetLength(1); y++)
               {
-                    if (new MyVector2(x, y) >= startPosition && new MyVector2(x, y) <= endPosition)
-                    {
-                    TileObject cloneGameObjet = (TileObject)tileObject.Clone();
-                    TileMap.Instance.Grid[x, y].gameObject = cloneGameObjet;
-                    cloneGameObjet.transform.Position = new MyVector2(x, y);
-                    }
+                  if (new MyVector2(x, y) >= startPosition && new MyVector2(x, y) <= endPosition)
+                  {
+                      TileObject cloneGameObjet = (TileObject)tileObject.Clone();
+                      TileMap.Instance.Grid[x, y].gameObject = cloneGameObjet;
+                      cloneGameObjet.transform.Position = new MyVector2(x, y);
+                  }
               }
           }
 

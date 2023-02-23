@@ -17,12 +17,12 @@ class Program
         GameObjectCreator<ChessKing>.AddToGrid(0, 'K', new MyVector2(4, 0), new MyVector2(4, 0), player1Color);
                                                                                                    
         GameObjectCreator<ChessRook>.AddToGrid(0, 'R', new MyVector2(0, 0), new MyVector2(0, 0), player1Color);
-        GameObjectCreator<ChessRook>.AddToGrid(0, 'R', new MyVector2(7, 0), new MyVector2(7, 0), player1Color);
+        GameObjectCreator<ChessRook>.AddToGrid(0, 'R', new MyVector2(7, 4), new MyVector2(7, 4), player1Color);
                                                                                                    
         GameObjectCreator<ChessKnight>.AddToGrid(0, 'k', new MyVector2(1, 0), new MyVector2(1, 0), player1Color);
         GameObjectCreator<ChessKnight>.AddToGrid(0, 'k', new MyVector2(6, 0), new MyVector2(6, 0), player1Color);
 
-        GameObjectCreator<ChessPawn>.AddToGrid(0, 'P', new MyVector2(0, 1), new MyVector2(7, 1), player1Color);
+        //GameObjectCreator<ChessPawn>.AddToGrid(0, 'P', new MyVector2(0, 1), new MyVector2(7, 1), player1Color);
 
 
         ConsoleColor player2Color =ConsoleColor.Yellow;

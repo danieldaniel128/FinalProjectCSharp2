@@ -15,21 +15,55 @@ public class MovementRule : Singelton<MovementRule>, IMovementRule
                     if (StartPos.Y > EndPos.Y)
                     {
                         if ((x == StartPos.X && (StartPos.Y >= y && y >= EndPos.Y)) && CanMoveTo(gameObject, new MyVector2(x, y)))
-                            movements.Add(new MyVector2(x, y));
+                            if (TileMap.Instance.Grid[x, y].gameObject != null)
+                            {
+                                movements.Add(new MyVector2(x, y));
+                                goto End;
+                            }
+                            else
+                                movements.Add(new MyVector2(x, y));
 
                     }
                     else
                     {
                         if ((x == StartPos.X && (StartPos.Y <= y && y <= EndPos.Y)) && CanMoveTo(gameObject, new MyVector2(x, y)))
-                            movements.Add(new MyVector2(x, y));
+                            if (TileMap.Instance.Grid[x, y].gameObject != null)
+                            {
+                                movements.Add(new MyVector2(x, y));
+                                goto End;
+                            }
+                            else
+                                movements.Add(new MyVector2(x, y));
                     }
                 if (StartPos.Y == EndPos.Y)//ROWS PATH
-                    if ((StartPos.X <= x && x <= EndPos.X && StartPos.Y <= y && y <= EndPos.Y) && CanMoveTo(gameObject, new MyVector2(x, y)))
-                        movements.Add(new MyVector2(x, y));
+                {
+                    int tmpX = TileMap.Instance.Width - x;
+                    if (StartPos.X > EndPos.X)
+                    {
+                        if ((StartPos.X >= tmpX && tmpX >= EndPos.X) && StartPos.Y == y && CanMoveTo(gameObject, new MyVector2(tmpX, y)))
+                            if (TileMap.Instance.Grid[tmpX, y].gameObject != null)
+                            {
+                                movements.Add(new MyVector2(tmpX, y));
+                                goto End;
+                            }
+                            else
+                                movements.Add(new MyVector2(tmpX, y));
+                    }
+                    else
+                        if ((StartPos.X <= tmpX && tmpX <= EndPos.X) && StartPos.Y == y && CanMoveTo(gameObject, new MyVector2(tmpX, y)))
+                        if (TileMap.Instance.Grid[tmpX, y].gameObject != null)
+                        {
+                            movements.Add(new MyVector2(tmpX, y));
+                            goto End;
+                        }
+                        else
+                            movements.Add(new MyVector2(x, y));
+                }
                 if (MathF.Abs(EndPos.Y - StartPos.Y) == MathF.Abs(EndPos.X - StartPos.X))//ALACHSON PATH
                     if ((MathF.Abs(y - StartPos.Y) == MathF.Abs(x - StartPos.X)) && CanMoveTo(gameObject, new MyVector2(x, y)))
                         movements.Add(new MyVector2(x, y));
             }
+        End:
         foreach (MyVector2 movement in movements)//color path
             rendering.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
         return movements;
