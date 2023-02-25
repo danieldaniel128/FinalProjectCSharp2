@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProjectCSharp2
 {
-    public class RenderingManager : IRenderingMediator
+    public class RenderingManager : IRendering
     {
 
         public event Action OnPrint;
@@ -89,7 +89,7 @@ namespace FinalProjectCSharp2
                     if (x == row)
                     {
                         if (y % 2 == 0)
-                            TileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
+                            TileMap.Instance.Grid[x, y] = new Tile(x, y, color);
                     }
                 }
             }
@@ -145,7 +145,7 @@ namespace FinalProjectCSharp2
     /// <param name="row"></param>
     /// <param name="newChar"></param>
     /// <param name="color"></param>
-     public void ChangeGridRowOdd( int row, char newChar, ConsoleColor color)
+     public void ChangeGridRowOdd( int row, ConsoleColor color)
     {
         for (int x = 0; x < TileMap.Instance.Grid.GetLength(0); x++)
         {
@@ -154,7 +154,7 @@ namespace FinalProjectCSharp2
                 if (x == row)
                 {
                     if (y % 2 == 1)
-                            TileMap.Instance.Grid[x, y] = new Tile(x, y, newChar, color);
+                            TileMap.Instance.Grid[x, y] = new Tile(x, y, color);
                 }
             }
         }

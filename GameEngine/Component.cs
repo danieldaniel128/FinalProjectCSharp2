@@ -1,17 +1,15 @@
 ﻿namespace FinalProjectCSharp2;
 
-public abstract class Component : IUpdate
+/// <summary>
+/// This class allows to create beahvioral rules for gameObjects
+/// </summary>
+public abstract class Component
 {
-    public TileObject gameobject;
-    public Component(TileObject gameObject)
+    protected TileObject gameobject;
+    protected Component(TileObject gameObject)
     {
         gameobject = gameObject;
-        EngineManager.Instance.AddUpdateable(this);
         gameobject.Components.Add(this);
     }
 
-    public virtual void Update()
-    {
-
-    }
 }

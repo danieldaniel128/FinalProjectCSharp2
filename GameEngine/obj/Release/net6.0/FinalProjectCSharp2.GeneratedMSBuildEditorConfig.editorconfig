@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FinalProjectCSharp2
-build_property.ProjectDir = C:\Users\kreme\FinalProjectCSharp2\GameEngine\
+build_property.ProjectDir = C:\Users\kreme\FinalProjectCSharp2\GameEngine\GameEngine\

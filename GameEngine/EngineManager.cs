@@ -1,61 +1,47 @@
 ﻿namespace FinalProjectCSharp2;
 
-public class EngineManager : Singelton<EngineManager>, IBehaviorMethods
+public class EngineManager : Singelton<EngineManager>
 {
 
-    ////public UpgradedTileMap Grid { get; set; }//private set or method that will set differently, maybe only private and will get access only through Tilemap???
-    private List<IUpdate> updateables = new List<IUpdate>();
-    public List<IUpdate> Updateables { get => updateables; set => updateables = value; }
-    public bool IsRunning { get; private set; }//get is private too?
+    public bool IsRunning { get; private set; }
 
-    IRenderingMediator rendering = new RenderingManager();
+    private IRendering rendering = new RenderingManager();
+    public IRendering Rendering { get => rendering; private set => rendering = value; }
 
+
+    /// <summary>
+    /// This Class is the core of the engine
+    /// </summary>
     public EngineManager()
     {
-       
         IsRunning = true;
     }
 
-
-    public virtual void Start()
-    {
-
-    }
-
-
-    public virtual void Update()
-    {
-
-    }
-
-    public void AddUpdateable(IUpdate update)
-    {
-        Updateables.Add(update);
-    }
+    /// <summary>
+    /// This method pauses the engine
+    /// </summary>
 
     public void Pause()
     {
         IsRunning = !IsRunning;
     }
 
+    /// <summary>
+    /// This method activates the engine
+    /// </summary>
     public void EngineLoop()
     {
 
-        Start();
+
         while (IsRunning) //gameloop
         {
-            rendering.ChangeGridToChessGrid();
-            rendering.DrawGrid();
-          
-            foreach (IUpdate item in Updateables)
-            {
-                item.Update();
-            }
+            Rendering.ChangeGridToChessGrid();
+            Rendering.DrawGrid();
 
             Commands.TileSelect();
             Console.ReadLine();
             Console.Clear();
-       
+
         }
     }
 

@@ -26,6 +26,7 @@ class Program
 
 
         ConsoleColor player2Color =ConsoleColor.Yellow;
+
         GameObjectCreator<ChessRook>.AddToGrid(1, 'R', new MyVector2(0, 7), new MyVector2(0, 7), player2Color);
         GameObjectCreator<ChessRook>.AddToGrid(1, 'R', new MyVector2(7, 7), new MyVector2(7, 7), player2Color);
 

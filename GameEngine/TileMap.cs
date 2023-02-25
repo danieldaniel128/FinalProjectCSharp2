@@ -31,7 +31,7 @@ public class TileMap : Singelton<TileMap>, IEnumerable<Tile>
         {
             for (int y = 0; y < height; y++)
             {
-                Grid[x, y] = new Tile(x, y, '#', ConsoleColor.White);
+                Grid[x, y] = new Tile(x, y, ConsoleColor.White);
             }
         }
     }
@@ -154,9 +154,6 @@ struct TileEnumerator : IEnumerator<Tile>
         return _currentRowIndex > 0 || _currentRowIndex < maxRowIndex || _currentCulomnIndex > 0 || _currentCulomnIndex < maxColumnIndex;
     }
 
-    public void Reset() 
-    {
-        
-    }
+    public void Reset() { }
 
 }

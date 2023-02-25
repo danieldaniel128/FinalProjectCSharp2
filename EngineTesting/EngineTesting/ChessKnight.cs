@@ -13,7 +13,7 @@ namespace EngineTesting
 
         public override List<MyVector2> MovementLogic()
         {
-            IRenderingMediator rendering = new RenderingManager();
+            IRendering rendering = new RenderingManager();
             List<MyVector2> knightMovements = new List<MyVector2>(); 
             if (MovementRule.Instance.CanMoveTo(this, transform.Position + MyVector2.Up*2 + MyVector2.Right))
                 knightMovements.Add(transform.Position + MyVector2.Up * 2 + MyVector2.Right);

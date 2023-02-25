@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hBGxeWvQBl3jXzyJkudVYLBrR9MFXAei3Jlksrk6KUnaHNs11AB2j+kxJMwze6/02EUY+J6vbudPzzfja8X7Vg==",
+  "dgSpecHash": "q3zfUBm5B+eLV9DCI3VaSxLkDOuUm8rMkHPlwwYYYpzBKCdiQwIGLYB881X/D4mPU2orzgjMouksr9oZ18NVHQ==",
   "success": true,
-  "projectFilePath": "C:\\GitReps\\FinalProjectCSharp2\\FinalProjectCSharp2\\EngineTesting\\EngineTesting\\EngineTesting.csproj",
+  "projectFilePath": "C:\\Users\\kreme\\FinalProjectCSharp2\\GameEngine\\EngineTesting\\EngineTesting\\EngineTesting.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
+
 public interface IMovementRule
 {
     List<MyVector2> CalculateRoute(TileObject tileObject, MyVector2 StartPos, MyVector2 EndPos, List<Tile> blockingTiles);

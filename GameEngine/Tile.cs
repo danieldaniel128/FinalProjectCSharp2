@@ -26,7 +26,7 @@ public class Tile : BaseTile
         gameObject = null;
     }
 
-    public Tile(int x, int y,char tileChar,ConsoleColor tileColor=ConsoleColor.White) : base(tileChar)
+    public Tile(int x, int y,ConsoleColor tileColor=ConsoleColor.White) : base(tileColor)
     {
         Position = new MyVector2(x, y);
         TileColor = tileColor;

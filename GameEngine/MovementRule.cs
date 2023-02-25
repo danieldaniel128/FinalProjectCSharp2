@@ -4,7 +4,15 @@
 public class MovementRule : Singelton<MovementRule>, IMovementRule
 {
 
-    IRenderingMediator rendering = new RenderingManager();
+
+    /// <summary>
+    /// This methods allows to to easily detrminte directions of your gameObject
+    /// </summary>
+    /// <param name="gameObject"></param>
+    /// <param name="StartPos"></param>
+    /// <param name="EndPos"></param>
+    /// <param name="blockingTiles"></param>
+    /// <returns></returns>
     public List<MyVector2> CalculateRoute(TileObject gameObject, MyVector2 StartPos, MyVector2 EndPos, List<Tile> blockingTiles)
     {
         List<MyVector2> movements = new List<MyVector2>();
@@ -69,9 +77,16 @@ public class MovementRule : Singelton<MovementRule>, IMovementRule
             }
         End:
         foreach (MyVector2 movement in movements)//color path
-            rendering.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
+            EngineManager.Instance.Rendering.ColorTile(TileMap.Instance.Grid[movement.X, movement.Y], ConsoleColor.Blue);
         return movements;
     }
+
+    /// <summary>
+    /// This Method Detrmines whether the gameObject can move to the select position
+    /// </summary>
+    /// <param name="gameObject"></param>
+    /// <param name="MoveToPos"></param>
+    /// <returns></returns>
 
     public bool CanMoveTo(TileObject gameObject, MyVector2 MoveToPos)//down up downleft downright left right
     {

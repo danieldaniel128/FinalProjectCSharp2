@@ -1,6 +1,6 @@
 ﻿namespace FinalProjectCSharp2;
 
-public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
+public abstract class TileObject :IComparer<TileObject>, ICloneable
 {
     public int Actor { get; set; }
     public event Action OnStep;
@@ -45,15 +45,6 @@ public abstract class TileObject : IUpdate, IComparer<TileObject>, ICloneable
         OnStep = null;
     }
    
-
-    public void Update()
-    {
-
-        foreach (var component in Components)
-        {
-            component.Update();
-        }
-    }
 
     public void AddComponent(Component component)
     {
@@ -104,19 +95,4 @@ public static class TileObjectExtensions
         }
     }
 
-
-
-    /// <summary>
-    /// will move the position of the TileObject to a new chosen Position in a fixed speed
-    /// </summary>
-    /// <param name="tileObject"></param>
-    /// <param name="newPosition"></param>
-    /// <param name="speed"></param>
-    public static void MoveTowards(this TileObject tileObject,TileMap tileMap, MyVector2 newPosition, int speed)
-    {
-        if (newPosition.X <= tileMap.Width && newPosition.Y < tileMap.Height)
-        {
-         tileObject.transform.Position.MoveTowards(newPosition, speed);
-        }
-    }
 }

@@ -2,13 +2,22 @@
 {
     public static class Commands
     {
+
+        /// <summary>
+        /// This event let's the user insert a winning logic through a method to the game
+        /// </summary>
         public static event Action<TileObject> OnWin;
 
 
-        static IRenderingMediator rendering = new RenderingManager();
 
+        /// <summary>
+        /// Returns the current Turn on the game's loop, starting from 0
+        /// </summary>
         public static int Turn { get; private set; }
 
+        /// <summary>
+        /// Redraws the grid
+        /// </summary>
         public static void ReDrawGrid()
         {
             Console.Clear();
@@ -29,20 +38,36 @@
             Console.ResetColor();
         }
 
+        /// <summary>
+        /// checks if any method is subscirbed to the "OnWin" event at the end of every turn
+        /// </summary>
+        /// <param name="gameObject"></param>
         public static void FinishGame(TileObject gameObject)
         {
             OnWin?.Invoke(gameObject);
         }
 
+        /// <summary>
+        /// Subscirbes to the "OnWin" Event
+        /// </summary>
+        /// <param name="action"></param>
         public static void AddOnWin(Action<TileObject> action)
         {
             OnWin += action;
         }
+
+        /// <summary>
+        /// Removes Subscirbed nethods from the "OnWin" Event
+        /// </summary>
+        /// <param name="action"></param>
         public static void RemoveOnWin(Action<TileObject> action)
         {
             OnWin -= action;
         }
 
+        /// <summary>
+        /// This method gives the player the option to move on the grid
+        /// </summary>
         public static void TileSelect()
         {
             Tile[,] grid = TileMap.Instance.Grid;
@@ -56,8 +81,8 @@
 
             int new_x = x;
             int new_y = y;
-            rendering.AddToPrint($"Turn Player: {Turn%2+1}");
-            rendering.PrintToUser();
+            EngineManager.Instance.Rendering.AddToPrint($"Turn Player: {Turn%2+1}");
+            EngineManager.Instance.Rendering.PrintToUser();
 
             while (true)
             {
@@ -104,8 +129,8 @@
                                         placedRight = true;
                                         grid[new_x, new_y].gameObject?.MakeStep();
                                         Turn++;
-                                        rendering.ClearPrint();
-                                        rendering.AddToPrint($"Turn Player: {Turn%2+1}");
+                                        EngineManager.Instance.Rendering.ClearPrint();
+                                        EngineManager.Instance.Rendering.AddToPrint($"Turn Player: {Turn%2+1}");
                                         MovingObject?.RemoveSteps();
                                         if (KilledObject!=null)
                                         FinishGame(KilledObject);
@@ -120,7 +145,7 @@
                             }
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = false;
-                            rendering.ChangeGridToChessGrid(ConsoleColor.Red);
+                            EngineManager.Instance.Rendering.ChangeGridToChessGrid(ConsoleColor.Red);
 
                         }
 
@@ -177,7 +202,7 @@
                             MovingObject = null;
                             grid[x, y].TileColor = previousColor;
                             isTilePlaced = false;
-                            rendering.ChangeGridToChessGrid(ConsoleColor.Red);
+                            EngineManager.Instance.Rendering.ChangeGridToChessGrid(ConsoleColor.Red);
                         }
                         break;
                 }
@@ -187,7 +212,7 @@
                 x = new_x;
                 y = new_y;
 
-                rendering.DrawGrid();
+                EngineManager.Instance.Rendering.DrawGrid();
                 
 
 

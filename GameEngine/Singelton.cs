@@ -2,6 +2,10 @@
 
 namespace FinalProjectCSharp2
 {
+    /// <summary>
+    /// This singelton is used to create a one instance for specific objects
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class Singelton<T> where T : new()
     {
         private static T instance;
