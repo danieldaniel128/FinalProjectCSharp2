@@ -21,7 +21,6 @@ public class TileMap : Singelton<TileMap>, IEnumerable<Tile>
     /// </summary>
     /// <param name="width"></param>
     /// <param name="height"></param>
-
     public void Inititialize(int width, int height)
     {
         Width = width;
@@ -40,61 +39,7 @@ public class TileMap : Singelton<TileMap>, IEnumerable<Tile>
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-    public void FillSpiralMatrix()
-    {
-        int maxSteps = 1;
-        int stepsTaken = 0;
-        int direction = 2; // 0 = right, 1 = down, 2 = left, 3 = up
-
-
-        int maxSizeRow = Grid.GetLength(0);
-        int maxSizeCol = Grid.GetLength(1);
-        int num = 1;
-        int row = maxSizeRow / 2;
-        int col = maxSizeCol / 2;
-
-        Grid[row, col].TileContainer = "[0" + num + "]";
-
-
-        while (num < maxSizeRow * maxSizeCol)
-        {
-
-            stepsTaken++;
-            switch (direction)
-            {
-                case 0: // move right
-                    col++;
-                    break;
-                case 1: // move down
-                    row++;
-                    break;
-                case 2: // move left
-                    col--;
-                    break;
-                case 3: // move up
-                    row--;
-                    break;
-            }
-            if (row < 0 || row >= maxSizeRow || col < 0 || col >= maxSizeCol)
-            {
-                break;
-            }
-            if (stepsTaken == maxSteps)
-            {
-                stepsTaken = 0;
-                direction = (direction + 1) % 4;
-                if (direction % 2 == 0)
-                {
-                    maxSteps++;
-                }
-            }
-            ++num;
-            if (num < 10)
-                Grid[row, col].TileContainer = "[0" + num + "]";
-            else
-                Grid[row, col].TileContainer = "[" + num + "]";
-        }
-    }
+    
 
 }
 

@@ -51,7 +51,12 @@ public abstract class TileObject :IComparer<TileObject>, ICloneable
         Components.Add(component);
     }
 
-
+    /// <summary>
+    /// Compare two TileObjectss by their positions
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
     public int Compare(TileObject? a, TileObject? b)
     {
         // should compare positions
@@ -60,21 +65,14 @@ public abstract class TileObject :IComparer<TileObject>, ICloneable
             OnStep.Invoke();
             return 0;
         }
-        if (a.transform.Position < b.transform.Position)
-        {
+        else 
             return -1;
-        }
-        if (a.transform.Position > b.transform.Position)
-        {
-            return 1;
-        }
-        else
-        {
-            return -4; // a placeHolder
-        }
     }
 
-
+    /// <summary>
+    /// Shallow cloning TileObject
+    /// </summary>
+    /// <returns> return shallow cloned TileObject</returns>
     public virtual object Clone()
     {
         var tileObject = (TileObject)MemberwiseClone();
@@ -86,9 +84,14 @@ public abstract class TileObject :IComparer<TileObject>, ICloneable
 }
 public static class TileObjectExtensions
 {
-    public static void PutTileObjectOnBoard(this TileObject tileObject,TileMap tileMap, MyVector2 newPosition)
+    /// <summary>
+    /// moving a TileObject position to a new position on TilMap grid
+    /// </summary>
+    /// <param name="tileObject"></param>
+    /// <param name="newPosition"></param>
+    public static void PutTileObjectOnBoard(this TileObject tileObject, MyVector2 newPosition)
     {
-        if (newPosition.X <= tileMap.Width && newPosition.Y <= tileMap.Height)
+        if (newPosition.X <= TileMap.Instance.Width && newPosition.Y <= TileMap.Instance.Height)
         {
             tileObject.transform.Position = newPosition;
             
