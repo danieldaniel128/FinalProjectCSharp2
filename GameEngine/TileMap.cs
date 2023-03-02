@@ -11,7 +11,7 @@ public class TileMap : Singelton<TileMap>, IEnumerable<Tile>
     public int Width { get; private set; }
     public int Height { get; private set; }
 
-    public IEnumerator<Tile> GetEnumerator()//new IntegerEnumerator(_list.ToArray());
+    public IEnumerator<Tile> GetEnumerator()
     {
         return new TileEnumerator(Grid);
     }
@@ -43,7 +43,9 @@ public class TileMap : Singelton<TileMap>, IEnumerable<Tile>
 
 }
 
-
+/// <summary>
+/// An iterator that goes through the grid
+/// </summary>
 
 struct TileEnumerator : IEnumerator<Tile>
 {

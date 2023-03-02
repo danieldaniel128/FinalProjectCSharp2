@@ -1,6 +1,6 @@
 ﻿namespace FinalProjectCSharp2;
 
-public abstract class TileObject :IComparer<TileObject>, ICloneable
+public abstract class TileObject : IComparer<TileObject>, ICloneable
 {
     public int Actor { get; set; }
     public event Action OnStep;
@@ -11,8 +11,13 @@ public abstract class TileObject :IComparer<TileObject>, ICloneable
     public Transform transform { get; set; }
 
 
-
-    public TileObject(int actor,char objectChar,ConsoleColor color)
+    /// <summary>
+    /// Creates new TileObject and attaches it to the it's actor
+    /// </summary>
+    /// <param name="actor"></param>
+    /// <param name="objectChar"></param>
+    /// <param name="color"></param>
+    public TileObject(int actor, char objectChar, ConsoleColor color)
     {
         Actor = actor;
         Components = new List<Component>();
@@ -30,21 +35,28 @@ public abstract class TileObject :IComparer<TileObject>, ICloneable
         return true;
     }
 
-    public void MakeStep() 
+    /// <summary>
+    /// called every step the tile object is making
+    /// </summary>
+    public void MakeStep()
     {
         OnStep?.Invoke();
     }
-
-    public void AddToStep(Action action) 
+    /// <summary>
+    /// Subscribe an action to OnStep Event
+    /// </summary>
+    /// <param name="action"></param>
+    public void AddToStep(Action action)
     {
         OnStep += action;
     }
-
+    /// <summary>
+    /// Unsubscribe all subscribers of the OnStep Event
+    /// </summary>
     public void RemoveSteps()
-    { 
+    {
         OnStep = null;
     }
-   
 
     public void AddComponent(Component component)
     {
@@ -65,7 +77,7 @@ public abstract class TileObject :IComparer<TileObject>, ICloneable
             OnStep.Invoke();
             return 0;
         }
-        else 
+        else
             return -1;
     }
 
@@ -80,7 +92,7 @@ public abstract class TileObject :IComparer<TileObject>, ICloneable
         return tileObject;
     }
 
-  
+
 }
 public static class TileObjectExtensions
 {
@@ -94,7 +106,7 @@ public static class TileObjectExtensions
         if (newPosition.X <= TileMap.Instance.Width && newPosition.Y <= TileMap.Instance.Height)
         {
             tileObject.transform.Position = newPosition;
-            
+
         }
     }
 

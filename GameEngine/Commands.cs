@@ -8,8 +8,6 @@
         /// </summary>
         public static event Action<TileObject> OnWin;
 
-
-
         /// <summary>
         /// Returns the current Turn on the game's loop, starting from 0
         /// </summary>
@@ -44,6 +42,7 @@
         /// <param name="gameObject"></param>
         public static void FinishGame(TileObject gameObject)
         {
+            EngineManager.Instance.Rendering.PrintToUser();
             OnWin?.Invoke(gameObject);
         }
 
@@ -81,7 +80,7 @@
 
             int new_x = x;
             int new_y = y;
-            EngineManager.Instance.Rendering.AddToPrint($"Turn Player: {Turn%2+1}");
+            EngineManager.Instance.Rendering.AddToPrint($"Turn Player: {Turn % 2 + 1}");
             EngineManager.Instance.Rendering.PrintToUser();
 
             while (true)
@@ -115,9 +114,9 @@
                                 foreach (MyVector2 canMoveToPose in canMoveToPositions)
                                     if (canMoveToPose == new MyVector2(new_x, new_y))
                                     {
-                                        TileObject KilledObject=null;
-                                        if (grid[new_x, new_y].gameObject!=null)
-                                        KilledObject = (TileObject)grid[new_x, new_y].gameObject.Clone();
+                                        TileObject KilledObject = null;
+                                        if (grid[new_x, new_y].gameObject != null)
+                                            KilledObject = (TileObject)grid[new_x, new_y].gameObject.Clone();
                                         grid[new_x, new_y].gameObject = MovingObject;
                                         grid[new_x, new_y].TileColor = ConsoleColor.Magenta;
 
@@ -130,10 +129,10 @@
                                         grid[new_x, new_y].gameObject?.MakeStep();
                                         Turn++;
                                         EngineManager.Instance.Rendering.ClearPrint();
-                                        EngineManager.Instance.Rendering.AddToPrint($"Turn Player: {Turn%2+1}");
+                                        EngineManager.Instance.Rendering.AddToPrint($"Turn Player: {Turn % 2 + 1}");
                                         MovingObject?.RemoveSteps();
-                                        if (KilledObject!=null)
-                                        FinishGame(KilledObject);
+                                        if (KilledObject != null)
+                                            FinishGame(KilledObject);
                                         break;
 
                                     }
@@ -196,7 +195,7 @@
                         y = new_y;
                         break;
                     case ConsoleKey.R:
-                        if (MovingObject != null && MovingObject.Actor==Turn%2)
+                        if (MovingObject != null && MovingObject.Actor == Turn % 2)
                         {
                             grid[startPosition.X, startPosition.Y].gameObject = (TileObject)MovingObject.Clone();
                             MovingObject = null;
@@ -213,16 +212,16 @@
                 y = new_y;
 
                 EngineManager.Instance.Rendering.DrawGrid();
-                
+
 
 
             }
         }
 
-
-
-
-
+        public static void Print(string message)
+        {
+            EngineManager.Instance.Rendering.AddToPrint(message);
+        }
 
     }
 }
