@@ -9,7 +9,6 @@ public class Transform : Component
     public Transform(TileObject gameObject) : base(gameObject)
     {
         gameObject.Components[0] = this;
-
     }
 
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6GlQSQ790QR8czCdnq7T6TYXnlibVFDMs9RYpNtm15fRxz7Rzo2IzH8Ti0Zzq8gqgmd+IH5oaJEBkDniQkbGpA==",
+  "dgSpecHash": "J0BbR5M87KLOrrIQPo+NGs5CpYqQCg2GjRY46pjrlwc9qSiYxaH36hRlKbiV1aALyQ6j4eb2/cBt27nIzznThw==",
   "success": true,
-  "projectFilePath": "C:\\GitReps\\FinalProjectCSharp2\\FinalProjectCSharp2\\GameEngine\\FinalProjectCSharp2.csproj",
+  "projectFilePath": "C:\\Users\\kreme\\FinalProjectCSharp2\\GameEngine\\GameEngine\\FinalProjectCSharp2.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -10,7 +10,7 @@
         /// This List returns a list of generic gameObjects to place on the grid
         /// </summary>
         private static List<T> gameObjects = new List<T>();
-        public static List<T> GameObjects { get => gameObjects; set => gameObjects = value; }
+        public static List<T> GameObjects { get => gameObjects; private set => gameObjects = value; }
 
 
         /// <summary>

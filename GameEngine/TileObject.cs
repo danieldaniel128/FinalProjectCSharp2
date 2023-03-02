@@ -4,11 +4,13 @@ public abstract class TileObject : IComparer<TileObject>, ICloneable
 {
     public int Actor { get; set; }
     public event Action OnStep;
-    public char ObjectChar = 'o';
-    public ConsoleColor Color = ConsoleColor.Green;
+    private char objectChar = 'o';
+    public char ObjectChar { get => objectChar; private set => objectChar = value; }
 
+    private ConsoleColor color = ConsoleColor.Green;
+    public ConsoleColor Color { get => color; private set => color = value; }
     public abstract List<Component> Components { get; protected set; }
-    public Transform transform { get; set; }
+    public Transform transform { get; private set; }
 
 
     /// <summary>

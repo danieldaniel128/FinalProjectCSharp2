@@ -7,7 +7,8 @@ public class TileMap : Singelton<TileMap>, IEnumerable<Tile>
 {
 
 
-    public Tile[,] Grid;
+    private Tile[,] grid;
+    public Tile[,] Grid { get => grid; private set => grid = value; }
     public int Width { get; private set; }
     public int Height { get; private set; }
 
