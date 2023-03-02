@@ -76,7 +76,6 @@
             TileObject? MovingObject = null;
             MyVector2 startPosition = new MyVector2();
             List<MyVector2> canMoveToPositions = new List<MyVector2>();
-            bool HasWon = false;
 
             int new_x = x;
             int new_y = y;
