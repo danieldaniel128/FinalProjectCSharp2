@@ -5,7 +5,7 @@
 /// </summary>
 public abstract class Component
 {
-    protected TileObject gameobject;
+    protected TileObject gameobject { get; set; }
     protected Component(TileObject gameObject)
     {
         gameobject = gameObject;
