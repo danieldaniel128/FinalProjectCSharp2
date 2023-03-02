@@ -1,4 +1,6 @@
-﻿namespace FinalProjectCSharp2
+﻿using System.Runtime.CompilerServices;
+
+namespace FinalProjectCSharp2
 {
     public static class Commands
     {
@@ -12,7 +14,7 @@
         /// Returns the current Turn on the game's loop, starting from 0
         /// </summary>
         public static int Turn { get; private set; }
-
+        public static bool IsWon { get; private set; }
         /// <summary>
         /// Redraws the grid
         /// </summary>
@@ -42,8 +44,9 @@
         /// <param name="gameObject"></param>
         public static void FinishGame(TileObject gameObject)
         {
-            EngineManager.Instance.Rendering.PrintToUser();
-            OnWin?.Invoke(gameObject);
+            if (OnWin != null)
+                IsWon = true;
+                OnWin?.Invoke(gameObject);
         }
 
         /// <summary>
@@ -220,6 +223,7 @@
         public static void Print(string message)
         {
             EngineManager.Instance.Rendering.AddToPrint(message);
+            EngineManager.Instance.Rendering.PrintToUser();
         }
 
     }

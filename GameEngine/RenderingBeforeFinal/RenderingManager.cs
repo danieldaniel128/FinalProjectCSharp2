@@ -29,7 +29,6 @@ namespace FinalProjectCSharp2
                         Console.ForegroundColor = TileMap.Instance.Grid[x, y].TileColor;
                         Console.Write(TileMap.Instance.Grid[x, y].TileContainer[i]);
                     }
-                    int countChars=0;
                 }
                 Console.WriteLine();
             }
@@ -41,6 +40,8 @@ namespace FinalProjectCSharp2
             OnPrint += () => Console.WriteLine(message);
         }
 
+
+
         public void PrintToUser()
         {
             OnPrint?.Invoke();
@@ -49,6 +50,7 @@ namespace FinalProjectCSharp2
         {
             OnPrint=null;
         }
+
 
 
 

@@ -20,7 +20,7 @@ namespace EngineTesting
                 if (gameObject.Actor == 1)
                     Commands.Print($"Player: {gameObject.Actor} is the winner!!!!");
                 else
-                    Commands.Print($"Player: {gameObject.Actor + 1} is the winner!!!!");
+                    Commands.Print($"Player: {gameObject.Actor + 2} is the winner!!!!");
                 Console.ReadKey();
                 Environment.Exit(0);
 
